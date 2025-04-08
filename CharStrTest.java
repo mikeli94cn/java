@@ -40,6 +40,23 @@ class CharStrTest{
 		System.out.println(str3==str4);
 		System.out.println(str3.equals(str4));
 
+        //String
+        //StringBuilder
+        //StringBuffer
+        String s1=new String("ABC");
+        StringBuilder sbd=new StringBuilder("ABC");
+        StringBuffer sbf=new StringBuffer("ABC");
+		System.out.println(s1);
+		System.out.println(sbd);
+		System.out.println(sbf);
+        s1=s1+"DE";
+        sbd.append("DE");
+        sbf.append("DE");
+		System.out.println(s1);
+		System.out.println(sbd);
+		System.out.println(sbf);
+
+
 
 
 	}
