@@ -16,14 +16,18 @@ public class DemToBin{
         sc=new Scanner(System.in);
         int num;
         num=sc.nextInt();
-        ArrayList al;
+        ArrayList<Integer> al;
         al=new ArrayList<Integer>();
         do{
             //System.out.println(num%2);
             al.add(num%2);
             num=num/2;        
         }while(num!=0);
-        System.out.println(al.toString());
-
+        //System.out.println(al.toString());
+        int n,ndx;
+        for(n=al.size();n>=1;n--){
+            ndx=n-1;
+            System.out.print(al.get(ndx));
+        }
     }
 } 
