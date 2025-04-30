@@ -1,6 +1,6 @@
-- ***good questions equal knowleadge,
-code need practice,
-good demos appeal to practice and equal talent***
+- ***good question equals knowleadge,
+code needs practice,
+good demo appeals to practice and equals talent***
 # java例子
 ## 扑克
 - https://blog.csdn.net/hr786250678/article/details/79210383?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control**
