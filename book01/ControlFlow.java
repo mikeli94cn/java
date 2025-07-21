@@ -107,7 +107,13 @@ public class ControlFlow{
 		for(int i=0;i<10;i++)
 			System.out.println("i="+i);
 
-		for(;;)
-			System.out.println("hello");
+		//for(;;)
+		//	System.out.println("hello");
+
+		for(int i=0;i<5;i++){
+			if(i==2)
+				continue;
+			System.out.println("i="+i);
+		}
 	}
 }
