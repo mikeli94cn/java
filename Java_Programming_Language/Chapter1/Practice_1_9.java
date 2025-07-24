@@ -29,6 +29,8 @@ public class Practice_1_9 {
     }
 
     //return int[] type is key. Because function is pass value.
+    //java reference var is equals with C pointer
+    //https://gitee.com/lishuo94/c_programming_language/blob/master/Charpter5/dynamic_arr_20250724.c
     public static int[] scale(int[] arr){
         int[] newArr;
         newArr=new int[2*arr.length];
