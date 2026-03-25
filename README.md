@@ -1,8 +1,8 @@
-### 类型
-1. 整数默认int,小数默认double
-1. 如果要表示long，数字后面带上L；如果要表示float，数字后面带上f
-1. 主要使用int，double，long，byte，char（两个字节）
-1. 除了基本类型，都为引用类型
+### Type
+1. integer is default int, and float is default double
+1. L should be added after numbers when expressing long type; f should be added expressing float
+1. int, double, long, byte, char are mainly used types (char occupies two bytes in java)
+1. all types are reference type except for basic types.
 
 ### 命名规范
 1. 变量小驼峰，名词
