@@ -64,7 +64,12 @@ public class DateTimeBasic {
         //How It Works
         //Spring Forward: On the second Sunday in March (2026.03.08 02:00:00), clocks move forward one hour at 2:00 a.m. (skipping to 3:00 a.m.).
         //Fall Back: On the first Sunday in November (2025.11.02 02:00:00), clocks move back one hour at 2:00 a.m. (returning to 1:00 a.m.), reverting to Standard
+        
+        long timeStamp=dstWinBefore.toInstant().getEpochSecond()+1;
+        System.out.println(timeStamp);
 
-
+        ZonedDateTime zdtTS=ZonedDateTime.ofInstant(Instant.ofEpochSecond(timeStamp), ZoneId.of("America/New_York"));
+        System.out.println(zdtTS);
+        
     }
 }
