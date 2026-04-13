@@ -8,6 +8,8 @@ package handling_values.text;
   - best for: fixed text, small concatenations, and thread-safe operations.
   - key methods: substring(),toUpperCase(),toLowerCase(),trim(),contains(),and replace()
   - performance note: + operator in loop is inefficient, because it create multiple intermediate String.
+  - concatenation: concatenate two Strings using + operator or concat() method.
+  - use String.format() method to format Strings with placeholders.
 
 - StringBuilder(mutable)
 - StringBuilder can modify text in-place without creating new objects.
@@ -38,6 +40,19 @@ public class TextManipulation {
         String s1 = "hello";
 
         s1 = "world";
+
+        // + operator
+        String str1 = "Hello";
+        String str2 = "World";
+        String result = str1 + " " + str2;    //Hello World
+
+        // concat() method
+        String resultNew = str1.concat(" ").concat(str2); //Hello World
+
+        // String.format()
+        int age = 25;
+        String formattedStr = String.format("i am %d years old.", age);    //i am 25 years old.
+
 
         /*
         System.out.println(s1.substring(6));    //StringIndexOutOfBoundsException
@@ -84,6 +99,9 @@ public class TextManipulation {
 
         sbd1.reverse();
         System.out.println(sbd1);    //print "!redliubgnirts,olleh,avaj"
+
+        stringVsStringBuilder();    //print String concatenation took:      43686000ns
+        //      StringBuilder concatenation took: 324900ns
 
         //1. start with """, end with """
         String json = """
@@ -149,8 +167,26 @@ public class TextManipulation {
                      java
                 scala""";
         System.out.println(blockFive);
-        
+
         System.out.println("program end");
+    }
+
+    public static void stringVsStringBuilder() {
+        long startTime = System.nanoTime();
+        String str = "";
+        for (int i = 0; i < 10000; i++) {
+            str += "Hello";
+        }
+        long endTime = System.nanoTime();
+        System.out.println("String concatenation took: " + (endTime - startTime) + "ns");
+
+        startTime = System.nanoTime();
+        StringBuilder sbd = new StringBuilder();
+        for (int i = 0; i < 10000; i++) {
+            sbd.append("Hello");
+        }
+        endTime = System.nanoTime();
+        System.out.println("StringBuilder concatenation took: " + (endTime - startTime) + "ns");
     }
 
     //3. text block is still String object, have all String properties and behaviours
