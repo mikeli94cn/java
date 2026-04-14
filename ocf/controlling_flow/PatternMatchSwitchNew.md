@@ -171,3 +171,21 @@ It's an Integer: 42
 Pattern matching for `switch` significantly improves the flexibility and readability of `switch` statements and expressions. It allows type checks and variable binding to be done in a single step, making the code more concise and eliminating the need for repetitive `instanceof` checks and manual type casting.
 
 Would you like to explore more advanced use cases or examples of pattern matching for `switch`?
+
+
+
+
+## 3. Null Handling
+Traditionally, passing null to a switch would throw a NullPointerException. You can now explicitly handle null as a case label within the block. [5, 9, 12, 13] 
+```java
+switch (obj) {
+    case null     -> System.out.println("Object is null");
+    case String s -> System.out.println("It's a string");
+    default       -> System.out.println("Something else");
+}
+```
+## 4. Key Rules for Modern Switch
+
+* Exhaustiveness: If using a switch expression or pattern matching, the compiler ensures you have covered all possible values (often requiring a default case).
+* Order Matters: Specific types must come before more general types. For example, case String s must come before case Object o, or the compiler will flag "unreachable code".
+* Dominance: An unguarded pattern (e.g., case String s) "dominates" a guarded one (e.g., case String s when s.length() > 5). You must put the guarded case first to ensure it can actually be reached. [1, 13, 14, 15]
