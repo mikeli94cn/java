@@ -8,13 +8,13 @@ The System class provides three predefined stream variables for interacting with
 
 ## Reading from Console
 The most common and modern way to read console data is using the [Scanner](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html) class, which can parse primitive types and strings. Alternatively, for high-performance reading, use [BufferedReader](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/BufferedReader.html). [6, 7, 8, 9] 
-
+```java
 import java.util.Scanner;
 
 Scanner sc = new Scanner(System.in);
 System.out.print("Enter text: ");
 String input = sc.nextLine(); // Reads a full line of text
-
+```
 ------------------------------
 ## 2. File I/O
 File operations are handled by classes that connect directly to a file system. [5, 10] 
@@ -34,7 +34,7 @@ Unbuffered streams perform a system call for every byte/character, which is slow
 ------------------------------
 ## 3. Practical Example: Reading and Writing a File
 This example uses a character stream with buffering for efficiency. [8, 14] 
-
+```java
 import java.io.*;
 public class FileStreamDemo {
     public static void main(String[] args) {
@@ -60,7 +60,7 @@ public class FileStreamDemo {
         }
     }
 }
-
+```
 ## 4. Important Best Practices
 
 * Close Your Streams: Always close streams after use to free system resources. Using the try-with-resources statement (as shown above) ensures streams close automatically.
