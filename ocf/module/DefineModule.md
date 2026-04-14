@@ -1,11 +1,11 @@
 Since Java 9, the Java Platform Module System (JPMS) changed how we pack and deploy code. It moves away from the "global classpath" to a structured system of modules defined by a module-info.java file. [1, 2, 3, 4, 5] 
 ## 1. Defining a Module
 A module is a collection of packages and resources. To turn a project into a module, you place a module-info.java file in the root source directory. [6, 7, 8, 9, 10] 
-
+```java
 module com.myapp.display {
     // Content here defines the module's behavior
 }
-
+```
 ## 2. Controlling Visibility (Exposing Content)
 By default, everything in a module is private to that module, even if the classes are public. [11, 12] 
 
