@@ -7,17 +7,17 @@ javac -d mods --module-source-path src $(find src -name "*.java")
 
 ## Step 2: Create a Modular JAR
 Package the compiled code into a JAR file.
-
+```bash
 # Create the mlars directory for our library
 mkdir mlib
 # Package the code
 jar --create --file mlib/app@1.0.jar \
     --main-class com.example.app.Main \
     -C mods/com.example.app .
-
+```
 ## Step 3: Run jlink to Build the Image
 This is where the magic happens. jlink will look at your module-info dependencies and pull in only the necessary JDK modules (like java.base, java.sql, etc.).
-
+```bash
 jlink --module-path mlib:$JAVA_HOME/jmods \
       --add-modules com.example.app \
       --launcher run-app=com.example.app \
@@ -25,7 +25,7 @@ jlink --module-path mlib:$JAVA_HOME/jmods \
       --compress 2 \
       --no-header-files \
       --no-man-pages
-
+```
 What these flags do:
 
 * --module-path: Tells jlink where to find your JARs and the JDK's own modules.
