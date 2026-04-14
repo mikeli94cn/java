@@ -1,4 +1,4 @@
-/*
+
 In Java, `var` is used for **local variable type inference**—it lets the compiler automatically determine the variable’s type from the assigned value.
 
 ---
@@ -207,4 +207,3 @@ If you want, I can also:
 * Compare `var` with **C++ `auto`**
 * Or give **best practices + interview traps** 👍
 
-*/
