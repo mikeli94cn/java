@@ -32,7 +32,7 @@ Introduced in Java 7, this modernized file handling and replaced many older java
 | Best For | Simple tasks, small files | High-performance, scalable servers |
 
 ## Code Demo: Reading a File (Modern Way)
-
+```java
 import java.nio.file.*;import java.io.IOException;import java.util.List;
 public class ReadFile {
     public static void main(String[] args) {
@@ -46,3 +46,4 @@ public class ReadFile {
         }
     }
 }
+```
