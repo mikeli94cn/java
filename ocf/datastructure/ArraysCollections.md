@@ -37,7 +37,7 @@ To sort a List, use [Collections.sort()](https://www.geeksforgeeks.org/java/coll
 
 ------------------------------
 ## Code Demo: Working with Collections
-
+```java
 import java.util.*;
 public class CollectionExample {
     public static void main(String[] args) {
@@ -61,3 +61,4 @@ public class CollectionExample {
         String popped = stack.pop(); // Returns "Top"
     }
 }
+```
