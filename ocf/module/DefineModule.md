@@ -11,24 +11,24 @@ By default, everything in a module is private to that module, even if the classe
 
 * exports: Allows other modules to use the public types in a specific package at compile-time and runtime.
 * opens: Grants reflection-only access to a package. This is used for frameworks (like Spring, Hibernate, or Jackson) that need to look at private fields but don't need to link against the code normally. [13, 14, 15, 16, 17] 
-
+```java
 module com.myapp.display {
     exports com.myapp.display.api;      // Others can code against these
     opens com.myapp.display.internal;   // Hidden, but accessible via Reflection
 }
-
+```
 ## 3. Declaring Dependencies
 You must explicitly state which other modules your code needs. [18] 
 
 * requires: Specifies a dependency on another module.
 * requires transitive: Any module that requires your module will also automatically get a dependency on the transitive one.
 * requires static: A "compile-time only" dependency (optional at runtime). [19, 20, 21, 22, 23] 
-
+```java
 module com.myapp.main {
     requires com.myapp.display;
     requires java.sql; // Uses the standard SQL module
 }
-
+```
 ## 4. Services: Providers and Consumers
 Modules allow for a Service Provider Interface (SPI) pattern, which decouples the interface from the implementation. [24, 25] 
 
@@ -37,19 +37,19 @@ Modules allow for a Service Provider Interface (SPI) pattern, which decouples th
 * uses: The consuming module declares it will look for implementations of that service. [26, 27, 28, 29] 
 
 The Provider:
-
+```java
 module com.myapp.provider {
     requires com.myapp.api;
     provides com.myapp.api.MessageService with com.myapp.provider.EmailServiceImpl;
 }
-
+```
 The Consumer:
-
+```java
 module com.myapp.main {
     requires com.myapp.api;
     uses com.myapp.api.MessageService; // Declares intent to use the service
 }
-
+```
 At runtime, the consumer uses ServiceLoader.load(MessageService.class) to find all available implementations. [30] 
 ## 5. Packing and Deploying
 Once modularized, you can use specialized tools for deployment: [31] 
