@@ -8,26 +8,26 @@ This is the fundamental way to handle exceptions. [3]
 
 ## 2. Multi-Catch Blocks
 Introduced to reduce code duplication, a single catch block can handle multiple, unrelated exceptions using the pipe (|) symbol. [9, 10, 11] 
-
+```java
 try {
     // Code that might throw IOException or SQLException
 } catch (IOException | SQLException e) {
     System.out.println("Error occurred: " + e.getMessage());
 }
-
+```
 Note: The exceptions in a multi-catch cannot have an inheritance relationship (e.g., you cannot catch both Exception and IOException in the same block). [12, 13] 
 ## 3. Try-with-Resources
 This is the modern way to handle "closable" resources (like Files or Network Sockets). Any class that implements AutoCloseable can be declared inside the try parentheses. Java will automatically close them for you, even if an exception occurs. [14, 15, 16, 17, 18] 
-
+```java
 try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
     System.out.println(br.readLine());
 } catch (IOException e) {
     e.printStackTrace();
 } // 'br' is closed automatically here
-
+```
 ## 4. Custom Exceptions
 If Java's built-in exceptions don't describe your error specifically enough, you can create your own by extending the Exception class (for checked exceptions) or RuntimeException (for unchecked exceptions). [19, 20, 21, 22, 23] 
-
+```java
 // 1. Define the custom exceptionclass InvalidAgeException extends Exception {
     public InvalidAgeException(String message) {
         super(message);
@@ -51,7 +51,7 @@ public class ExceptionDemo {
         }
     }
 }
-
+```
 ## Key Differences: Checked vs. Unchecked
 
 * Checked Exceptions: Must be handled or declared (e.g., IOException). The compiler forces you to address them.
