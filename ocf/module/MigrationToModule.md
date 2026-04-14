@@ -6,12 +6,12 @@ Java supports two types of JARs. The structure of the code determines which one 
 * Modular JARs: A JAR that contains a module-info.class at its root. These are placed on the "Module Path."
 
 Compilation Command:
-
+```bash
 # Modular: Needs to know where other modules are
 javac -d out --module-path lib src/module-info.java src/com/me/App.java
 # Non-Modular: Uses the classic classpath
 javac -d out -cp lib src/com/me/App.java
-
+```
 ------------------------------
 ## 2. Migration: Unnamed and Automatic Modules
 If you are moving a legacy project to Java 9+, you don't have to modularize everything at once. Java provides two "compatibility" modes:
@@ -33,11 +33,11 @@ When you place a non-modular JAR on the Module Path, Java automatically turns it
 ## 3. Creating Runtime Images with jlink
 As discussed previously, jlink creates a custom, stripped-down JRE.
 Crucial Requirement: jlink cannot package Unnamed Modules or Automatic Modules. To use jlink, every single dependency in your project must be a fully modularized JAR.
-
+```bash
 jlink --module-path $JAVA_HOME/jmods:mlib \
       --add-modules my.module.name \
       --output my-app-runtime
-
+```
 ------------------------------
 ## 4. Comparison Table: Deployment Modes
 
