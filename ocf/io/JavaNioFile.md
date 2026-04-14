@@ -4,10 +4,10 @@ A Path represents the location of a file or directory. Unlike the legacy File cl
 
 * Factory Methods: Use Path.of() (Java 11+) or Paths.get() to create instances.
 * Relative vs. Absolute: You can define paths using absolute strings or by joining multiple components. [3, 5, 6, 7] 
-
+```java
 Path absolute = Path.of("/var/logs/app.log");
 Path relative = Paths.get("data", "examples", "file.txt"); // data/examples/file.txt
-
+```
 ## 2. Traversing Directories
 NIO.2 provides several ways to navigate directory structures depending on your needs:
 
