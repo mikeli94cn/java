@@ -13,7 +13,7 @@ For an object to be serialized, its class must implement the java.io.Serializabl
 
 ------------------------------
 ## 3. Code Example: Serialize and De-serialize
-
+```java
 import java.io.*;
 // 1. Implement Serializableclass User implements Serializable {
     private static final long serialVersionUID = 1L; // Best practice
@@ -44,7 +44,7 @@ public class SerializationDemo {
         } catch (IOException | ClassNotFoundException e) { e.printStackTrace(); }
     }
 }
-
+```
 ## 4. Important Considerations
 
 * Inheritance: If a superclass is serializable, all its subclasses are automatically serializable.
