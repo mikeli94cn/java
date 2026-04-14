@@ -1,10 +1,10 @@
 To create a standalone executable using jlink, you must have your code compiled into a module. This process creates a "custom JRE" that contains only the parts of Java your app actually uses.
 ## Step 1: Compile the Module
 Assume your source code is in src and your module name is com.example.app.
-
+```bash
 # Compile the java files into a 'mods' directory
 javac -d mods --module-source-path src $(find src -name "*.java")
-
+```
 ## Step 2: Create a Modular JAR
 Package the compiled code into a JAR file.
 ```bash
@@ -35,8 +35,8 @@ What these flags do:
 
 ## Step 4: Run the Standalone App
 You can now zip the my-custom-runtime folder and send it to someone who does not have Java installed. They can run it using:
-
+```bash
 ./my-custom-runtime/bin/run-app
-
+```
 ## The Result
 Instead of a massive 200MB+ JDK, your folder will likely be between 30MB and 50MB, containing only your code and the absolute minimum Java internals required to run it.
