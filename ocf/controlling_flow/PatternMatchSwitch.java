@@ -9,7 +9,10 @@ public class PatternMatchSwitch {
     public static void main(String[] args) {
         //pattern match with type
         Object obj = "Hello";
+        //Object obj=null;
         switch (obj) {
+            case null-> System.out.println("object is null");    //traditionally, passing null to a switch will throw a NullPointerException.
+            //now, you can explicitly handle null as a label with the block
             case Integer i -> System.out.println("it is an integer:" + i);
             case String s -> System.out.println("it is a String:" + s);
             case Double d -> System.out.println("it is a double:" + d);
@@ -23,7 +26,7 @@ public class PatternMatchSwitch {
          * */
         //## 2. Guarded Patterns (the when clause)
         //You can refine a case by adding a boolean condition using the when keyword. This allows you to combine type checking and value logic in a single, readable line.
-        Object objMulti = 42;
+        Object objMulti = "yes";
         switch (objMulti) {
             case String s when s.equalsIgnoreCase("YES") -> System.out.println("You said yes!");
             case String s when s.length() > 10 -> System.out.println("That's a long string.");
@@ -31,8 +34,8 @@ public class PatternMatchSwitch {
             default -> System.out.println("Not a string");
         }
 
-        
-        
+
+
         //matching with pattern variables
         //match records and destructure objects using the pattern matching syntax.
         //this allows matching based on fields within an object (such as record components or class fields)
@@ -55,6 +58,7 @@ public class PatternMatchSwitch {
         Object objPatMat=2.718;
 
         String result=switch (objPatMat){
+            case null-> "null";
             case Integer i -> "it is an integer:" + i;
             case Double d -> "it is a double:" + d;
             case String s -> "it is a string:" + s;
@@ -68,13 +72,13 @@ public class PatternMatchSwitch {
             1.case break statement
             2.case multiple value
         modern switch :
-            1.-> statement 
+            1.-> statement
             2.-> multiple value
             3.-> return value
-        
+
         pattern matching
         1.type
-        2.record components and class fields        
-        */     
+        2.record components and class fields
+        */
     }
 }
