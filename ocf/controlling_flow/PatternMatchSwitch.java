@@ -1,19 +1,19 @@
 package controlling_flow;
 
 /*
-* what is pattern matching?
-* pattern matching enhances the switch statement, allow you to check the type of the obj, and extract its components
-* */
+ * what is pattern matching?
+ * pattern matching enhances the switch statement, allow you to check the type of the obj, and extract its components
+ * */
 
 public class PatternMatchSwitch {
     public static void main(String[] args) {
         //pattern match with type
         Object obj = "Hello";
         switch (obj) {
-            case Integer                i -> System.out.println("it is an integer:" + i);
-            case String                s -> System.out.println("it is a String:" + s);
-            case Double                d -> System.out.println("it is a double:" + d);
-                default -> System.out.println("unknown type");
+            case Integer i -> System.out.println("it is an integer:" + i);
+            case String s -> System.out.println("it is a String:" + s);
+            case Double d -> System.out.println("it is a double:" + d);
+            default -> System.out.println("unknown type");
         }
         /*
          * key points:
@@ -23,13 +23,58 @@ public class PatternMatchSwitch {
          * */
         //## 2. Guarded Patterns (the when clause)
         //You can refine a case by adding a boolean condition using the when keyword. This allows you to combine type checking and value logic in a single, readable line.
-        Object objMulti=42;
+        Object objMulti = 42;
         switch (objMulti) {
             case String s when s.equalsIgnoreCase("YES") -> System.out.println("You said yes!");
-            case String s when s.length() > 10 ->     System.out.println("That's a long string.");
-            case String s ->    System.out.println("It's just a normal string: " + s);
-                default -> System.out.println("Not a string");
+            case String s when s.length() > 10 -> System.out.println("That's a long string.");
+            case String s -> System.out.println("It's just a normal string: " + s);
+            default -> System.out.println("Not a string");
         }
 
+        
+        
+        //matching with pattern variables
+        //match records and destructure objects using the pattern matching syntax.
+        //this allows matching based on fields within an object (such as record components or class fields)
+
+        //using pattern matching to match records.
+        //here, the Point(int x,int y) pattern not only checks if the object is a Point, but also destructure it, binding x and y to respective components of record.
+        record Point(int x, int y) {
+
+        }
+
+        Object objPt=new Point(3,4);
+
+        switch (objPt){
+            case Point(int x,int y)-> System.out.println("point with x="+x+" y="+y);
+            default -> System.out.println("unknown type");
+        }
+
+        //switch expressions and pattern matching
+        //pattern matching can be used with switch expressions, return a value.
+        Object objPatMat=2.718;
+
+        String result=switch (objPatMat){
+            case Integer i -> "it is an integer:" + i;
+            case Double d -> "it is a double:" + d;
+            case String s -> "it is a string:" + s;
+            default -> "unknown type";
+        };
+        System.out.println(result);
+
+        /* summary
+        switch
+        traditional switch :
+            1.case break statement
+            2.case multiple value
+        modern switch :
+            1.-> statement 
+            2.-> multiple value
+            3.-> return value
+        
+        pattern matching
+        1.type
+        2.record components and class fields        
+        */     
     }
 }
