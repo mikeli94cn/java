@@ -7,44 +7,44 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /*
-java i/o api (input/output) is used to read/write data from/to various sources
-such as files, memory, network, and streams
-main package: java.io, java.nio, java.nio.file
+   java i/o api (input/output) is used to read/write data from/to various sources
+   such as files, memory, network, and streams
+   main package: java.io, java.nio, java.nio.file
 
-1. core concepts: Streams
-java i/o is built around the concept of streams
-a stream is a flow of data
-input stream: input data
-output stream: output data
+   1. core concepts: Streams
+   java i/o is built around the concept of streams
+   a stream is a flow of data
+   input stream: input data
+   output stream: output data
 
-2. byte streams vs character streams
-byte streams (InputStream, OutputStream) : handle binary data (image, file)
-character streams (Reader, Writer) : handle text data (Unicode)
+   2. byte streams vs character streams
+   byte streams (InputStream, OutputStream) : handle binary data (image, file)
+   character streams (Reader, Writer) : handle text data (Unicode)
 
-3.buffered streams (performance optimization)
-buffered streams improve performance by reducing i/o operations
+   3.buffered streams (performance optimization)
+   buffered streams improve performance by reducing i/o operations
 
-4.common i/o classes
-- byte streams
-  - FileInputStream
-  - FileOutputStream
-  - BufferedInputStream
-  - BufferedOutputStream
-- character streams
-  - FileReader
-  - FileWriter
-  - BufferedReader
-  - BufferedWriter
+   4.common i/o classes
+   - byte streams
+   - FileInputStream
+   - FileOutputStream
+   - BufferedInputStream
+   - BufferedOutputStream
+   - character streams
+   - FileReader
+   - FileWriter
+   - BufferedReader
+   - BufferedWriter
 
-5.file handling (File class) :
-represent file/directory paths
+   5.file handling (File class) :
+   represent file/directory paths
 
-6.modern io (nio.2) java.nio.file
-more powerful and flexible than java.io
-- key classes:
-  - Path
-  - Paths
-  - Files
+   6.modern io (nio.2) java.nio.file
+   more powerful and flexible than java.io
+   - key classes:
+   - Path
+   - Paths
+   - Files
 
 
 */
@@ -57,14 +57,12 @@ public class IOBasic {
         OutputStream out;
 
         try (FileInputStream fis = new FileInputStream("inputStream.txt");
-             FileOutputStream fos = new FileOutputStream("outputStream.txt")) {
+                FileOutputStream fos = new FileOutputStream("outputStream.txt")) {
             int data;
             while ((data = fis.read()) != -1) {
                 fos.write(data);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException   e ) {
             e.printStackTrace();
         }
         //character stream: Reader, Writer
@@ -72,13 +70,11 @@ public class IOBasic {
         Writer writer;
 
         try (FileReader fr = new FileReader("inputReader.txt");
-             FileWriter fw = new FileWriter("outputWriter.txt")) {
+                FileWriter fw = new FileWriter("outputWriter.txt")) {
             int ch;
             while ((ch = fr.read()) != -1) {
                 fw.write(ch);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,30 +84,24 @@ public class IOBasic {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //common class
         try (FileInputStream fis1 = new FileInputStream("inputStream.txt");
-             FileOutputStream fos1 = new FileOutputStream("outputStream.txt");
-             BufferedInputStream bis1 = new BufferedInputStream(fis1);
-             BufferedOutputStream bos1 = new BufferedOutputStream(fos1);) {
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+                FileOutputStream fos1 = new FileOutputStream("outputStream.txt");
+                BufferedInputStream bis1 = new BufferedInputStream(fis1);
+                BufferedOutputStream bos1 = new BufferedOutputStream(fos1);) {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
 
         try (FileReader fr1 = new FileReader("inputReader.txt");
-             FileWriter fw1 = new FileWriter("outputWriter.txt");
-             BufferedReader br1 = new BufferedReader(fr1);
-             BufferedWriter bw1 = new BufferedWriter(fw1);) {
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+                FileWriter fw1 = new FileWriter("outputWriter.txt");
+                BufferedReader br1 = new BufferedReader(fr1);
+                BufferedWriter bw1 = new BufferedWriter(fw1);) {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -172,8 +162,6 @@ public class IOBasic {
         //write object
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("person.dat"))) {
             oos.writeObject(new Person("serialization"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -181,12 +169,16 @@ public class IOBasic {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.dat"))) {
             Person p1 = (Person) ois.readObject();
             System.out.println("i am the restored object, my name is :" + p1.name);
-        } catch (FileNotFoundException e) {
+        } catch ( IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        }
+
+        //try-with-resources
+        //always use for i/o to automatically close resources
+        try (BufferedReader br=new BufferedReader(new FileReader("file.txt"))) {
+            System.out.println(br.readLine());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 
