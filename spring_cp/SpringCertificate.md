@@ -1,6 +1,7 @@
 # guide:
 - certification introduction: https://docs.broadcom.com/doc/vmw-spring-certified-professional
-- new guide: https://docs.broadcom.com/doc/vmw-spring-professional-develop-exam-guide
+- new guide (latest) : https://docs.broadcom.com/doc/vmw-spring-professional-develop-exam-guide
+- new guide (2021) : https://github.com/davidarchanjo/spring-certified-developer-study-guide/blob/main/assets/official-study-guides/vmware-vcp-am-develop-exam-guide.pdf
 - old guide: https://github.com/davidarchanjo/spring-certified-developer-study-guide/blob/main/assets/official-study-guides/vmw-spring-professional-certification-study-guide.pdf
 
 # spring academy course
