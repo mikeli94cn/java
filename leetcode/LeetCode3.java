@@ -1,11 +1,15 @@
-import java.util.HashMap;
+import java.util.Scanner;
+//import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
+//import java.util.Map;
 
 public class LeetCode3 {
-
     public static void main(String[] args) {
-        
+        Scanner sc=new Scanner(System.in);
+        String n=sc.nextLine();
+        LeetCode3 test=new LeetCode3();
+        int res=test.lengthOfLongestSubstring(n);
+        System.out.println(res);
     }
 
     public int lengthOfLongestSubstring(String n){
@@ -16,9 +20,14 @@ public class LeetCode3 {
         for (int i = 1; i <= chArr.length; i++) {
             char c=chArr[i-1];
             if(res.containsKey(c)){
-                subLen=i-res.get(c);
-                for(i=1;i<=res.get(c);i++){
-                    res.pollFirstEntry();
+                int prevLoc=res.get(c);
+                subLen=i-prevLoc;
+                while(true){
+                    if(res.containsKey(c)){
+                        res.pollFirstEntry();
+                    }else{
+                        break;
+                    }
                 }
                 res.put(c, i);
 
@@ -27,11 +36,10 @@ public class LeetCode3 {
                 subLen++;
             }
             
-                if(subLen>longest){
-                    longest=subLen;
-                }
+            if(subLen>longest){
+                longest=subLen;
+            }
         }
-        
         return longest;
     }
 }
