@@ -14,22 +14,31 @@ public class LeetCode2161 {
 
     public int[] pivotArray(int[] nums, int pivot){
         int[] res=new int[nums.length];
+        boolean[] flag=new boolean[nums.length];
+        
+        for (int i=1;i<=nums.length;i++) {
+           flag[i-1]=true;
+        }
+
         int exist=0;
         for(int i=1;i<=nums.length;i++){
             if(nums[i-1]<pivot){
                 res[exist]=nums[i-1];
+                flag[i-1]=false;
+                exist++;
+            }
+        }
+        for(int i=1; i<=nums.length;i++){
+            if( flag[i-1] && nums[i-1]==pivot){
+                res[exist]=nums[i-1];
+                flag[i-1]=false;
                 exist++;
             }
         }
         for(int i=1;i<=nums.length;i++){
-            if(nums[i-1]==pivot){
+            if( flag[i-1] && nums[i-1]>pivot){
                 res[exist]=nums[i-1];
-                exist++;
-            }
-        }
-        for(int i=1;i<=nums.length;i++){
-            if(nums[i-1]>pivot){
-                res[exist]=nums[i-1];
+                flag[i-1]=false;
                 exist++;
             }
         }
