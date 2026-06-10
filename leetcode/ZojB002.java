@@ -14,12 +14,12 @@ class ZojB002{
         String[] valB=lineB.split(" ");
         HashMap<Integer,Double> res=new HashMap<>();
         for(int i=2;i<=valA.length;i=i+2){
-            int key=Integer.parseInt(valA[i-1]);
-            double value=Double.parseDouble(valA[i]);
-            if(res.containsKey(key)){
+            int key=Integer.parseInt(valA[i-1]);    //String to int
+            double value=Double.parseDouble(valA[i]);    //String to double
+            if(res.containsKey(key)){    //check map whether contain key
                 res.put(key,res.get(key)+value);
             }else{
-                res.put(key,value);
+                res.put(key,value);    //add a k,v
             }
         }
         for(int i=2;i<=valB.length;i=i+2){
@@ -31,8 +31,8 @@ class ZojB002{
                 res.put(key,value);
             }
         }
-        TreeMap<Integer,Double> resTree=new TreeMap<>(Collections.reverseOrder());
-        for(Map.Entry<Integer,Double> entry:res.entrySet()){
+        TreeMap<Integer,Double> resTree=new TreeMap<>(Collections.reverseOrder());    //TreeMap is sorted, here define its order
+        for(Map.Entry<Integer,Double> entry:res.entrySet()){    //how to iterate a Map
             if(entry.getValue()!=0){
                 resTree.put(entry.getKey(),entry.getValue());
             }
@@ -40,7 +40,7 @@ class ZojB002{
         StringBuilder sbd=new StringBuilder();
         sbd.append(resTree.size()+" ");
         
-        DecimalFormat df=new DecimalFormat("0.0");
+        DecimalFormat df=new DecimalFormat("0.0");    //how to format a double precision
         for(Map.Entry<Integer,Double> entry:resTree.entrySet()){
             sbd.append(entry.getKey());
             sbd.append(" ");
@@ -48,7 +48,7 @@ class ZojB002{
             sbd.append(" ");
         }
 
-        sbd.delete(sbd.length()-1,sbd.length());
+        sbd.delete(sbd.length()-1,sbd.length());    //how to delete last char in StringBuilder
         System.out.println(sbd);
     }
 }
