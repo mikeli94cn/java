@@ -9,13 +9,13 @@ public class LeetCode3691 {
 
     }
 
-    public static long maxTotalValue(int[] nums, int k){
+        public static long maxTotalValue(int[] nums, int k){
         //1.iterate +
         //2.get subArr max,min +
         //3.add to a list +
         //4.sort and fetch top n value +
 
-        ArrayList<Integer> res=new ArrayList<>();
+        PriorityQueue<Integer> res = new PriorityQueue<>(Collections.reverseOrder());
         for(int i=1;i<=nums.length;i++){
             int max=nums[i-1];
             int min=nums[i-1];
@@ -31,17 +31,12 @@ public class LeetCode3691 {
                 res.add(value);
             }
         }
-        res.sort(Collections.reverseOrder());
 
-        int n=0;
-        int sum=0;
-        for(int i : res){
-            sum=sum+i;
-            n++;
-            if(n==k){
-                break;
-            }
+        long sum=0;
+        for(int i=1;i<=k;i++){
+            sum=sum+res.peek();
         }
+
 
         return sum;
     }
