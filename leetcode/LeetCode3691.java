@@ -12,17 +12,18 @@ public class LeetCode3691 {
   public static long maxTotalValue(int[] nums, int k) {
     // 1.iterate +
     // 2.get subArr max,min +
-    // 3.add to a priority queue +
-    // 4.fetch top n value +
+    // 3.add to a priority queue , if > queue min elem, poll and add, if not, skip
+    // 4.fetch pq values and sum
 
     PriorityQueue<Integer> res =
-        new PriorityQueue<>(Collections.reverseOrder());
+        new PriorityQueue<>();
     for (int i = 1; i <= nums.length; i++) {
       int max = nums[i - 1];
       int min = nums[i - 1];
       for (int j = i; j <= nums.length; j++) {
+          int value;
         if (j == i) {
-          res.add(0);
+            value=0;
         } else {
           if (nums[j - 1] > max) {
             max = nums[j - 1];
@@ -31,8 +32,15 @@ public class LeetCode3691 {
           if (nums[j - 1] < min) {
             min = nums[j - 1];
           }
-          int value = max - min;
-          res.add(value);
+          value = max - min;
+        }
+        if(res.size()<k){
+            res.add(value);
+        }else{
+            if(value>res.peek()){
+                res.poll();
+                res.add(value);
+            }
         }
       }
     }
