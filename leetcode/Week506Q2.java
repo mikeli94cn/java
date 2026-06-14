@@ -7,8 +7,8 @@ import java.util.Map;
 public class Week506Q2 {
     public static void main(String[] args) {
         //int[] nums={1,2,2,1,2,3,3,3};
-        //int[] nums={5,5,5,5};
-        int[] nums={1,2,3,4};
+        int[] nums={5,5,5,5};
+        //int[] nums={1,2,3,4};
         System.out.println(getLength(nums));
     }
 
@@ -43,10 +43,16 @@ public class Week506Q2 {
         List<Map.Entry<Integer, Integer>> list=new ArrayList<>(res.entrySet());
         list.sort(Map.Entry.comparingByValue());
         int maxFreq=list.getLast().getValue();
+        int minFreq=list.getFirst().getValue();
         for(Map.Entry<Integer,Integer> e : list){
-            if(e.getValue()*2 != maxFreq && e.getValue() != maxFreq){
-                flag=false;
-                break;
+            if(list.size()>=2){
+                if(maxFreq!=minFreq*2){
+                    flag=false;
+                    break;
+                }else if(e.getValue()*2 != maxFreq && e.getValue() != maxFreq){
+                    flag=false;
+                    break;
+                }
             }
         }
         return flag;
