@@ -2,10 +2,13 @@ public class LeetCode3614 {
     public static void main(String[] args) {
         //String s="a#b%*";
         //String s="cd%#*#";
-        String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
+        //String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
+        String s="nr#x#gva#jq%yqi%##f###i#u#%##wynnck#reh%u#gv###g#xufhis%l#ng##o%%##v#qt%i";
         //long idx=1;
         //long idx=3;
-        long idx=40;
+        //long idx=40;
+        long idx=415249132440988;
+        
 
         System.out.println(processStr(s,idx));
     }
