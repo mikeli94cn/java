@@ -217,7 +217,7 @@ public class Week506Q2Try2 {
                 }
                 for (int i = nums.length; i >= 1; i--) {
                     if (i - outer + 1 <= longest) {
-                        break;
+                       break;
                     } else {
                         if (judgeBalance(resCur)) {
                             if (i - outer + 1 > longest) {
