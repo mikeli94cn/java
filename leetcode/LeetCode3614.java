@@ -2,11 +2,13 @@ public class LeetCode3614 {
     public static void main(String[] args) {
         //String s="a#b%*";
         //String s="cd%#*#";
-        String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
+        //String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
+        String s="z*#";
         //String s="nr#x#gva#jq%yqi%##f###i#u#%##wynnck#reh%u#gv###g#xufhis%l#ng##o%%##v#qt%i";
         //long idx=1;
         //long idx=3;
-        long idx=40;
+        //long idx=40;
+        long idx=0;
         //long idx=415249132440988L;
 
 
@@ -81,7 +83,8 @@ public class LeetCode3614 {
 
     public static long safeRemoveLastLen(long chArrLen){
         if(chArrLen>=1){
-            return chArrLen--;
+            chArrLen--;
+            return chArrLen;
         }else{
             return 0;
         }
