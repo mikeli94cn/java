@@ -2,13 +2,13 @@ public class LeetCode3614 {
     public static void main(String[] args) {
         //String s="a#b%*";
         //String s="cd%#*#";
-        //String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
-        String s="nr#x#gva#jq%yqi%##f###i#u#%##wynnck#reh%u#gv###g#xufhis%l#ng##o%%##v#qt%i";
+        String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
+        //String s="nr#x#gva#jq%yqi%##f###i#u#%##wynnck#reh%u#gv###g#xufhis%l#ng##o%%##v#qt%i";
         //long idx=1;
         //long idx=3;
-        //long idx=40;
-        long idx=415249132440988;
-        
+        long idx=40;
+        //long idx=415249132440988L;
+
 
         System.out.println(processStr(s,idx));
     }
@@ -16,19 +16,29 @@ public class LeetCode3614 {
     public static char processStr(String s, long idx){
         char[] chArr=s.toCharArray();
         StringBuilder sbd=new StringBuilder();
+
+        long chArrLen=0;
         for(Character c:chArr){
             switch (c) {
-                case Character ch when ch=='#'->sbd.append(sbd.toString());
-                case Character ch when ch=='%'->sbd.reverse();
-                case Character ch when ch=='*'->safeRemoveLast(sbd);
-                default ->sbd.append(c);
+                case Character ch when ch=='#' ->chArrLen=chArrLen*2;
+                case Character ch when ch=='%' ->chArrLen=chArrLen;
+                case Character ch when ch=='*' ->chArrLen=safeRemoveLastLen(chArrLen);
+                default -> chArrLen++;
             }
         }
-
-        char[] chArrNew=sbd.toString().toCharArray();
-        if(idx>=chArrNew.length){
+        if(chArrLen<idx+1){
             return '.';
         }else{
+            for(Character c:chArr){
+                switch (c) {
+                    case Character ch when ch=='#'->sbd.append(sbd.toString());
+                    case Character ch when ch=='%'->sbd.reverse();
+                    case Character ch when ch=='*'->safeRemoveLast(sbd);
+                    default ->sbd.append(c);
+                }
+            }
+
+            char[] chArrNew=sbd.toString().toCharArray();
             if(idx<=Integer.MAX_VALUE){
                 return chArrNew[(int)idx];
             }else{
@@ -66,6 +76,14 @@ public class LeetCode3614 {
     public static void safeRemoveLast(StringBuilder sbd){
         if(sbd.length()>=1){
             sbd.deleteCharAt(sbd.length()-1);
+        }
+    }
+
+    public static long safeRemoveLastLen(long chArrLen){
+        if(chArrLen>=1){
+            return chArrLen--;
+        }else{
+            return 0;
         }
     }
 }
