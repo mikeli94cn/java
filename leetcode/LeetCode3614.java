@@ -5,12 +5,14 @@ public class LeetCode3614 {
         //String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
         String s="z*#";
         //String s="nr#x#gva#jq%yqi%##f###i#u#%##wynnck#reh%u#gv###g#xufhis%l#ng##o%%##v#qt%i";
+//String s="%#bz%xum##i##vzo#pwc*#dkwbh####%uf%s*%cgppqhqa%h#l##o%ij%%cz%iga##e###u%#e####jfwx##%%*x%m*%#";
+        
         //long idx=1;
         //long idx=3;
         //long idx=40;
-        long idx=0;
+        //long idx=0;
         //long idx=415249132440988L;
-
+long idx=6523;
 
         System.out.println(processStr(s,idx));
     }
