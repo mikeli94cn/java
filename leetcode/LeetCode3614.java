@@ -2,10 +2,10 @@ public class LeetCode3614 {
     public static void main(String[] args) {
         //String s="a#b%*";
         //String s="cd%#*#";
-        String s="z*#";
+        String s="0123456789abcdefghijklmnopqrstuvwxyz#*";
         //long idx=1;
         //long idx=3;
-        long idx=0;
+        long idx=40;
 
         System.out.println(processStr(s,idx));
     }
@@ -26,7 +26,7 @@ public class LeetCode3614 {
         if(idx>=chArrNew.length){
             return '.';
         }else{
-            if(idx<=Integer.MAX_VALUE-1){
+            if(idx<=Integer.MAX_VALUE){
                 return chArrNew[(int)idx];
             }else{
                 //1.convert arr to twoDemArr
@@ -34,7 +34,7 @@ public class LeetCode3614 {
                 //3.fetch value
 
                 //1.convert arr to twoDemArr
-                int chunkSize=Integer.MAX_VALUE-8;
+                int chunkSize=10000;
                 int chunkPages=(chArrNew.length-1)/chunkSize+1;
 
                 char[][] chunk=new char[chunkPages][chunkSize];
