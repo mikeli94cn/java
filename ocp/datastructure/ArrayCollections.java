@@ -1,7 +1,9 @@
+    //TEN DATASTRUCTURES
+    //array, linked-list, queue, stack
+    //hashtable, jump-list
+    //tree, graph, heap, tri-tree
 
-    //array, linked-list, hashtable, jump-list
-    //tree, graph, tri-tree
-
+    //TEN ALGORITHMS
     //recursion, sort, bin-search
     //greedy, divide-conquer, review, dynamic-plan
     //search
