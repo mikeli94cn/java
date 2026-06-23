@@ -1,7 +1,8 @@
-- data type, math calc, control flow
+- data type, math calc, control flow, exception handling
 - function
 - dsa: arr, pointer, struct and enum
-- oop
+- oop (object, class, interface, abstract class, overload, override)
 - functional
 - std lib
 - deploy tool
+- meta programming: annotation
