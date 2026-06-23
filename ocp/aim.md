@@ -1,6 +1,7 @@
-data type, math calc, control flow
-basic dsa: arr, pointer
-oop
-functional
-std lib
-deploy tool
+- data type, math calc, control flow
+- function
+- dsa: arr, pointer, struct and enum
+- oop
+- functional
+- std lib
+- deploy tool
