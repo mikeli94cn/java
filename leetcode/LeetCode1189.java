@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.HashMap;
 import java.util.*;
 
@@ -5,7 +7,7 @@ public class LeetCode1189 {
 
     public static void main(String[] args) {
 
-        String text="nlaebolko";
+        String text="xyz";
         System.out.println(maxNumberOfBallons(text));
     }
 
@@ -21,12 +23,12 @@ public class LeetCode1189 {
                 }
             }
         }
-        int maxNumber=0;
+        int maxNumber=Integer.MAX_VALUE;
         for(Map.Entry<Character,Integer> entry:map.entrySet() ){
             if(entry.getKey()=='l'){
-                maxNumber=Math.max(maxNumber, entry.getValue()/2 );
+                maxNumber=Math.min(maxNumber, entry.getValue()/2 );
             }else{
-                maxNumber=Math.max(maxNumber, entry.getValue() );
+                maxNumber=Math.min(maxNumber, entry.getValue() );
             }
         }
         return maxNumber;
