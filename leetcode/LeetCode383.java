@@ -23,7 +23,7 @@ public class LeetCode383 {
         Iterator<Map.Entry<Character, Integer>> ranIter=ranMap.entrySet().iterator();
         while(ranIter.hasNext()){
             Map.Entry<Character, Integer> entry=ranIter.next();
-            if(entry.getValue() > magMap.get(entry.getKey())){
+            if( !magMap.containsKey(entry.getKey()) || entry.getValue() > magMap.get(entry.getKey())){
                 flag=false;
                 break;
             }
