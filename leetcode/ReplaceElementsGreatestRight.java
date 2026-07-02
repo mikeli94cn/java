@@ -9,7 +9,7 @@ public class ReplaceElementsGreatestRight {
     }
 
     public int[] replaceElements(int[] arr){
-        for(int i=1;i<=arr.length-1;i++){
+        for(int i=1;i<=arr.length-1;){
             //1.find greatest right element
             //2.assign value until this right position
             //loop 1&2
