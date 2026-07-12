@@ -51,7 +51,6 @@ public class MergeSort {
 
 
 
-package array101;
 
 import java.util.Arrays;
 
@@ -82,52 +81,76 @@ public class MergeSortTry2 {
         System.out.println(Arrays.toString(arr));
 
     }
-
     public void mergeSort(int[] arr) {
         for (int gap = 1; gap < arr.length; gap *= 2) {
-            mergeSortGap(arr, gap);
+         int i = 1;
+        int j = gap + 1;
+        int base = (groupNo - 1) * 2 * gap;
+
+        int limit;
+        if (groupNo == totalGroup) {
+            limit = arr.length - base;
+        } else {
+            limit = 2 * gap;
+        }
+
+        if (limit > gap) {
+            int[] result = new int[limit];
+            while (i <= gap || j <= limit) {
+                if (j > limit || arr[i + base - 1] < arr[j + base - 1]) {
+                    result[i + j - gap - 2] = arr[i + base - 1];
+                    i++;
+                } else if (i > gap || arr[i + base - 1] > arr[j + base - 1]) {
+                    result[i + j - gap - 2] = arr[j + base - 1];
+                    j++;
+                }
+            }
+            for (int k = 1; k <= result.length; k++) {
+                arr[k + base - 1] = result[k - 1];
+            }
+        }   mergeSortGap(arr, gap);
         }
     }
 
     public void mergeSortGap(int[] arr, int gap) {
-        for (int i = 1; i * gap <= arr.length; i++) {
-            mergeSortGapInGroup(arr, gap, i);
+        int totalGroup;
+        if (arr.length % (2 * gap) == 0) {
+            totalGroup = arr.length / (2 * gap);
+        } else {
+            totalGroup = arr.length / (2 * gap) + 1;
         }
-    }
-
-    public void mergeSortGapInGroup(int[] arr, int gap, int groupNo) {
-        /*
-        first group:  1,2
-        second group: 3,4
-                      5,6
-                      7,8
-                      [1,gap]+(groupNo-1)*2*gap, [gap+1,2gap]+(groupNo-1)*2*gap
-         */
+        int i = 1;
+        while ((groupNo - 1) * 2 * gap < arr.length)  {
         int i = 1;
         int j = gap + 1;
         int base = (groupNo - 1) * 2 * gap;
 
-        int[] result = new int[2 * gap];
-        while (i <= gap || j <= 2 * gap) {
-            if (j > 2 * gap) {
-                result[i + j - gap - 2] = arr[i + base - 1];
-                i++;
-            } else if (i > gap) {
-                result[i + j - gap - 2] = arr[j + base - 1];
-                j++;
-            } else if (arr[i + base - 1] < arr[j + base - 1]) {
-                result[i + j - gap - 2] = arr[i + base - 1];
-                i++;
-            } else {
-                result[i + j - gap - 2] = arr[j + base - 1];
-                j++;
+        int limit;
+        if (groupNo == totalGroup) {
+            limit = arr.length - base;
+        } else {
+            limit = 2 * gap;
+        }
+
+        if (limit > gap) {
+            int[] result = new int[limit];
+            while (i <= gap || j <= limit) {
+                if (j > limit || arr[i + base - 1] < arr[j + base - 1]) {
+                    result[i + j - gap - 2] = arr[i + base - 1];
+                    i++;
+                } else if (i > gap || arr[i + base - 1] > arr[j + base - 1]) {
+                    result[i + j - gap - 2] = arr[j + base - 1];
+                    j++;
+                }
+            }
+            for (int k = 1; k <= result.length; k++) {
+                arr[k + base - 1] = result[k - 1];
+            }
+        }    
             }
         }
-
-
-        for (int k = 1; k <= result.length; k++) {
-            arr[k + base - 1] = result[k - 1];
-        }
-
     }
+    
+
+
 }
