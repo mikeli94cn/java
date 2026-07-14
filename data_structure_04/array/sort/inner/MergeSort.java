@@ -90,3 +90,30 @@ public class MergeSort {
 
     
 }
+
+
+public class MergeSort {
+    public static void main(String[] args) {
+        MergeSort test = new MergeSort();
+        //int[] arr = {2, 1};
+        //int[] arr={2,3,4,1};
+        int[] arr = {6, 5, 3, 1, 8, 7, 2, 4};
+        test.mergeSort(arr,1, arr.length);
+    }
+
+    public void mergeSort(int[] arr,int start,int end) {
+        System.out.println("mergeeSort:"+Arrays.toString(Arrays.copyOfRange(arr,start-1,end)));
+        int length=end-start+1;
+        if(length>1){
+            mergeSort(arr,start,length/2+start-1);
+            combine(arr,start,length/2+start-1);
+        }
+    }
+    public void combine(int[] arr, int start, int end){
+        System.out.println("combine:"+Arrays.toString(Arrays.copyOfRange(arr,start-1,end)));
+        int length=end-start+1;
+        if(length>1){
+            System.out.println("combine, order is right");
+        }
+    }
+}
