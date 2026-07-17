@@ -18,90 +18,73 @@ public class MergeSort {
         //int[] arr = {3, 1, 2};
         int[] arr = {7, 2, 4, 6, 1, 5, 3};
         //int[] arr = {1, 1, 4, 2, 1, 3};
+        //int[] arr = {7, 3, 5, 5, 1, 2, 2, 3, 9, 2, 2, 7, 1, 7, 3, 2, 3, 6, 6, 7};
         System.out.println(Arrays.toString(arr));
-        //test.mergeSort(arr, 1, arr.length);
+        //test.mergeSortRecur(arr, 1, arr.length);
         test.mergeSortIter(arr);
         System.out.println(Arrays.toString(arr));
     }
 
-    public void mergeSort(int[] arr, int start, int end) {
+    public void mergeSortRecur(int[] arr, int start, int end) {
         int length = end - start + 1;
-        if (length > 1) {
-            mergeSort(arr, start, length / 2 + start - 1);
-            mergeSort(arr, length / 2 + start, end);
+        if (length <= 1) {
+            return;
         }
-        combine(arr, start, end);
+        mergeSortRecur(arr, start, start + length / 2 - 1);
+        mergeSortRecur(arr, start + length / 2, end);
+        combine(arr, start, start + length / 2 - 1, start + length / 2, end);
+
     }
 
-    public void combine(int[] arr, int start, int end) {
-        int length = end - start + 1;
-        if (length > 1) {
-            int first_end = length / 2 + start - 1;
-            int second_start = length / 2 + start;
-            int i = start;
-            int j = second_start;
-            int[] sorted = new int[end - start + 1];
-            while (i <= first_end || j <= end) {
-                if (j > end) {
-                    sorted[i - start + j - second_start] = arr[i - 1];
-                    i++;
-                } else if (i > first_end) {
-                    sorted[i - start + j - second_start] = arr[j - 1];
-                    j++;
-                } else if (arr[i - 1] < arr[j - 1]) {
-                    sorted[i - start + j - second_start] = arr[i - 1];
-                    i++;
-                } else {
-                    sorted[i - start + j - second_start] = arr[j - 1];
-                    j++;
-                }
-            }
-            for (int k = start; k <= end; k++) {
-                arr[k - 1] = sorted[k - start];
+    public void combine(int[] arr, int start1, int end1, int start2, int end2) {
+        int i = start1;
+        int j = start2;
+        int[] sorted = new int[end2 - start1 + 1];
+        for (int k = 1; k <= sorted.length; k++) {
+            if (i <= end1 && (j > end2 || arr[i - 1] < arr[j - 1])) {
+                sorted[k - 1] = arr[i - 1];
+                i++;
+            } else {
+                sorted[k - 1] = arr[j - 1];
+                j++;
             }
         }
+        for (int k = 1; k <= sorted.length; k++) {
+            arr[k + start1 - 2] = sorted[k - 1];
+        }
     }
-
 
     public void mergeSortIter(int[] arr) {
         for (int gap = 1; gap < arr.length; gap *= 2) {
-            int totalGroup;
+            int groupNo;
             if (arr.length % (2 * gap) == 0) {
-                totalGroup = arr.length / (2 * gap);
+                groupNo = arr.length / (2 * gap);
             } else {
-                totalGroup = arr.length / (2 * gap) + 1;
+                groupNo = arr.length / (2 * gap) + 1;
             }
-
-            for (int groupNo = 1; groupNo <= totalGroup; groupNo++) {
+            for (int num = 1; num <= groupNo; num++) {
                 int limit;
-                if (groupNo < totalGroup) {
-                    limit = 2 * gap;
+                if (num == groupNo) {
+                    limit = arr.length - (groupNo - 1) * 2 * gap;
                 } else {
-                    limit = arr.length - 2 * gap * (groupNo - 1);
+                    limit = 2 * gap;
                 }
                 if (limit > gap) {
                     int i = 1;
                     int j = gap + 1;
-                    int base = 2 * gap * (groupNo - 1);
-                    int[] res = new int[limit];
-                    while (i <= gap || j <= limit) {
-                        int curPosIdx = i + j - gap - 2;
-                        if (j > limit) {
-                            res[curPosIdx] = arr[i + base - 1];
-                            i++;
-                        } else if (i > gap) {
-                            res[curPosIdx] = arr[j + base - 1];
-                            j++;
-                        } else if (arr[i + base - 1] < arr[j + base - 1]) {
-                            res[curPosIdx] = arr[i + base - 1];
+                    int base = (num - 1) * 2 * gap;
+                    int[] sorted = new int[limit];
+                    for (int k = 1; k <= limit; k++) {
+                        if (i <= gap && (j > limit || arr[i + base - 1] < arr[j + base - 1])) {
+                            sorted[k - 1] = arr[i + base - 1];
                             i++;
                         } else {
-                            res[curPosIdx] = arr[j + base - 1];
+                            sorted[k - 1] = arr[j + base - 1];
                             j++;
                         }
                     }
                     for (int k = 1; k <= limit; k++) {
-                        arr[k + base - 1] = res[k - 1];
+                        arr[k + base - 1] = sorted[k - 1];
                     }
                 }
             }
