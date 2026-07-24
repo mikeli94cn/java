@@ -1,3 +1,8 @@
+Q: what is assert in java? why we need assert in java? and how to use it?
+
+---
+***answered by chatgpt***
+
 `assert` in Java is a very interesting feature because it sits between **debugging**, **testing**, and **program correctness**. Many Java developers rarely use it today, but understanding it is important for interviews and for writing robust code.
 
 Let's explore it deeply.
