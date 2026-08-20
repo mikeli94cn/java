@@ -1,0 +1,306 @@
+An **iterative merge sort** (also called **bottom-up merge sort**) avoids recursion. Instead of dividing the array recursively, it starts by treating every element as a sorted subarray of size `1`, then repeatedly merges larger and larger sorted sections.
+
+The process:
+
+```text
+Initial:
+
+[8] [3] [5] [1] [9] [2] [7]
+
+
+Merge size = 1:
+
+[3,8] [1,5] [2,9] [7]
+
+
+Merge size = 2:
+
+[1,3,5,8] [2,7,9]
+
+
+Merge size = 4:
+
+[1,2,3,5,7,8,9]
+```
+
+---
+
+## Java iterative merge sort implementation
+
+```java
+import java.util.Arrays;
+
+public class IterativeMergeSort {
+
+    public static void mergeSort(int[] array) {
+
+        int n = array.length;
+
+        // Temporary array used during merging
+        int[] temp = new int[n];
+
+
+        // size = current sorted block size
+        // Start with blocks of size 1
+        for (int size = 1; size < n; size *= 2) {
+
+
+            // Merge adjacent blocks
+            for (int left = 0; left < n - size; left += size * 2) {
+
+                int middle = left + size - 1;
+
+                int right = Math.min(left + size * 2 - 1, n - 1);
+
+                merge(array, temp, left, middle, right);
+            }
+        }
+    }
+
+
+    private static void merge(int[] array,
+                              int[] temp,
+                              int left,
+                              int middle,
+                              int right) {
+
+
+        // Copy data into temporary array
+        for (int i = left; i <= right; i++) {
+            temp[i] = array[i];
+        }
+
+
+        int i = left;        // left half index
+        int j = middle + 1;  // right half index
+        int k = left;        // merged array index
+
+
+        // Merge two sorted halves
+        while (i <= middle && j <= right) {
+
+            if (temp[i] <= temp[j]) {
+                array[k++] = temp[i++];
+            } else {
+                array[k++] = temp[j++];
+            }
+        }
+
+
+        // Copy remaining left half
+        while (i <= middle) {
+            array[k++] = temp[i++];
+        }
+
+
+        // Copy remaining right half
+        while (j <= right) {
+            array[k++] = temp[j++];
+        }
+    }
+
+
+    public static void main(String[] args) {
+
+        int[] numbers = {
+            8, 3, 5, 1, 9, 2, 7
+        };
+
+
+        System.out.println("Before:");
+        System.out.println(Arrays.toString(numbers));
+
+
+        mergeSort(numbers);
+
+
+        System.out.println("After:");
+        System.out.println(Arrays.toString(numbers));
+    }
+}
+```
+
+---
+
+## Output
+
+```
+Before:
+[8, 3, 5, 1, 9, 2, 7]
+
+After:
+[1, 2, 3, 5, 7, 8, 9]
+```
+
+---
+
+# Understanding the iterative logic
+
+The key loop is:
+
+```java
+for (int size = 1; size < n; size *= 2)
+```
+
+This controls the size of sorted groups.
+
+### First pass
+
+```text
+size = 1
+```
+
+Merge:
+
+```
+[8] [3] -> [3,8]
+
+[5] [1] -> [1,5]
+
+[9] [2] -> [2,9]
+```
+
+---
+
+### Second pass
+
+```text
+size = 2
+```
+
+Merge:
+
+```
+[3,8] [1,5]
+
+        |
+
+[1,3,5,8]
+```
+
+---
+
+### Third pass
+
+```text
+size = 4
+```
+
+Merge:
+
+```
+[1,3,5,8] [2,7,9]
+
+        |
+
+[1,2,3,5,7,8,9]
+```
+
+---
+
+# Comparison with recursive merge sort
+
+## Recursive version
+
+```text
+Top-down
+
+             [8 3 5 1 9 2 7]
+                    |
+          -------------------
+          |                 |
+      [8 3 5 1]        [9 2 7]
+          |
+      ------------
+      |          |
+   [8 3]      [5 1]
+```
+
+It says:
+
+> "Split first, merge later."
+
+---
+
+## Iterative version
+
+```text
+Bottom-up
+
+[8][3][5][1][9][2][7]
+
+      merge size 1
+
+[3,8][1,5][2,9][7]
+
+      merge size 2
+
+[1,3,5,8][2,7,9]
+
+      merge size 4
+
+[1,2,3,5,7,8,9]
+```
+
+It says:
+
+> "Build sorted pieces gradually."
+
+---
+
+# Complexity
+
+Same as recursive merge sort:
+
+| Operation    | Complexity |
+| ------------ | ---------- |
+| Best case    | O(n log n) |
+| Average case | O(n log n) |
+| Worst case   | O(n log n) |
+| Extra memory | O(n)       |
+
+---
+
+# Why use iterative merge sort?
+
+Advantages:
+
+1. **No recursion stack**
+
+For very large arrays:
+
+```text
+Recursive:
+function calls → stack memory
+
+Iterative:
+normal loops → no stack growth
+```
+
+2. **Good for low-level programming**
+
+The iterative version is closer to assembly/MIXAL thinking:
+
+```text
+loop
+  compare
+  move data
+  update index
+  repeat
+```
+
+3. **Useful in embedded systems**
+
+Since you were exploring MIXAL and computer history, this style is closer to how algorithms were implemented on early computers with limited stack support.
+
+The algorithm itself is unchanged; only the control structure changes:
+
+```text
+Recursive merge sort:
+    divide using function calls
+
+Iterative merge sort:
+    divide using loop counters
+```
+
+Both produce the same `O(n log n)` performance.
