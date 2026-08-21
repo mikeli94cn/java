@@ -1,0 +1,698 @@
+# What is Computer Vision?
+
+**Computer vision** is a field of computer science and artificial intelligence that enables computers to **understand and interpret visual information from the real world**.
+
+In simple terms:
+
+> **Computer vision is the science of teaching computers to see and understand images and videos.**
+
+Humans do:
+
+```text
+Eyes
+ |
+ v
+Brain
+ |
+ v
+Understanding
+```
+
+Computer vision does:
+
+```text
+Camera
+ |
+ v
+Image data
+ |
+ v
+Algorithms / AI models
+ |
+ v
+Understanding
+```
+
+---
+
+# Computer Graphics vs Computer Vision
+
+These two fields are closely related but have opposite directions.
+
+## Computer Graphics
+
+Creates images:
+
+```text
+Computer
+     |
+     v
+Image
+```
+
+Example:
+
+* create a 3D game world
+* draw a GUI window
+* generate movie effects
+
+---
+
+## Computer Vision
+
+Understands images:
+
+```text
+Image
+     |
+     v
+Computer
+```
+
+Example:
+
+* recognize a face
+* detect a car
+* read text from a photo
+
+A simple comparison:
+
+| Field             | Direction       | Question                     |
+| ----------------- | --------------- | ---------------------------- |
+| Computer Graphics | Data → Image    | "How do we create images?"   |
+| Computer Vision   | Image → Meaning | "What is inside this image?" |
+
+---
+
+# The Fundamental Problem of Computer Vision
+
+A camera captures only pixels:
+
+Example:
+
+```text
+Image:
+
+010101010101
+101010101010
+111000101010
+```
+
+The computer sees:
+
+```text
+Numbers
+```
+
+But humans see:
+
+```text
+"A cat sitting on a chair"
+```
+
+The challenge is:
+
+> How can we transform pixels into knowledge?
+
+The pipeline:
+
+```text
+Image
+ |
+ v
+Pixels
+ |
+ v
+Features
+ |
+ v
+Objects
+ |
+ v
+Meaning
+```
+
+---
+
+# The Main Principle of Computer Vision
+
+The underlying principle is:
+
+> **Extract meaningful information from visual data using mathematical models, algorithms, and learning systems.**
+
+A computer vision system usually performs:
+
+```text
+Capture
+   |
+   v
+Process
+   |
+   v
+Analyze
+   |
+   v
+Understand
+```
+
+---
+
+# 1. Image Acquisition
+
+First, obtain visual data.
+
+Sources:
+
+* cameras
+* satellites
+* medical scanners
+* microscopes
+* sensors
+
+Example:
+
+A camera produces:
+
+```text
+640 × 480 pixels
+
+= 307,200 pixels
+```
+
+Each pixel contains values:
+
+```text
+(R,G,B)
+```
+
+Example:
+
+```text
+(255,0,0)
+```
+
+means red.
+
+---
+
+# 2. Image Processing
+
+Before understanding an image, computers often improve it.
+
+Operations include:
+
+## Noise reduction
+
+Remove unwanted information:
+
+```text
+Before:
+
+* * * image * * *
+
+After:
+
+clean image
+```
+
+---
+
+## Edge detection
+
+Find boundaries:
+
+Original:
+
+```text
++-------+
+|       |
+|       |
++-------+
+```
+
+Edges:
+
+```text
++++++++
++
++
++++++++
+```
+
+Edges help identify objects.
+
+---
+
+## Image enhancement
+
+Examples:
+
+* brightness adjustment
+* contrast improvement
+* sharpening
+
+---
+
+# 3. Feature Extraction
+
+A computer does not directly understand objects.
+
+It looks for patterns.
+
+Examples of features:
+
+## Edges
+
+```text
+|
+|
+|
+```
+
+## Corners
+
+```text
++
+```
+
+## Texture
+
+```text
+///////
+```
+
+## Color patterns
+
+```text
+red area
+```
+
+Older computer vision systems relied heavily on manually designed features.
+
+---
+
+# 4. Object Recognition
+
+The system tries to answer:
+
+> "What is this?"
+
+Example:
+
+Input:
+
+```text
++-------------+
+|             |
+|   image     |
+|             |
++-------------+
+```
+
+Output:
+
+```text
+This is a dog
+```
+
+Applications:
+
+* face recognition
+* object detection
+* handwriting recognition
+
+---
+
+# 5. Machine Learning and Deep Learning
+
+Modern computer vision is dominated by deep learning.
+
+Traditional approach:
+
+```text
+Image
+ |
+ v
+Human-designed features
+ |
+ v
+Classifier
+ |
+ v
+Result
+```
+
+Deep learning:
+
+```text
+Image
+ |
+ v
+Neural Network
+ |
+ v
+Result
+```
+
+The neural network learns features automatically.
+
+---
+
+# Convolutional Neural Networks (CNN)
+
+A major technology in computer vision is the CNN.
+
+The basic idea:
+
+> Look at small regions of an image and learn patterns.
+
+Example:
+
+A network may learn:
+
+Layer 1:
+
+```text
+Edges
+```
+
+Layer 2:
+
+```text
+Shapes
+```
+
+Layer 3:
+
+```text
+Parts
+```
+
+Layer 4:
+
+```text
+Objects
+```
+
+Like human vision:
+
+```text
+Eye
+ |
+ v
+Brain processing
+ |
+ v
+Recognition
+```
+
+---
+
+# Major Areas of Computer Vision
+
+## 1. Image Classification
+
+Question:
+
+> What is the image?
+
+Example:
+
+Input:
+
+```text
+Picture
+```
+
+Output:
+
+```text
+cat
+```
+
+---
+
+## 2. Object Detection
+
+Question:
+
+> What objects exist and where are they?
+
+Output:
+
+```text
++-----------+
+|   car     |
++-----------+
+```
+
+Used in:
+
+* autonomous driving
+* surveillance
+* robotics
+
+---
+
+## 3. Image Segmentation
+
+Question:
+
+> Which pixels belong to which object?
+
+Example:
+
+Original:
+
+```text
+Person + background
+```
+
+Segmentation:
+
+```text
+Person pixels
+Background pixels
+```
+
+---
+
+## 4. Face Recognition
+
+Pipeline:
+
+```text
+Face image
+
+    |
+    v
+
+Detect face
+
+    |
+    v
+
+Extract features
+
+    |
+    v
+
+Compare database
+
+    |
+    v
+
+Identity
+```
+
+---
+
+## 5. Optical Character Recognition (OCR)
+
+Convert images into text.
+
+Example:
+
+Image:
+
+```text
+HELLO
+```
+
+Computer output:
+
+```text
+"HELLO"
+```
+
+---
+
+## 6. Computer Vision for Robots
+
+Robots need vision to understand the world:
+
+```text
+Camera
+
+   |
+   v
+
+Computer Vision
+
+   |
+   v
+
+Decision
+
+   |
+   v
+
+Action
+```
+
+Examples:
+
+* robot navigation
+* industrial robots
+* self-driving cars
+
+---
+
+# Relationship Between Computer Vision and AI
+
+Computer vision is a major branch of AI:
+
+```text
+Artificial Intelligence
+
+        |
+        +----------------+
+        |                |
+        v                v
+
+ Machine Learning   Computer Vision
+
+        |
+        v
+
+ Deep Learning
+```
+
+Modern computer vision usually combines:
+
+* AI
+* machine learning
+* neural networks
+* statistics
+* mathematics
+
+---
+
+# Relationship Between Computer Graphics and Computer Vision
+
+They are almost mirror images:
+
+```text
+Computer Graphics:
+
+World Model
+     |
+     v
+Image
+
+
+Computer Vision:
+
+Image
+     |
+     v
+World Model
+```
+
+A powerful concept is:
+
+> Graphics creates reality; vision reconstructs reality.
+
+They are often combined.
+
+Example: autonomous driving simulation:
+
+```text
+Computer Graphics
+
+Creates virtual roads
+        |
+        v
+Computer Vision
+
+Learns to understand roads
+```
+
+---
+
+# The Deep Principle
+
+At a deeper level, computer vision is about **inference**.
+
+The computer observes:
+
+```text
+Pixels
+```
+
+and tries to infer:
+
+```text
+Objects
+Relationships
+Actions
+Meaning
+```
+
+The process is:
+
+```text
+Observation
+     |
+     v
+Pattern Recognition
+     |
+     v
+Knowledge Extraction
+     |
+     v
+Decision Making
+```
+
+---
+
+# How Computer Vision Fits Into Computer Science
+
+```text
+Computer Science
+        |
+        |
+        +---- Computer Graphics
+        |          |
+        |          v
+        |       Create images
+        |
+        |
+        +---- Computer Vision
+                   |
+                   v
+              Understand images
+
+                   |
+                   v
+
+                  AI
+```
+
+---
+
+## One-Sentence Summary
+
+**Computer vision is the field that allows computers to transform visual data (images and videos) into meaningful information by using image processing, mathematical models, machine learning, and artificial intelligence.**
+
+Since you are exploring **GUI → computer graphics → computer vision**, the natural next connection is to study **the underlying principles of computer vision** and then **a systematic learning roadmap for computer vision**, similar to the one for graphics.
