@@ -25,6 +25,7 @@ public class Inheritance {
 
     //Set is the parent class of HashSet, LinkedHashSet, TreeSet
     //so can set param type as Set
+    //the convenience of OOP programming 
     public int[] genRand(int n, Set<Integer> myset) {
         while (myset.size() != n) {
             int rand = (int) (Math.random() * n) + 1;
