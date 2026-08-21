@@ -1,0 +1,615 @@
+# The Underlying Principle of Computer Vision
+
+The deepest principle of **computer vision** is:
+
+> **Infer the structure and meaning of the real world from visual signals (pixels) using mathematical models, algorithms, and learning systems.**
+
+In simpler words:
+
+> **Computer vision is the process of going from "what the camera sees" to "what the computer understands."**
+
+The fundamental transformation is:
+
+```text
+Real World
+    |
+    v
+Light
+    |
+    v
+Camera Sensor
+    |
+    v
+Pixels (data)
+    |
+    v
+Features / Patterns
+    |
+    v
+Objects / Scenes
+    |
+    v
+Meaning / Decisions
+```
+
+---
+
+# 1. The Core Problem: Inverse Graphics
+
+The deepest idea behind computer vision is called **inverse graphics**.
+
+Computer graphics does:
+
+```text
+3D World Model
+       |
+       v
+Rendering
+       |
+       v
+Image
+```
+
+Computer vision reverses this:
+
+```text
+Image
+       |
+       v
+Inference
+       |
+       v
+3D World Model
+```
+
+Example:
+
+A camera sees:
+
+```text
++----------------+
+|  dark pixels   |
+|  light pixels  |
++----------------+
+```
+
+A human understands:
+
+```
+"A black car parked on a road"
+```
+
+Computer vision tries to perform the same inference.
+
+---
+
+# 2. Pixels Are Not Meaning
+
+A camera only captures measurements.
+
+Example:
+
+A photo contains:
+
+```text
+Pixel(100,200) = RGB(45,80,120)
+```
+
+The computer does **not** know:
+
+```
+This is a person's eye.
+```
+
+It only knows:
+
+```
+A numerical pattern exists.
+```
+
+The challenge:
+
+```text
+Pixels
+  |
+  v
+Patterns
+  |
+  v
+Concepts
+  |
+  v
+Understanding
+```
+
+This is the central problem of computer vision.
+
+---
+
+# 3. Feature Extraction: Finding Useful Information
+
+Raw pixels contain too much information.
+
+Computer vision extracts meaningful features.
+
+Example:
+
+An image:
+
+```
+Face
+```
+
+contains millions of pixel values.
+
+Useful information:
+
+```
+Two eyes
+Nose
+Mouth
+Face shape
+Skin texture
+```
+
+The computer transforms:
+
+```text
+Raw image
+
+     |
+     v
+
+Edges
+
+     |
+     v
+
+Shapes
+
+     |
+     v
+
+Objects
+```
+
+---
+
+# 4. Pattern Recognition
+
+The fundamental mechanism is recognizing patterns.
+
+Example:
+
+A cat:
+
+Many possible images:
+
+```
+Cat sitting
+Cat running
+Cat sleeping
+Cat from side view
+```
+
+Humans recognize:
+
+```
+same object category
+```
+
+Computer vision learns:
+
+```
+common patterns
+```
+
+The principle:
+
+```text
+Many examples
+       |
+       v
+Find statistical patterns
+       |
+       v
+Recognize new examples
+```
+
+---
+
+# 5. Probability and Uncertainty
+
+Vision is not deterministic.
+
+A computer does not usually say:
+
+```
+This is definitely a dog.
+```
+
+It says:
+
+```
+Dog: 95%
+Wolf: 3%
+Other: 2%
+```
+
+Why?
+
+Because the same object can appear differently:
+
+* different lighting
+* different angle
+* different distance
+* partial obstruction
+
+Therefore:
+
+> Computer vision is largely a problem of inference under uncertainty.
+
+Mathematically:
+
+[
+P(Object | Image)
+]
+
+Meaning:
+
+> Given this image, what is the probability of each object?
+
+---
+
+# 6. Learning From Data
+
+Traditional computer vision:
+
+```
+Human designs features
+        |
+        v
+Algorithm recognizes objects
+```
+
+Example:
+
+Humans define:
+
+```
+Eye shape
+Face distance
+Edge patterns
+```
+
+---
+
+Modern computer vision:
+
+```
+Large dataset
+       |
+       v
+Neural network
+       |
+       v
+Automatically learns features
+```
+
+Example:
+
+A deep neural network learns:
+
+Layer 1:
+
+```
+Edges
+```
+
+Layer 2:
+
+```
+Curves
+```
+
+Layer 3:
+
+```
+Parts
+```
+
+Layer 4:
+
+```
+Objects
+```
+
+---
+
+# 7. Hierarchical Understanding
+
+A powerful principle in vision is hierarchy.
+
+Humans recognize objects step by step.
+
+Example:
+
+```
+Pixels
+ |
+ v
+Lines
+ |
+ v
+Shapes
+ |
+ v
+Parts
+ |
+ v
+Objects
+ |
+ v
+Scene
+```
+
+For example:
+
+```
+pixels
+ |
+edges
+ |
+circles
+ |
+eyes
+ |
+face
+ |
+person
+```
+
+Deep neural networks naturally learn this hierarchy.
+
+---
+
+# 8. Geometry: Understanding Space
+
+Vision is not only recognizing objects.
+
+It also understands:
+
+* distance
+* position
+* movement
+* 3D structure
+
+Example:
+
+Two cameras:
+
+```
+Camera A        Camera B
+
+    \             /
+
+        Object
+```
+
+By comparing views:
+
+```
+Different perspectives
+        |
+        v
+Depth estimation
+        |
+        v
+3D reconstruction
+```
+
+This is called:
+
+* stereo vision
+* structure from motion
+* 3D reconstruction
+
+---
+
+# 9. The Perception Loop
+
+Real intelligent systems combine vision with action.
+
+Example: a robot:
+
+```
+Environment
+
+     |
+     v
+
+Camera
+
+     |
+     v
+
+Computer Vision
+
+     |
+     v
+
+Understanding
+
+     |
+     v
+
+Decision
+
+     |
+     v
+
+Action
+
+     |
+     v
+
+New Observation
+```
+
+This creates a feedback loop.
+
+---
+
+# 10. Computer Vision Architecture
+
+A classical vision system:
+
+```
+Image
+ |
+ v
+Image Processing
+ |
+ v
+Feature Extraction
+ |
+ v
+Machine Learning
+ |
+ v
+Recognition
+```
+
+Modern deep learning system:
+
+```
+Image
+ |
+ v
+Neural Network
+ |
+ v
+Feature Learning
+ |
+ v
+Prediction
+```
+
+---
+
+# 11. Relationship With Other Fields
+
+Computer vision connects many areas:
+
+```
+              Artificial Intelligence
+                       |
+                       |
+              Machine Learning
+                       |
+                       |
+              Computer Vision
+              /       |       \
+             /        |        \
+        Mathematics  Graphics  Robotics
+```
+
+It uses:
+
+## Mathematics
+
+* linear algebra
+* probability
+* optimization
+
+## Computer Graphics
+
+* rendering
+* cameras
+* geometry
+
+## AI
+
+* learning
+* reasoning
+* decision making
+
+---
+
+# 12. The Deepest View: Vision as Understanding
+
+At the lowest level:
+
+```
+Image
+=
+numbers
+```
+
+At the highest level:
+
+```
+Image
+=
+meaning about the world
+```
+
+The mission of computer vision is:
+
+```
+From:
+
+"What pixels are there?"
+
+To:
+
+"What exists in the world?"
+```
+
+---
+
+# Summary
+
+The underlying principles of computer vision are:
+
+1. **Inverse graphics**
+
+   * Recover the world model from images.
+
+2. **Feature extraction**
+
+   * Transform pixels into meaningful patterns.
+
+3. **Pattern recognition**
+
+   * Identify objects based on learned structures.
+
+4. **Statistical inference**
+
+   * Make decisions under uncertainty.
+
+5. **Machine learning**
+
+   * Learn visual concepts from data.
+
+6. **Geometric reasoning**
+
+   * Understand space, depth, and motion.
+
+7. **Perception-action loop**
+
+   * Use visual understanding to make decisions.
+
+The entire field can be summarized as:
+
+```text
+Seeing
+  =
+Measuring light
+  +
+Finding patterns
+  +
+Inferring the world
+```
+
+Given your previous path (**computer graphics → GUI → computer vision**), the next logical step is to understand **how computer vision is learned systematically**, because its learning path is quite different from graphics: graphics is mainly **geometry + mathematics**, while vision is mainly **data + statistics + machine learning**.
