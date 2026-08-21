@@ -8,7 +8,7 @@ import java.util.TreeSet;
  *
  * @author mikeli94cn
  */
-public class Inheritance {
+public class ParentClass {
 
     public static void main(String[] args) {
         HashSet<Integer> hset = new HashSet<>();
