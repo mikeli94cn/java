@@ -8,7 +8,7 @@ import java.util.TreeSet;
  *
  * @author mikeli94cn
  */
-public class RandGenV2 {
+public class Inheritance {
 
     public static void main(String[] args) {
         HashSet<Integer> hset = new HashSet<>();
@@ -23,6 +23,8 @@ public class RandGenV2 {
         System.out.println(Arrays.toString(arr));
     }
 
+    //Set is the parent class of HashSet, LinkedHashSet, TreeSet
+    //so can set param type as Set
     public int[] genRand(int n, Set<Integer> myset) {
         while (myset.size() != n) {
             int rand = (int) (Math.random() * n) + 1;
