@@ -1,0 +1,624 @@
+# What is Computer Graphics?
+
+**Computer graphics** is the field of computer science that studies how computers **create, store, manipulate, and display visual information**.
+
+In simple terms:
+
+> **Computer graphics is the technology that allows computers to generate images and animations from mathematical data.**
+
+Everything you see on a computer screen is a result of computer graphics:
+
+* windows and icons in a GUI
+* websites
+* video games
+* 3D movies
+* CAD engineering drawings
+* scientific visualization
+* virtual reality
+
+---
+
+# The Basic Idea of Computer Graphics
+
+A computer does not understand "pictures." It only understands:
+
+* numbers
+* memory
+* calculations
+
+A picture is represented as data:
+
+```
+Image
+ |
+ v
+Mathematical representation
+ |
+ v
+Numbers stored in memory
+ |
+ v
+Graphics algorithms
+ |
+ v
+Pixels on screen
+```
+
+For example, a simple image:
+
+```
++---+---+---+
+|255| 0 | 0 |
++---+---+---+
+| 0 |255| 0 |
++---+---+---+
+```
+
+Each number represents a pixel color.
+
+---
+
+# The Core Principle: From Mathematics to Pixels
+
+The fundamental process of computer graphics is:
+
+```
+Mathematical Model
+        |
+        v
+Graphics Algorithms
+        |
+        v
+Pixels
+        |
+        v
+Display Device
+```
+
+Example:
+
+A circle:
+
+Mathematical description:
+
+```
+(x-a)^2 + (y-b)^2 = r^2
+```
+
+Graphics algorithm:
+
+```
+Calculate points on circle
+```
+
+Display:
+
+```
+   ***
+ *     *
+ *     *
+   ***
+```
+
+The computer converts equations into visible images.
+
+---
+
+# Two Major Areas of Computer Graphics
+
+## 1. 2D Graphics
+
+2D graphics deal with flat images.
+
+Examples:
+
+* icons
+* text
+* diagrams
+* charts
+* GUI elements
+
+A 2D object usually has:
+
+```
+(x, y)
+```
+
+coordinates.
+
+Example:
+
+```
+Screen
+
+(0,0)
+ +----------------+
+ |                |
+ |        *       |
+ |                |
+ +----------------+
+
+        (x,y)
+```
+
+Operations include:
+
+* drawing lines
+* drawing circles
+* rendering text
+* image processing
+
+---
+
+## 2. 3D Graphics
+
+3D graphics create objects with depth.
+
+A point has:
+
+```
+(x, y, z)
+```
+
+coordinates.
+
+Example:
+
+```
+        z
+        |
+        |
+        +------ x
+       /
+      /
+     y
+```
+
+Used in:
+
+* games
+* movies
+* simulations
+* VR
+
+A 3D object:
+
+```
+       cube
+
+        +------+
+       /      /|
+      +------+ |
+      |      | +
+      |      |/
+      +------+
+```
+
+must be converted into a 2D image on the screen.
+
+---
+
+# The Graphics Pipeline
+
+The most important concept in modern graphics is the **graphics pipeline**.
+
+A simplified pipeline:
+
+```
+3D Model
+   |
+   v
+Transform
+   |
+   v
+Projection
+   |
+   v
+Rasterization
+   |
+   v
+Pixel Processing
+   |
+   v
+Screen
+```
+
+Let's explain each step.
+
+---
+
+# 1. Modeling
+
+First, objects are represented mathematically.
+
+Example: a cube.
+
+A cube is stored as:
+
+```
+Vertices:
+
+A(0,0,0)
+B(1,0,0)
+C(1,1,0)
+D(0,1,0)
+...
+```
+
+and connections:
+
+```
+A ---- B
+|      |
+D ---- C
+```
+
+---
+
+# 2. Transformation
+
+Objects must be moved, rotated, and scaled.
+
+Examples:
+
+Move:
+
+```
+x = x + 10
+```
+
+Rotate:
+
+```
+rotation matrix
+```
+
+Scale:
+
+```
+x = x * 2
+```
+
+This is heavily based on linear algebra.
+
+---
+
+# 3. Projection
+
+A 3D world must become a 2D image.
+
+Real world:
+
+```
+        Object
+
+          |
+          |
+          v
+
+        Camera
+
+          |
+          v
+
+       Screen
+```
+
+The computer calculates:
+
+```
+(x,y,z)
+    |
+    v
+(x,y)
+```
+
+---
+
+# 4. Rasterization
+
+A mathematical object must become pixels.
+
+Example:
+
+A triangle:
+
+```
+   /\
+  /  \
+ /____\
+```
+
+becomes:
+
+```
+00011000
+00111100
+01111110
+11111111
+```
+
+The computer decides which pixels belong to the object.
+
+---
+
+# 5. Rendering
+
+Finally, the system calculates:
+
+* color
+* lighting
+* shadows
+* texture
+
+Example:
+
+Without lighting:
+
+```
+   cube
+```
+
+With lighting:
+
+```
+     ______
+    /     /|
+   /_____/ |
+   |     | |
+   |     |/
+   |_____|
+```
+
+It appears three-dimensional.
+
+---
+
+# Computer Graphics and GUI
+
+GUI is actually a specialized application of computer graphics.
+
+Relationship:
+
+```
+Computer Graphics
+        |
+        |
+        +----------------+
+        |                |
+        v                v
+     GUI              Games
+        |
+        |
+   Windows
+   Buttons
+   Text
+   Icons
+```
+
+A button is simply:
+
+```
+Rectangle
++
+Text
++
+Color
++
+Mouse interaction
+```
+
+The GUI system uses graphics algorithms to draw everything.
+
+---
+
+# Computer Graphics and GPU
+
+Modern graphics depend heavily on the **GPU (Graphics Processing Unit)**.
+
+CPU:
+
+```
+General computation
+```
+
+GPU:
+
+```
+Massive parallel graphics computation
+```
+
+Example:
+
+A screen with:
+
+```
+1920 x 1080 pixels
+```
+
+contains:
+
+```
+2,073,600 pixels
+```
+
+Each pixel needs calculation.
+
+GPU processes many pixels simultaneously.
+
+---
+
+# Computer Graphics APIs
+
+Programmers usually do not directly control the GPU.
+
+They use graphics APIs:
+
+## Low-level APIs
+
+* OpenGL
+* Vulkan
+* Direct3D
+
+They provide direct access to graphics hardware.
+
+---
+
+## Higher-level frameworks
+
+Examples:
+
+* JavaFX Canvas
+* Qt Graphics View
+* Unity Engine
+* Unreal Engine
+
+They hide complexity.
+
+---
+
+# Important Concepts in Computer Graphics
+
+## Pixels
+
+The smallest display unit.
+
+```
+Image = collection of pixels
+```
+
+---
+
+## Resolution
+
+Number of pixels:
+
+Example:
+
+```
+1920 × 1080
+```
+
+---
+
+## Color Model
+
+Most screens use:
+
+```
+RGB
+
+Red
+Green
+Blue
+```
+
+A color:
+
+```
+(255,0,0)
+```
+
+means:
+
+```
+Full red
+```
+
+---
+
+## Coordinate System
+
+Computers describe locations mathematically:
+
+```
+(x,y)
+```
+
+or
+
+```
+(x,y,z)
+```
+
+---
+
+## Rendering
+
+The process of generating an image.
+
+---
+
+# The Relationship Between Graphics, GUI, and Games
+
+A useful hierarchy:
+
+```
+Computer Science
+        |
+        |
+Computer Graphics
+        |
+        +------------+
+        |            |
+        v            v
+       GUI        3D Games
+        |
+        |
+Desktop Applications
+```
+
+GUI focuses on:
+
+* text
+* windows
+* controls
+* interaction
+
+Games focus on:
+
+* 3D worlds
+* physics
+* animation
+* real-time rendering
+
+But both use the same graphics foundations.
+
+---
+
+# How Computer Graphics Fits Into Computer Science
+
+Computer graphics connects many areas:
+
+```
+Mathematics
+    |
+    +-- Linear Algebra
+    +-- Geometry
+    +-- Calculus
+
+Computer Science
+    |
+    +-- Algorithms
+    +-- Data Structures
+    +-- Operating Systems
+
+Hardware
+    |
+    +-- GPU
+    +-- Memory
+    +-- Display
+```
+
+---
+
+## One-Sentence Summary
+
+**Computer graphics is the science and engineering of converting mathematical descriptions of objects into visual images by using algorithms, hardware, and rendering techniques.**
+
+Since you are studying GUI, OOP, and system programming, the next natural topics to learn after this are:
+
+1. **How pixels are drawn on a screen**
+2. **The graphics pipeline in detail**
+3. **How GUI frameworks use graphics internally**
+4. **How GPUs accelerate graphics**
