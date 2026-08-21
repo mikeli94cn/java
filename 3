@@ -1,0 +1,748 @@
+# How to Learn Computer Graphics Systematically
+
+Computer graphics is a large field because it sits at the intersection of:
+
+```text
+Mathematics
+    |
+    +-- Linear Algebra
+    +-- Geometry
+    +-- Calculus
+
+Computer Science
+    |
+    +-- Algorithms
+    +-- Data Structures
+    +-- Programming
+
+Computer Hardware
+    |
+    +-- CPU
+    +-- GPU
+    +-- Memory
+    +-- Display
+```
+
+A good learning path should go from **drawing simple pixels → understanding rendering → building a graphics engine → learning GPU programming**.
+
+---
+
+# Stage 0: Prerequisites
+
+Before graphics, build the mathematical foundation.
+
+## 1. Linear Algebra (most important)
+
+Computer graphics is heavily based on vectors and matrices.
+
+Learn:
+
+### Vectors
+
+A point:
+
+[
+P=(x,y,z)
+]
+
+A direction:
+
+[
+V=(x,y,z)
+]
+
+Operations:
+
+* addition
+* subtraction
+* dot product
+* cross product
+
+Example:
+
+Finding the angle between two directions:
+
+[
+A \cdot B = |A||B|\cos\theta
+]
+
+Used for:
+
+* lighting
+* camera direction
+* surface angles
+
+---
+
+### Matrices
+
+Learn:
+
+* matrix multiplication
+* identity matrix
+* inverse matrix
+* transformation matrices
+
+Example:
+
+Rotation:
+
+[
+P'=R \times P
+]
+
+Used for:
+
+* moving objects
+* rotating cameras
+* animation
+
+---
+
+## 2. Geometry
+
+Learn:
+
+* points
+* lines
+* planes
+* triangles
+* coordinate systems
+
+Important concepts:
+
+* Cartesian coordinates
+* polar coordinates
+* barycentric coordinates
+
+---
+
+## 3. Basic Calculus
+
+You do not need advanced calculus initially.
+
+Understand:
+
+* functions
+* derivatives
+* interpolation
+
+Used for:
+
+* animation
+* physics
+* smooth motion
+
+---
+
+# Stage 1: Learn How Pixels Work
+
+Start with 2D graphics.
+
+The first goal:
+
+> Learn how a computer creates an image.
+
+A screen is a grid:
+
+```text
+(0,0)
+
++---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+
+        (x,y)
+```
+
+Learn:
+
+* pixels
+* resolution
+* color
+* coordinate systems
+
+---
+
+## Project 1: Draw Pixels
+
+Write a program that:
+
+* creates an image
+* sets pixel colors
+* saves the image
+
+Example:
+
+```java
+image.setPixel(x, y, color);
+```
+
+Learn:
+
+* image buffers
+* memory layout
+* RGB representation
+
+---
+
+# Stage 2: Learn 2D Drawing Algorithms
+
+Before 3D, master basic graphics algorithms.
+
+## Lines
+
+Learn:
+
+* DDA algorithm
+* Bresenham line algorithm
+
+Problem:
+
+Given:
+
+```text
+A(x1,y1)
+
+      |
+      |
+
+B(x2,y2)
+```
+
+Which pixels should be filled?
+
+---
+
+## Circles
+
+Learn:
+
+* midpoint circle algorithm
+
+---
+
+## Shapes
+
+Implement:
+
+* rectangles
+* triangles
+* polygons
+
+You will understand how GUI elements are created.
+
+---
+
+# Stage 3: Learn 2D Graphics Libraries
+
+Use existing libraries.
+
+For Java:
+
+## JavaFX Canvas
+
+Learn:
+
+```text
+Canvas
+ |
+GraphicsContext
+ |
+drawLine()
+drawRect()
+drawImage()
+```
+
+Projects:
+
+### Project 2: Paint Program
+
+Features:
+
+* mouse drawing
+* colors
+* save image
+
+You learn:
+
+* mouse events
+* rendering
+* interaction
+
+---
+
+# Stage 4: Understand the Rendering Pipeline
+
+Now move to 3D.
+
+The core pipeline:
+
+```text
+3D Model
+
+    |
+    v
+
+Vertex Processing
+
+    |
+    v
+
+Transformation
+
+    |
+    v
+
+Projection
+
+    |
+    v
+
+Rasterization
+
+    |
+    v
+
+Pixel Shading
+
+    |
+    v
+
+Screen
+```
+
+Understand each stage.
+
+---
+
+# Stage 5: Learn 3D Mathematics
+
+## 1. Coordinate Systems
+
+Learn:
+
+World coordinates:
+
+```text
+Object position in the world
+```
+
+Camera coordinates:
+
+```text
+What the camera sees
+```
+
+Screen coordinates:
+
+```text
+Pixel position
+```
+
+Transformation:
+
+```text
+World
+ |
+ v
+Camera
+ |
+ v
+Screen
+```
+
+---
+
+## 2. 3D Transformations
+
+Learn:
+
+### Translation
+
+Move:
+
+[
+(x,y,z)+(a,b,c)
+]
+
+---
+
+### Rotation
+
+Rotate around:
+
+* X axis
+* Y axis
+* Z axis
+
+---
+
+### Scaling
+
+Change size:
+
+[
+(x,y,z)*s
+]
+
+---
+
+# Stage 6: Learn 3D Rendering
+
+Now learn how a 3D object becomes an image.
+
+## Step 1: Models
+
+A 3D model consists of:
+
+```text
+Vertices
+
+    |
+    v
+
+Triangles
+
+    |
+    v
+
+Mesh
+```
+
+Example:
+
+Cube:
+
+```text
+8 vertices
+12 triangles
+```
+
+---
+
+## Step 2: Camera
+
+Learn:
+
+* position
+* direction
+* field of view
+* perspective
+
+Example:
+
+Near objects:
+
+```text
+Large
+```
+
+Far objects:
+
+```text
+Small
+```
+
+---
+
+## Step 3: Lighting
+
+Learn:
+
+### Diffuse lighting
+
+[
+color = light \times surface\ angle
+]
+
+Uses:
+
+* normal vectors
+* dot product
+
+---
+
+### Specular lighting
+
+Creates:
+
+* reflections
+* highlights
+
+---
+
+# Stage 7: Learn Graphics APIs
+
+After understanding concepts, learn real systems.
+
+## Beginner API
+
+OpenGL
+
+Learn:
+
+* creating windows
+* buffers
+* shaders
+* textures
+* rendering loop
+
+---
+
+## Modern APIs
+
+Later:
+
+* Vulkan
+* Direct3D
+
+These expose GPU concepts more directly.
+
+---
+
+# Stage 8: Learn GPU Programming
+
+Modern graphics depends on shaders.
+
+Pipeline:
+
+```text
+CPU
+
+ |
+ |
+ v
+
+GPU
+
+Vertex Shader
+
+ |
+ v
+
+Rasterization
+
+ |
+ v
+
+Fragment Shader
+
+ |
+ v
+
+Pixels
+```
+
+Learn:
+
+## Vertex shader
+
+Controls:
+
+* vertex positions
+* transformations
+
+## Fragment shader
+
+Controls:
+
+* pixel colors
+* lighting
+
+---
+
+# Stage 9: Learn Graphics Engine Design
+
+A professional graphics system usually has:
+
+```text
+Game/Application
+
+        |
+        v
+
+Graphics Engine
+
+        |
+        +---- Renderer
+        |
+        +---- Scene Manager
+        |
+        +---- Camera
+        |
+        +---- Object System
+        |
+        +---- Physics
+
+        |
+        v
+
+GPU
+```
+
+Learn:
+
+* scene graphs
+* resource management
+* rendering loops
+* animation systems
+
+---
+
+# Stage 10: Advanced Topics
+
+After fundamentals:
+
+## Real-time Rendering
+
+Learn:
+
+* shadow mapping
+* anti-aliasing
+* HDR
+* post-processing
+
+---
+
+## Computer Animation
+
+Learn:
+
+* interpolation
+* keyframes
+* skeletal animation
+
+---
+
+## Ray Tracing
+
+Instead of:
+
+```text
+Object → Camera
+```
+
+simulate:
+
+```text
+Light → Object → Camera
+```
+
+Learn:
+
+* rays
+* reflections
+* global illumination
+
+---
+
+# Project-Based Roadmap
+
+A practical sequence:
+
+## Beginner
+
+1. Pixel drawing program
+2. Line and circle renderer
+3. Paint application
+4. Image editor
+
+---
+
+## Intermediate
+
+5. 2D game engine
+6. Triangle rasterizer
+7. Simple 3D renderer
+8. OBJ model viewer
+
+---
+
+## Advanced
+
+9. OpenGL renderer
+10. Small graphics engine
+11. Ray tracer
+12. Real-time 3D application
+
+---
+
+# Recommended Books
+
+## Beginner
+
+Computer Graphics with OpenGL
+
+Focus:
+
+* basic rendering
+* OpenGL concepts
+
+---
+
+## Intermediate
+
+Computer Graphics: Principles and Practice
+
+Focus:
+
+* algorithms
+* mathematics
+* theory
+
+---
+
+## Advanced
+
+Physically Based Rendering: From Theory to Implementation
+
+Focus:
+
+* modern rendering
+* ray tracing
+
+---
+
+# The Complete Learning Map
+
+```text
+Programming
+     |
+     v
+Mathematics
+     |
+     v
+Pixels and Images
+     |
+     v
+2D Algorithms
+     |
+     v
+2D Graphics Libraries
+     |
+     v
+3D Mathematics
+     |
+     v
+Rendering Pipeline
+     |
+     v
+OpenGL/Vulkan
+     |
+     v
+GPU Programming
+     |
+     v
+Graphics Engine Design
+```
+
+---
+
+Given your previous learning path (**computer systems → software engineering → GUI → OOP → Java**), a particularly strong route would be:
+
+**JavaFX Canvas → 2D graphics algorithms → linear algebra → OpenGL → GPU shaders → graphics engine design**
+
+This path will also explain *why GUI works internally*, because GUI frameworks are essentially **specialized computer graphics systems with event handling added on top**.
