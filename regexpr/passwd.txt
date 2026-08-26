@@ -1,6 +1,0 @@
-vivek:x:1000:1000:Vivek Gite,,,:/home/vivek:/bin/bash
-vivekgite:x:1001:1001::/home/vivekgite:/bin/sh
-Vivek
-gitevivek:x:1002:1002::/home/gitevivek:/bin/sh
-vivek9xr
-vivek10dollar
