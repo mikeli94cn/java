@@ -1,3 +1,7 @@
+with chatgpt
+
+Q: please introduce nested class in java
+
 Certainly. **Nested classes** are an important Java OOP feature, although they are usually learned after you understand ordinary classes, objects, inheritance, and interfaces.
 
 # 1. What is a nested class?
