@@ -1,4 +1,6 @@
-Great question! **Sealed classes** are an advanced feature introduced in **Java 17** (as a standard feature; previewed earlier in Java 15 and Java 16). They are used to **restrict which classes can inherit from another class or implement an interface**.
+Q: sealed class introduction
+
+A: **Sealed classes** are an advanced feature introduced in **Java 17** (as a standard feature; previewed earlier in Java 15 and Java 16). They are used to **restrict which classes can inherit from another class or implement an interface**.
 
 Before sealed classes, Java inheritance was "open" by default: if a class was `public`, anyone could extend it (unless it was `final`). Sealed classes give developers more control over the class hierarchy.
 
