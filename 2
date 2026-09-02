@@ -1,0 +1,501 @@
+Great question! **Sealed classes** are an advanced feature introduced in **Java 17** (as a standard feature; previewed earlier in Java 15 and Java 16). They are used to **restrict which classes can inherit from another class or implement an interface**.
+
+Before sealed classes, Java inheritance was "open" by default: if a class was `public`, anyone could extend it (unless it was `final`). Sealed classes give developers more control over the class hierarchy.
+
+---
+
+## 1. The problem before sealed classes
+
+Suppose we create a payment system:
+
+```java
+class Payment {
+    // common payment logic
+}
+
+class CreditCardPayment extends Payment {
+}
+
+class PaypalPayment extends Payment {
+}
+
+class BitcoinPayment extends Payment {
+}
+```
+
+The problem:
+
+Anyone can create another subclass:
+
+```java
+class FakePayment extends Payment {
+}
+```
+
+Maybe we don't want that. We want our system to allow only:
+
+* CreditCardPayment
+* PaypalPayment
+* BitcoinPayment
+
+This is where **sealed classes** help.
+
+---
+
+# 2. Basic syntax of sealed class
+
+A sealed class uses the keyword:
+
+```java
+sealed class Parent permits Child1, Child2 {
+}
+```
+
+Example:
+
+```java
+sealed class Payment
+        permits CreditCardPayment, PaypalPayment {
+
+}
+
+final class CreditCardPayment extends Payment {
+
+}
+
+final class PaypalPayment extends Payment {
+
+}
+```
+
+Now Java knows:
+
+```
+Payment
+ ├── CreditCardPayment
+ └── PaypalPayment
+```
+
+No other class can extend `Payment`.
+
+This will cause a compile error:
+
+```java
+class BitcoinPayment extends Payment {
+
+}
+```
+
+Error:
+
+```
+class is not allowed to extend sealed class Payment
+```
+
+---
+
+# 3. Why does Java need sealed classes?
+
+The main reasons are:
+
+## 1. Better control of inheritance
+
+Traditional inheritance:
+
+```
+Animal
+  |
+  |---- Dog
+  |---- Cat
+  |---- Snake
+  |---- UnknownClass
+```
+
+You cannot know all possible subclasses.
+
+With sealed classes:
+
+```
+sealed Animal
+
+      permits
+
+       Dog
+       Cat
+       Snake
+```
+
+The compiler knows the complete hierarchy.
+
+---
+
+## 2. Better pattern matching
+
+Sealed classes work extremely well with Java 21 pattern matching.
+
+Example:
+
+```java
+sealed interface Shape
+        permits Circle, Rectangle {
+}
+
+
+final class Circle implements Shape {
+    double radius;
+}
+
+
+final class Rectangle implements Shape {
+    double width;
+    double height;
+}
+```
+
+Now:
+
+```java
+static double area(Shape shape) {
+
+    return switch(shape) {
+
+        case Circle c ->
+                Math.PI * c.radius * c.radius;
+
+        case Rectangle r ->
+                r.width * r.height;
+    };
+}
+```
+
+Notice something important:
+
+There is no `default` case.
+
+Why?
+
+Because Java knows:
+
+```
+Shape can only be:
+
+Circle
+Rectangle
+```
+
+The compiler can check completeness.
+
+This is called **exhaustive pattern matching**.
+
+---
+
+# 4. Sealed class rules
+
+A class extending a sealed class must declare one of three things:
+
+## Option 1: final
+
+Meaning:
+
+"No more inheritance."
+
+Example:
+
+```java
+final class Circle extends Shape {
+
+}
+```
+
+Hierarchy:
+
+```
+Shape
+ |
+ Circle
+```
+
+---
+
+## Option 2: sealed
+
+Meaning:
+
+"Continue restricting inheritance."
+
+Example:
+
+```java
+sealed class Vehicle
+        permits Car {
+
+}
+
+
+sealed class Car extends Vehicle
+        permits BMW, Tesla {
+
+}
+
+
+final class BMW extends Car {
+
+}
+
+
+final class Tesla extends Car {
+
+}
+```
+
+Hierarchy:
+
+```
+Vehicle
+ |
+ Car
+ |
+ +---- BMW
+ |
+ +---- Tesla
+```
+
+---
+
+## Option 3: non-sealed
+
+Meaning:
+
+"Open inheritance again."
+
+Example:
+
+```java
+sealed class Animal
+        permits Dog, WildAnimal {
+
+}
+
+
+final class Dog extends Animal {
+
+}
+
+
+non-sealed class WildAnimal extends Animal {
+
+}
+```
+
+Now:
+
+```java
+class Tiger extends WildAnimal {
+
+}
+```
+
+is allowed.
+
+Hierarchy:
+
+```
+Animal
+ |
+ +-- Dog
+ |
+ +-- WildAnimal
+          |
+          +-- Tiger
+          +-- Lion
+          +-- Any class
+```
+
+---
+
+# 5. Sealed class vs abstract class
+
+They solve different problems.
+
+| Feature                   | Abstract Class          | Sealed Class        |
+| ------------------------- | ----------------------- | ------------------- |
+| Purpose                   | Provide common behavior | Control inheritance |
+| Can have fields           | Yes                     | Yes                 |
+| Can have methods          | Yes                     | Yes                 |
+| Can have abstract methods | Yes                     | Yes                 |
+| Restrict subclasses       | No                      | Yes                 |
+| Introduced                | Java 1.2                | Java 17             |
+
+Example:
+
+Abstract class:
+
+```java
+abstract class Animal {
+
+    abstract void sound();
+
+}
+```
+
+Anyone can extend:
+
+```java
+class Dog extends Animal {}
+class Cat extends Animal {}
+class Robot extends Animal {}
+```
+
+---
+
+Sealed class:
+
+```java
+sealed abstract class Animal
+        permits Dog, Cat {
+
+    abstract void sound();
+}
+```
+
+Only:
+
+```
+Animal
+ |
+ +-- Dog
+ +-- Cat
+```
+
+---
+
+# 6. Sealed interface example
+
+Sealed interfaces are also very common.
+
+Example:
+
+```java
+sealed interface Payment
+        permits CreditCard, Cash {
+
+}
+
+
+final class CreditCard implements Payment {
+
+}
+
+
+final class Cash implements Payment {
+
+}
+```
+
+---
+
+# 7. Real-world usage
+
+Sealed classes are useful in:
+
+## 1. Domain modeling
+
+Example:
+
+Order status:
+
+```java
+sealed interface OrderStatus
+        permits Pending, Paid, Cancelled {
+}
+
+
+record Pending() implements OrderStatus {}
+
+record Paid() implements OrderStatus {}
+
+record Cancelled() implements OrderStatus {}
+```
+
+You guarantee:
+
+```
+OrderStatus
+ |
+ +-- Pending
+ +-- Paid
+ +-- Cancelled
+```
+
+---
+
+## 2. API design
+
+Example:
+
+A library designer may say:
+
+"Users can use these types, but they cannot create new ones."
+
+---
+
+## 3. Functional programming style
+
+Java now has features similar to languages like:
+
+* Scala
+* Kotlin
+* Rust
+* Haskell
+
+where "algebraic data types" are common.
+
+---
+
+# 8. Is sealed class an advanced topic?
+
+Yes. I would place it here:
+
+```
+Beginner Java
+ |
+ +-- Variables
+ +-- Classes
+ +-- Objects
+ +-- Inheritance
+ +-- Interfaces
+ |
+Intermediate Java
+ |
+ +-- Generics
+ +-- Collections
+ +-- Exceptions
+ +-- Streams
+ |
+Advanced Java
+ |
+ +-- Reflection
+ +-- Annotations
+ +-- Concurrency
+ +-- JVM internals
+ +-- Sealed Classes
+ +-- Records
+ +-- Pattern Matching
+```
+
+For a Java beginner, learn sealed classes **after** you understand:
+
+1. Classes and objects
+2. Inheritance
+3. Abstract classes
+4. Interfaces
+5. Polymorphism
+
+---
+
+Since you are learning **Java 21**, sealed classes are especially important because they combine with two Java 21 features:
+
+* **record classes**
+* **pattern matching switch**
+
+Together they allow Java to write code in a much more modern style similar to functional programming.
