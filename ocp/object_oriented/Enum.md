@@ -135,9 +135,8 @@ enum Operation {
 
 ---
 
-If you want, I can show how enums compare with `#define` in C or `enum` in C++ (very common exam question).
 
----
+
 
 In Java, you **don’t compare an enum directly with a string**. Instead, you convert one side so both are the same type.
 
@@ -240,9 +239,7 @@ if (Day.valueOf(input.toUpperCase()) == Day.MONDAY) {
 
 ---
 
-If you want, I can show a **safe utility method** that avoids crashes when converting strings to enums.
 
----
 
 In Java, an **`enum` (enumeration)** is a special type used to represent a **fixed set of constant values** in a clean and type-safe way.
 
@@ -406,6 +403,5 @@ for (Day d : Day.values()) {
 * Can include fields, methods, and logic
 * Acts like a **class with predefined instances**
 
----
 
 
