@@ -11,7 +11,7 @@ public class LeetCode9 {
         } else {
             List<Integer> arr = new ArrayList<>();
             boolean res = true;
-            if (x != 0) {
+            while (x != 0) {
                 arr.add(x % 10);
                 x = x / 10;
             }
