@@ -1,3 +1,5 @@
+import java.util.Set;
+import java.util.HashSet;
 
 public class SingleLink {
 
@@ -173,5 +175,22 @@ public class SingleLink {
             head = head.next;
         }
         head.next = new SingleLink();
+    }
+
+    static boolean checkCycle(SingleLink head){
+        boolean res=false;
+        head=head.next;
+        
+        Set<SingleLink> set=new HashSet<SingleLink>();
+        while (head.next!=null) {
+            if(set.contains(head)){
+                res=true;
+                break;
+            }else{
+                set.add(head);
+                head=head.next;
+            }
+        }
+        return res;
     }
 }
