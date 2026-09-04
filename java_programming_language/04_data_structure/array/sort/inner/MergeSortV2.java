@@ -17,7 +17,7 @@ public class MergeSortV2 {
         //int[] arr = {7, 2, 4, 6, 1, 5, 3};
         //int[] arr = {1, 1, 4, 2, 1, 3};
         int[] arr = {7, 3, 5, 5, 1, 2, 2, 3, 9, 2, 2, 7, 1, 7, 3, 2, 3, 6, 6, 7};
-        MergeSortIter test = new MergeSortIter();
+        MergeSortV2 test = new MergeSortV2();
         System.out.println(Arrays.toString(arr));
         int[] bakArr = new int[arr.length];
         //test.mergeSortIter(arr, bakArr);
