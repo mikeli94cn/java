@@ -7,25 +7,25 @@ To become a successful Java Back-End Developer, you need a blend of strong core 
 Employers typically categorize required skills into Core Java, Frameworks, Databases, and Software Engineering tools. [1, 2] 
 ## ☕ Core Java (The Foundation)
 
-* Object-Oriented Programming (OOP): Deep understanding of Polymorphism, Inheritance, Encapsulation, and Abstraction.
-* Java Fundamentals: Exception handling, Generics, File I/O, and Memory Management (Stack vs. Heap, Garbage Collection).
-* Collections Framework: Know how ArrayList, HashMap, and HashSet work internally (e.g., how a HashMap handles collisions).
-* Modern Java Features: Proficiency with Java 8 and above, specifically Lambda Expressions, Streams API, Functional Interfaces, and the Optional class.
-* Concurrency: Multithreading, Thread Pools, and synchronization. [1, 2, 3, 4, 5, 6] 
+- **Object-Oriented Programming (OOP)**: Deep understanding of Polymorphism, Inheritance, Encapsulation, and Abstraction.
+- **Java Fundamentals**: Exception handling, Generics, File I/O, and Memory Management (Stack vs. Heap, Garbage Collection).
+- **Collections Framework**: Know how ArrayList, HashMap, and HashSet work internally (e.g., how a HashMap handles collisions).
+- **Modern Java Features**: Proficiency with Java 8 and above, specifically Lambda Expressions, Streams API, Functional Interfaces, and the Optional class.
+- **Concurrency**: Multithreading, Thread Pools, and synchronization. [1, 2, 3, 4, 5, 6] 
 
 
 ## 🚀 Frameworks & APIs
 
-* Spring Framework & Spring Boot: This is the industry standard. You must master Dependency Injection (IoC), Spring MVC, and Spring Security.
-* RESTful APIs: Designing, building, and securing JSON-based web services.
-* ORM / Data Access: Hibernate and Spring Data JPA for mapping Java objects to database tables. [1, 2, 3, 4, 7] 
+- **Spring Framework & Spring Boot**: This is the industry standard. You must master Dependency Injection (IoC), Spring MVC, and Spring Security.
+- **RESTful APIs**: Designing, building, and securing JSON-based web services.
+- **ORM / Data Access**: Hibernate and Spring Data JPA for mapping Java objects to database tables. [1, 2, 3, 4, 7] 
 
 
 ## 💾 Databases & Infrastructure
 
-* Relational Databases (SQL): Writing complex queries, indexing, and optimization in PostgreSQL, MySQL, or Oracle.
-* NoSQL (Optional but highly valued): Basic knowledge of MongoDB or Redis (for caching).
-* Build Tools & Devops: Mastery of Maven or Gradle, along with Git for version control. Understanding Docker containerization is also standard practice. [1, 2, 4, 8, 9, 10] 
+- **Relational Databases (SQL)**: Writing complex queries, indexing, and optimization in PostgreSQL, MySQL, or Oracle.
+- **NoSQL (Optional but highly valued)**: Basic knowledge of MongoDB or Redis (for caching).
+- **Build Tools & Devops**: Mastery of Maven or Gradle, along with Git for version control. Understanding Docker containerization is also standard practice. [1, 2, 4, 8, 9, 10] 
 
 
 ------------------------------
@@ -47,8 +47,8 @@ Technical interviews for Java roles usually follow a 3-to-4 stage structure. Her
 ------------------------------
 To give you the most tailored advice, could you tell me:
 
-* What is your current experience level (e.g., fresh graduate, transitioning from another language, or senior developer)?
-* Do you have an upcoming interview scheduled, and if so, what format is the technical test (e.g., timed HackerRank, take-home project, or live coding)? [2, 9] 
+- What is your current experience level (e.g., fresh graduate, transitioning from another language, or senior developer)?
+- Do you have an upcoming interview scheduled, and if so, what format is the technical test (e.g., timed HackerRank, take-home project, or live coding)? [2, 9] 
 
 
 
