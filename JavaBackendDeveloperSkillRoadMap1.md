@@ -1,4 +1,4 @@
-Q:
+Q: please show me java back-end developer requirement , and what skills should i have, and how to prepare employment interview test
 
 Absolutely. Given the Java topics you've already been studying—Collections, Streams, concurrency, JVM, NIO, Spring Boot, Netty, etc.—you are already covering many of the areas expected from a **Java backend developer**.
 
