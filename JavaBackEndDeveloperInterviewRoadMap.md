@@ -1,3 +1,5 @@
+Q:
+
 Absolutely. Given the Java topics you've already been studying—Collections, Streams, concurrency, JVM, NIO, Spring Boot, Netty, etc.—you are already covering many of the areas expected from a **Java backend developer**.
 
 The important thing now is to organize them into an **employment-oriented roadmap** rather than learning Java features independently.
