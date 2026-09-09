@@ -1,0 +1,114 @@
+Java is a popular, object-oriented programming language used widely for building enterprise applications, Android mobile apps, web servers, and big data systems. Its core philosophy is "Write Once, Run Anywhere" (WORA), meaning compiled Java code can run on any device equipped with a Java Virtual Machine (JVM). 
+
+Here is a breakdown of the foundational concepts you need to get started.
+
+------------------------------
+## 1. The Structure of a Java Program
+Every line of code that executes in Java must be inside a Class. By convention, the name of the class must match the name of the Java file. 
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+* public class Main: Defines a class named Main that is accessible to other parts of the program.
+* public static void main(...): This is the main method, which serves as the mandatory entry point for any Java application. The computer looks for this method to start executing your code.
+* System.out.println(): A built-in command used to print text or values to the console screen. 
+
+
+------------------------------
+## 2. Variables and Data Types
+Java is a strongly typed language, meaning you must explicitly declare what kind of data a variable will hold before you can use it. Data types are divided into two main categories: 
+## Primitive Data Types
+These are simple, built-in types that hold basic data directly in memory: 
+
+* int: For integers / whole numbers (e.g., int age = 25;)
+* double: For decimal / floating-point numbers (e.g., double price = 19.99;)
+* boolean: For true/false values (e.g., boolean isJavaFun = true;)
+* char: For single characters enclosed in single quotes (e.g., char grade = 'A';) 
+
+
+## Non-Primitive (Reference) Data Types
+These are more complex objects and sequences: 
+
+
+* String: Used to hold sequences of text, enclosed in double quotes (e.g., String greeting = "Hello";).
+* Arrays: Fixed-size containers that store multiple values of the same data type (e.g., int[] numbers = {1, 2, 3};). 
+  
+
+------------------------------
+## 3. Operators
+Operators are special symbols used to manipulate data and perform calculations: 
+
+
+* Arithmetic: + (addition), - (subtraction), * (multiplication), / (division), and % (modulo, which returns the remainder).
+* Relational: Used to compare values, returning true or false (e.g., == equal to, != not equal, > greater than, < less than).
+* Logical: Used to combine conditions: && (Logical AND), || (Logical OR), and ! (Logical NOT). 
+  
+
+------------------------------
+## 4. Control Flow (Decision Making and Loops)
+Control flow structures determine which lines of code execute based on conditions or repetitions. 
+## If/Else Statements
+Executes a block of code only if a specific condition evaluates to true. 
+```java
+int score = 75;
+if (score >= 50) {
+    System.out.println("You passed!");
+} else {
+    System.out.println("You failed.");
+}
+```
+## Loops
+Loops allow you to repeat a block of code multiple times. 
+
+
+* for loop: Best when you know exactly how many times you want to loop.
+```java
+for (int i = 1; i <= 3; i++) {
+    System.out.println("Iteration: " + i);
+}
+```
+* while loop: Repeats as long as a specified condition remains true.
+```java
+int count = 1;while (count <= 3) {
+    System.out.println("Count: " + count);
+    count++;
+}
+```
+
+
+
+------------------------------
+## 5. Object-Oriented Programming (OOP)
+Java is fundamentally built around OOP, which organizes software design around data, or "objects," rather than functions. 
+
+
+* Class: A blueprint or template for creating objects (e.g., a Car blueprint).
+* Object: A specific instance of a class (e.g., a specific physical car built from that blueprint). 
+  
+```java
+class Car {
+    String color; // Attribute
+    
+    void drive() { // Method / Behavior
+        System.out.println("The car is moving.");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car(); // Creating an object of the Car class
+        myCar.color = "Red";   // Setting an attribute
+        myCar.drive();         // Calling a method
+    }
+}
+```
+
+------------------------------
+To help you take the next step in learning Java, would you like to:
+
+   1. See the instructions on how to download and install a Java Development Kit (JDK) and an IDE like IntelliJ IDEA?
+   2. Practice with a simple coding exercise (like building a basic calculator)?
+   3. Dive deeper into OOP concepts like Inheritance and Encapsulation?
