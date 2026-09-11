@@ -52,7 +52,7 @@ Your responsibilities may include:
 
 So **"knowing Java" is only one part of being a Java backend developer.**
 
----
+
 
 # 2. The skill tree
 
@@ -129,7 +129,7 @@ Java Backend Developer
     └── Project discussion
 ```
 
----
+
 
 # 3. Java — you need to be strong here
 
@@ -166,7 +166,7 @@ and answer:
 
 > Which method is actually executed and why?
 
----
+
 
 # 4. Collections are extremely important
 
@@ -232,7 +232,7 @@ You should also understand the internal structure of `HashMap`.
 
 That's a very common interview topic.
 
----
+
 
 # 5. Java 8+ is especially important
 
@@ -285,7 +285,7 @@ sorted
 collect
 ```
 
----
+
 
 # 6. Concurrency is one of the most important interview areas
 
@@ -352,7 +352,7 @@ write
 
 is not one atomic operation.
 
----
+
 
 # 7. JVM knowledge
 
@@ -390,7 +390,7 @@ You should be able to answer:
 
 > What is the difference between `Error` and `Exception`?
 
----
+
 
 # 8. SQL is absolutely necessary
 
@@ -447,7 +447,7 @@ LEFT JOIN orders o
 GROUP BY u.id, u.name;
 ```
 
----
+
 
 # 9. Database internals matter too
 
@@ -491,7 +491,7 @@ With an index:
 
 You don't necessarily need to become a database administrator, but you should understand **query plans, indexes, transactions and locking**.
 
----
+
 
 # 10. HTTP / Web fundamentals
 
@@ -552,7 +552,7 @@ Also:
 * authentication
 * authorization
 
----
+
 
 # 11. Spring Boot is probably the most important framework
 
@@ -623,7 +623,7 @@ HTTP response
 
 This kind of understanding is much more valuable than memorizing annotations.
 
----
+
 
 # 12. Spring topics to learn
 
@@ -671,7 +671,7 @@ Don't start with Spring Cloud.
 
 Build strong foundations first.
 
----
+
 
 # 13. JPA / Hibernate
 
@@ -717,7 +717,7 @@ SELECT orders for user 3
 
 You should know why this is bad and how `fetch join`, entity graphs, batching, etc. can address it.
 
----
+
 
 # 14. Testing
 
@@ -752,7 +752,7 @@ A unit test might test the Service alone with a mocked Repository.
 
 An integration test might use a real database.
 
----
+
 
 # 15. Git / Linux / Maven
 
@@ -813,7 +813,7 @@ package
 JAR
 ```
 
----
+
 
 # 16. Docker
 
@@ -844,7 +844,7 @@ Spring Boot
 
 using Docker Compose.
 
----
+
 
 # 17. What about Redis and Kafka?
 
@@ -891,7 +891,7 @@ Order Service
       └──────────────► Notification Service
 ```
 
----
+
 
 # 18. System design
 
@@ -944,7 +944,7 @@ How do we avoid duplicate URLs?
 How do we handle millions of requests?
 ```
 
----
+
 
 # 19. The interview is usually several different tests
 
@@ -966,7 +966,7 @@ Think of it as:
    SQL             DB            Trade-offs
 ```
 
----
+
 
 # 20. Coding test preparation
 
@@ -1042,7 +1042,7 @@ You don't need to solve 1,000 problems.
 
 I'd rather see you solve **100 carefully selected problems** and understand the patterns.
 
----
+
 
 # 21. Your Java coding-test template
 
@@ -1080,7 +1080,7 @@ Dynamic programming?
 
 The key skill is **pattern recognition**, not memorizing solutions.
 
----
+
 
 # 22. Technical interview questions you should practice
 
@@ -1162,7 +1162,7 @@ JPA vs Hibernate?
 What causes N+1?
 ```
 
----
+
 
 # 23. The most important thing: build one serious project
 
@@ -1231,7 +1231,7 @@ Docker
 
 This single project can give you material for **dozens of interview questions**.
 
----
+
 
 # 24. Your preparation roadmap
 
@@ -1284,7 +1284,7 @@ Phase 15
 Interview practice
 ```
 
----
+
 
 # 25. How I would divide your study time
 
@@ -1312,7 +1312,7 @@ And once you start interviewing:
 10%  Project / behavioral
 ```
 
----
+
 
 # 26. A very practical 12-week plan
 
@@ -1421,7 +1421,7 @@ Every day:
 
 And repeatedly explain your project out loud.
 
----
+
 
 # 27. One important distinction
 
@@ -1481,7 +1481,7 @@ Aim for:
 
 > **Very strong Level 1 + meaningful parts of Level 2.**
 
----
+
 
 ## 28. Based on what you've already studied
 
