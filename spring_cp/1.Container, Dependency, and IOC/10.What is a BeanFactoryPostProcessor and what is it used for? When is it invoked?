@@ -1,0 +1,709 @@
+# What is a `BeanFactoryPostProcessor` and what is it used for? When is it invoked?
+
+This is an advanced but very important Spring IoC topic because it explains **how Spring modifies Bean definitions before creating actual Bean objects**.
+
+The key idea:
+
+> **A `BeanFactoryPostProcessor` is a Spring extension point that allows you to modify Bean definitions inside the container before Beans are instantiated.**
+
+The most important words are:
+
+```
+BeanFactoryPostProcessor
+        |
+        ↓
+modify Bean definitions
+        |
+        ↓
+before Bean creation
+```
+
+---
+
+# 1. First understand the difference: BeanDefinition vs Bean
+
+Before understanding `BeanFactoryPostProcessor`, we need to understand two concepts.
+
+## BeanDefinition
+
+A **BeanDefinition** is a description of a Bean.
+
+It contains information like:
+
+```text
+Bean class
+Scope
+Constructor arguments
+Properties
+Initialization method
+Lazy/eager setting
+```
+
+Example:
+
+```java
+@Component
+public class UserService {
+
+}
+```
+
+Spring does not immediately create:
+
+```java
+new UserService();
+```
+
+Instead, it first creates metadata:
+
+```text
+BeanDefinition:
+
+Class:
+    UserService
+
+Scope:
+    singleton
+
+Lazy:
+    false
+```
+
+Then later it creates the actual object.
+
+---
+
+## Bean
+
+A Bean is the actual Java object.
+
+Example:
+
+```java
+UserService service = new UserService();
+```
+
+The relationship:
+
+```
+BeanDefinition
+        |
+        | tells Spring how to create
+        ↓
+Actual Bean Object
+```
+
+---
+
+# 2. Where does `BeanFactoryPostProcessor` fit?
+
+The Spring startup process looks like this:
+
+```
+ApplicationContext starts
+          |
+          ↓
+Read configuration
+          |
+          ↓
+Create BeanDefinitions
+          |
+          ↓
+BeanFactoryPostProcessor
+          |
+          ↓
+Create Bean objects
+          |
+          ↓
+BeanPostProcessor
+          |
+          ↓
+Bean ready
+```
+
+The important point:
+
+> `BeanFactoryPostProcessor` runs **after BeanDefinitions are loaded but before Beans are created**.
+
+---
+
+# 3. BeanFactoryPostProcessor lifecycle position
+
+Let's compare it with other Spring extension points.
+
+```
+              ApplicationContext startup
+
+                     |
+                     ↓
+
+          Load Bean Definitions
+
+                     |
+                     ↓
+
+        BeanFactoryPostProcessor
+        (modify definitions)
+
+                     |
+                     ↓
+
+          Create Bean instances
+
+                     |
+                     ↓
+
+        BeanPostProcessor
+        (modify Bean objects)
+
+                     |
+                     ↓
+
+              Bean ready
+```
+
+This distinction is extremely important.
+
+---
+
+# 4. BeanFactoryPostProcessor vs BeanPostProcessor
+
+Many interview questions compare these two.
+
+## BeanFactoryPostProcessor
+
+Works on:
+
+```
+BeanDefinition
+```
+
+Timing:
+
+```
+Before Bean creation
+```
+
+Purpose:
+
+```
+Change how Beans will be created
+```
+
+---
+
+## BeanPostProcessor
+
+Works on:
+
+```
+Actual Bean object
+```
+
+Timing:
+
+```
+After Bean creation
+```
+
+Purpose:
+
+```
+Modify Bean instances
+```
+
+---
+
+Comparison:
+
+|          | BeanFactoryPostProcessor      | BeanPostProcessor      |
+| -------- | ----------------------------- | ---------------------- |
+| Works on | BeanDefinition                | Bean object            |
+| Runs     | Before Bean creation          | After Bean creation    |
+| Purpose  | Change metadata/configuration | Change object behavior |
+| Example  | Property modification         | AOP proxy creation     |
+
+Remember:
+
+```
+FactoryPostProcessor
+        ↓
+"What kind of Bean should Spring create?"
+
+PostProcessor
+        ↓
+"How should Spring process this Bean object?"
+```
+
+---
+
+# 5. Why do we need `BeanFactoryPostProcessor`?
+
+Spring needs a mechanism to modify configuration dynamically.
+
+Examples:
+
+## 1. Change Bean properties
+
+Imagine:
+
+```java
+@Component
+public class DatabaseService {
+
+    private String url;
+
+}
+```
+
+Before creating it, you may want Spring to replace:
+
+```
+url = ${database.url}
+```
+
+with:
+
+```
+url = jdbc:mysql://localhost/db
+```
+
+A `BeanFactoryPostProcessor` can modify the Bean definition.
+
+---
+
+## 2. Property placeholder resolution
+
+A very common example:
+
+```properties
+database.url=jdbc:mysql://localhost/test
+```
+
+Bean:
+
+```java
+@Component
+public class DatabaseService {
+
+    @Value("${database.url}")
+    private String url;
+
+}
+```
+
+Spring internally uses a special BeanFactoryPostProcessor:
+
+```
+PropertySourcesPlaceholderConfigurer
+```
+
+It replaces:
+
+```
+${database.url}
+```
+
+with:
+
+```
+jdbc:mysql://localhost/test
+```
+
+before the Bean is created.
+
+---
+
+## 3. Change Bean metadata
+
+For example:
+
+Change:
+
+```
+scope = singleton
+```
+
+to:
+
+```
+scope = prototype
+```
+
+or:
+
+```
+lazy = false
+```
+
+to:
+
+```
+lazy = true
+```
+
+before Spring creates the object.
+
+---
+
+# 6. Creating a custom BeanFactoryPostProcessor
+
+You can implement it yourself.
+
+Example:
+
+```java
+@Component
+public class MyBeanFactoryPostProcessor
+        implements BeanFactoryPostProcessor {
+
+
+    @Override
+    public void postProcessBeanFactory(
+            ConfigurableListableBeanFactory beanFactory) {
+
+        System.out.println(
+            "Modifying Bean definitions");
+    }
+}
+```
+
+The method:
+
+```java
+postProcessBeanFactory()
+```
+
+is called by Spring.
+
+---
+
+# 7. Example: modifying a Bean definition
+
+Suppose:
+
+```java
+@Component
+public class UserService {
+
+}
+```
+
+Spring creates:
+
+```
+BeanDefinition:
+    UserService
+    scope=singleton
+```
+
+A post processor can change it:
+
+```java
+@Component
+public class CustomProcessor
+        implements BeanFactoryPostProcessor {
+
+
+    @Override
+    public void postProcessBeanFactory(
+        ConfigurableListableBeanFactory factory) {
+
+
+        BeanDefinition definition =
+            factory.getBeanDefinition("userService");
+
+
+        definition.setLazyInit(true);
+    }
+}
+```
+
+Now Spring creates:
+
+```
+UserService
+    |
+    ↓
+lazy initialization enabled
+```
+
+---
+
+# 8. When is `BeanFactoryPostProcessor` invoked?
+
+The answer:
+
+> **It is invoked during ApplicationContext startup, after BeanDefinitions are loaded but before any Beans are instantiated.**
+
+The timeline:
+
+```
+ApplicationContext.refresh()
+             |
+             ↓
+Load BeanDefinitions
+             |
+             ↓
+Invoke BeanFactoryPostProcessors
+             |
+             ↓
+Instantiate Beans
+             |
+             ↓
+Initialize Beans
+             |
+             ↓
+Application ready
+```
+
+---
+
+# 9. Why must it run before Bean creation?
+
+Consider this:
+
+```java
+@Component
+class MyService {
+
+    private String name;
+
+}
+```
+
+Suppose a post processor changes:
+
+```
+name = "Spring"
+```
+
+If the Bean already exists:
+
+```
+MyService object created
+        |
+        ↓
+too late
+```
+
+Therefore:
+
+```
+Modify definition first
+        |
+        ↓
+Create object later
+```
+
+---
+
+# 10. Built-in examples
+
+Spring provides several important implementations.
+
+## PropertySourcesPlaceholderConfigurer
+
+Handles:
+
+```java
+@Value("${property}")
+```
+
+Example:
+
+```java
+@Value("${server.port}")
+private int port;
+```
+
+It resolves:
+
+```
+${server.port}
+```
+
+before Bean creation.
+
+---
+
+## ConfigurationClassPostProcessor
+
+This is a very important Spring internal class.
+
+It processes:
+
+```java
+@Configuration
+@ComponentScan
+@Bean
+```
+
+Example:
+
+```java
+@Configuration
+@ComponentScan("com.example")
+public class AppConfig {
+
+}
+```
+
+Spring uses:
+
+```
+ConfigurationClassPostProcessor
+```
+
+to discover:
+
+* configuration classes
+* component scanning
+* `@Bean` methods
+
+---
+
+# 11. Relationship with ApplicationContext
+
+The whole startup process:
+
+```
+ApplicationContext
+          |
+          ↓
+BeanFactory
+          |
+          ↓
+Bean Definitions
+          |
+          ↓
+BeanFactoryPostProcessor
+          |
+          ↓
+Bean creation
+          |
+          ↓
+BeanPostProcessor
+          |
+          ↓
+Beans ready
+```
+
+---
+
+# 12. Why is the name confusing?
+
+The name:
+
+```
+BeanFactoryPostProcessor
+```
+
+can be confusing.
+
+It does **not** mean:
+
+> "process BeanFactory objects"
+
+It means:
+
+> "a processor that modifies the BeanFactory's Bean definitions."
+
+More clearly:
+
+```
+BeanFactory
+     |
+     |
+     +---- BeanDefinitions
+              |
+              ↓
+      BeanFactoryPostProcessor
+```
+
+---
+
+# 13. BeanFactoryPostProcessor vs FactoryBean
+
+Do not confuse these.
+
+## BeanFactoryPostProcessor
+
+A Spring extension point:
+
+```
+modify Bean definitions
+```
+
+Example:
+
+```java
+implements BeanFactoryPostProcessor
+```
+
+---
+
+## FactoryBean
+
+A special Bean that creates other Beans.
+
+Example:
+
+```java
+public class MyFactoryBean
+        implements FactoryBean<MyObject> {
+
+}
+```
+
+Different concepts.
+
+---
+
+# 14. Exam-ready answer
+
+Question:
+
+> **What is a BeanFactoryPostProcessor and what is it used for? When is it invoked?**
+
+A strong answer:
+
+> **A `BeanFactoryPostProcessor` is a Spring extension point that allows modification of Bean definitions inside the `BeanFactory` before the actual Beans are created. It is commonly used for changing Bean metadata, resolving property placeholders, or modifying configuration. It is invoked during `ApplicationContext` startup after Bean definitions have been loaded but before any Beans are instantiated.**
+
+---
+
+# 15. The most important diagram to memorize
+
+```
+ApplicationContext startup
+
+        ↓
+
+Load BeanDefinitions
+
+        ↓
+
+BeanFactoryPostProcessor
+        |
+        | modify definitions
+        ↓
+
+Create Bean objects
+
+        ↓
+
+BeanPostProcessor
+        |
+        | modify Bean instances
+        ↓
+
+Bean ready
+```
+
+---
+
+## One-line interview answer
+
+> **`BeanFactoryPostProcessor` modifies Bean definitions before Spring creates Beans; it runs during context initialization after configuration loading and before Bean instantiation.**
+
+This topic is the bridge between **basic Spring IoC** and **Spring framework internals**.
