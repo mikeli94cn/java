@@ -1,0 +1,1028 @@
+# What is an Interface in Java?
+
+An **interface** is a Java type that defines a **contract**: it specifies what a class can do without necessarily specifying how it does it.
+
+For example:
+
+```java
+interface Animal {
+
+    void makeSound();
+
+}
+```
+
+This says:
+
+> Any class that implements `Animal` must provide a `makeSound()` method.
+
+Now we can create different implementations:
+
+```java
+class Dog implements Animal {
+
+    @Override
+    public void makeSound() {
+        System.out.println("Woof");
+    }
+
+}
+```
+
+```java
+class Cat implements Animal {
+
+    @Override
+    public void makeSound() {
+        System.out.println("Meow");
+    }
+
+}
+```
+
+Both classes follow the same contract:
+
+```text
+          Animal
+        <<interface>>
+              |
+       +------+------+
+       |             |
+       v             v
+      Dog           Cat
+```
+
+---
+
+# 1. The basic idea: a contract
+
+Think of an interface as a **set of rules**.
+
+```java
+interface PaymentService {
+
+    void pay(double amount);
+
+}
+```
+
+Any implementation must provide `pay()`:
+
+```java
+class CreditCardPayment
+        implements PaymentService {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("Pay by credit card");
+    }
+
+}
+```
+
+```java
+class PaypalPayment
+        implements PaymentService {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("Pay by PayPal");
+    }
+
+}
+```
+
+The interface defines:
+
+```text
+WHAT must be done
+```
+
+The implementation defines:
+
+```text
+HOW it is done
+```
+
+This is the fundamental idea.
+
+---
+
+# 2. Interface vs class
+
+A normal class can provide implementation directly:
+
+```java
+class Dog {
+
+    void makeSound() {
+        System.out.println("Woof");
+    }
+
+}
+```
+
+An interface defines a contract:
+
+```java
+interface Animal {
+
+    void makeSound();
+
+}
+```
+
+Then classes implement that contract:
+
+```java
+class Dog implements Animal {
+
+    public void makeSound() {
+        System.out.println("Woof");
+    }
+
+}
+```
+
+So:
+
+```text
+Interface
+    |
+    | defines
+    v
+Contract
+    |
+    | implemented by
+    v
+Class
+    |
+    v
+Concrete behavior
+```
+
+---
+
+# 3. Why do we use interfaces?
+
+The biggest reason is:
+
+# Loose coupling
+
+Consider this code without an interface:
+
+```java
+class UserService {
+
+    private EmailService emailService;
+
+    public UserService(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
+}
+```
+
+`UserService` directly depends on `EmailService`.
+
+The relationship is:
+
+```text
+UserService
+    |
+    v
+EmailService
+```
+
+Now suppose you want to replace email with SMS.
+
+You may need to modify `UserService`.
+
+---
+
+With an interface:
+
+```java
+interface NotificationService {
+
+    void send(String message);
+
+}
+```
+
+Implementations:
+
+```java
+class EmailService
+        implements NotificationService {
+
+    public void send(String message) {
+        System.out.println("Email: " + message);
+    }
+
+}
+```
+
+```java
+class SmsService
+        implements NotificationService {
+
+    public void send(String message) {
+        System.out.println("SMS: " + message);
+    }
+
+}
+```
+
+Now:
+
+```java
+class UserService {
+
+    private final NotificationService notificationService;
+
+    public UserService(
+            NotificationService notificationService) {
+
+        this.notificationService = notificationService;
+    }
+
+}
+```
+
+The structure becomes:
+
+```text
+                  NotificationService
+                     <<interface>>
+                           ^
+                           |
+              +------------+------------+
+              |                         |
+              v                         v
+        EmailService                SmsService
+
+
+                    UserService
+                        |
+                        v
+              NotificationService
+```
+
+`UserService` does not care which implementation is used.
+
+---
+
+# 4. Advantage 1 — Loose coupling
+
+This is probably the most important advantage.
+
+Without an interface:
+
+```text
+UserService
+    |
+    v
+EmailService
+```
+
+Strong dependency.
+
+With an interface:
+
+```text
+UserService
+    |
+    v
+NotificationService
+    ^
+    |
++---+---+
+|       |
+Email   SMS
+```
+
+The high-level class depends on an **abstraction**, not a specific implementation.
+
+This follows an important design principle:
+
+> **Program to an interface, not an implementation.**
+
+---
+
+# 5. Advantage 2 — Easy to replace implementations
+
+Suppose you have:
+
+```java
+interface PaymentService {
+
+    void pay(double amount);
+
+}
+```
+
+You can create:
+
+```text
+PaymentService
+       |
+       +---- CreditCardPayment
+       |
+       +---- PaypalPayment
+       |
+       +---- StripePayment
+```
+
+Your business code:
+
+```java
+class OrderService {
+
+    private final PaymentService paymentService;
+
+    public OrderService(
+            PaymentService paymentService) {
+
+        this.paymentService = paymentService;
+    }
+
+}
+```
+
+You can change:
+
+```java
+PaymentService payment =
+    new CreditCardPayment();
+```
+
+to:
+
+```java
+PaymentService payment =
+    new PaypalPayment();
+```
+
+without changing `OrderService`.
+
+This makes the system more flexible.
+
+---
+
+# 6. Advantage 3 — Supports Dependency Injection
+
+Interfaces work very naturally with DI.
+
+For example:
+
+```java
+interface UserRepository {
+
+    User findById(Long id);
+
+}
+```
+
+Implementation:
+
+```java
+class DatabaseUserRepository
+        implements UserRepository {
+
+    @Override
+    public User findById(Long id) {
+        // database code
+        return new User();
+    }
+
+}
+```
+
+Service:
+
+```java
+class UserService {
+
+    private final UserRepository repository;
+
+    public UserService(
+            UserRepository repository) {
+
+        this.repository = repository;
+    }
+
+}
+```
+
+The service depends on:
+
+```text
+UserRepository
+```
+
+not:
+
+```text
+DatabaseUserRepository
+```
+
+Spring can inject the implementation:
+
+```text
+Spring Container
+       |
+       v
+DatabaseUserRepository
+       |
+       v
+UserService
+```
+
+This is one reason interfaces are very common in enterprise Java.
+
+---
+
+# 7. Advantage 4 — Easier testing
+
+Interfaces allow us to replace real implementations with test implementations.
+
+For example:
+
+```java
+interface PaymentService {
+
+    boolean pay(double amount);
+
+}
+```
+
+Real implementation:
+
+```java
+class StripePaymentService
+        implements PaymentService {
+
+    public boolean pay(double amount) {
+        // connect to Stripe
+        return true;
+    }
+
+}
+```
+
+During testing, we don't want to call a real payment system.
+
+We can create:
+
+```java
+class FakePaymentService
+        implements PaymentService {
+
+    public boolean pay(double amount) {
+        return true;
+    }
+
+}
+```
+
+Then:
+
+```java
+PaymentService payment =
+    new FakePaymentService();
+
+OrderService service =
+    new OrderService(payment);
+```
+
+This makes unit testing easier.
+
+```text
+Production:
+
+OrderService
+      |
+      v
+RealPaymentService
+
+
+Testing:
+
+OrderService
+      |
+      v
+FakePaymentService
+```
+
+---
+
+# 8. Advantage 5 — Polymorphism
+
+Interfaces allow different objects to be treated as the same type.
+
+```java
+Animal animal1 = new Dog();
+
+Animal animal2 = new Cat();
+```
+
+Both variables have the type:
+
+```text
+Animal
+```
+
+But the actual behavior is different:
+
+```java
+animal1.makeSound();
+```
+
+Output:
+
+```text
+Woof
+```
+
+```java
+animal2.makeSound();
+```
+
+Output:
+
+```text
+Meow
+```
+
+This is **polymorphism**.
+
+The method call:
+
+```java
+animal.makeSound();
+```
+
+can produce different behavior depending on the actual object.
+
+---
+
+# 9. Advantage 6 — Multiple inheritance of type
+
+Java classes cannot extend multiple classes.
+
+This is illegal:
+
+```java
+class Dog extends Animal, Pet {
+}
+```
+
+Java allows only:
+
+```java
+class Dog extends Animal {
+}
+```
+
+But a class can implement multiple interfaces:
+
+```java
+interface Flyable {
+
+    void fly();
+
+}
+```
+
+```java
+interface Swimmable {
+
+    void swim();
+
+}
+```
+
+A class can do both:
+
+```java
+class Duck
+        implements Flyable, Swimmable {
+
+    public void fly() {
+        System.out.println("Flying");
+    }
+
+    public void swim() {
+        System.out.println("Swimming");
+    }
+
+}
+```
+
+Therefore:
+
+```text
+           Flyable
+              ^
+              |
+              |
+           Duck
+              |
+              |
+              v
+          Swimmable
+```
+
+A Java class can:
+
+> **Extend one class but implement multiple interfaces.**
+
+This is an important exam point.
+
+---
+
+# 10. Modern Java interfaces
+
+Originally, interfaces mainly contained abstract methods.
+
+```java
+interface Animal {
+
+    void makeSound();
+
+}
+```
+
+Modern Java interfaces can also contain:
+
+### Abstract methods
+
+```java
+void run();
+```
+
+### Default methods
+
+```java
+default void sleep() {
+    System.out.println("Sleeping");
+}
+```
+
+### Static methods
+
+```java
+static void printInfo() {
+    System.out.println("Animal");
+}
+```
+
+### Private methods
+
+```java
+private void helper() {
+}
+```
+
+The basic structure:
+
+```java
+interface Example {
+
+    void abstractMethod();
+
+    default void defaultMethod() {
+    }
+
+    static void staticMethod() {
+    }
+
+    private void helperMethod() {
+    }
+
+}
+```
+
+However, interfaces are still primarily used to define **contracts and abstractions**.
+
+---
+
+# 11. Interface and abstraction
+
+An interface is one way to achieve **abstraction**.
+
+Suppose you use a car:
+
+```text
+Driver
+   |
+   v
+Car interface
+   |
+   +---- Toyota
+   |
+   +---- BMW
+   |
+   +---- Tesla
+```
+
+The driver knows:
+
+```text
+start()
+stop()
+accelerate()
+```
+
+The driver does not need to know exactly how each manufacturer implements these operations.
+
+Similarly:
+
+```java
+interface Database {
+
+    void connect();
+
+}
+```
+
+The application doesn't need to know whether the implementation is:
+
+```text
+MySQL
+PostgreSQL
+Oracle
+MongoDB
+```
+
+It depends on the abstraction.
+
+---
+
+# 12. Interface vs abstract class
+
+This is a common exam question.
+
+| Interface                                   | Abstract Class                         |
+| ------------------------------------------- | -------------------------------------- |
+| Defines a contract/type                     | Provides a common base class           |
+| A class can implement multiple              | A class can extend only one            |
+| No instance state in the traditional design | Can contain instance state             |
+| No constructors                             | Can have constructors                  |
+| Often used for capabilities/roles           | Often used for shared behavior         |
+| Can have default/static/private methods     | Can have concrete and abstract methods |
+
+Example interface:
+
+```java
+interface Flyable {
+
+    void fly();
+
+}
+```
+
+Example abstract class:
+
+```java
+abstract class Animal {
+
+    protected String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    abstract void makeSound();
+
+}
+```
+
+A useful rule:
+
+> Use an **interface** to define a capability or contract.
+> Use an **abstract class** when related classes need shared state or implementation.
+
+---
+
+# 13. Interface in Spring
+
+Interfaces are especially useful in Spring applications.
+
+For example:
+
+```java
+public interface PaymentService {
+
+    void pay(double amount);
+
+}
+```
+
+Implementation:
+
+```java
+@Service
+public class StripePaymentService
+        implements PaymentService {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("Payment processed");
+    }
+
+}
+```
+
+Another implementation:
+
+```java
+@Service
+public class PaypalPaymentService
+        implements PaymentService {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("PayPal payment");
+    }
+
+}
+```
+
+Your service can depend on the interface:
+
+```java
+@Service
+public class OrderService {
+
+    private final PaymentService paymentService;
+
+    public OrderService(
+            PaymentService paymentService) {
+
+        this.paymentService = paymentService;
+    }
+
+}
+```
+
+Conceptually:
+
+```text
+                   OrderService
+                        |
+                        | depends on
+                        v
+                 PaymentService
+                   <<interface>>
+                        ^
+                        |
+              +---------+---------+
+              |                   |
+              v                   v
+          Stripe               PayPal
+```
+
+Spring can inject the appropriate implementation.
+
+If multiple implementations exist, you may need to tell Spring which one to use, for example with `@Primary` or `@Qualifier`.
+
+---
+
+# 14. The connection to Dependency Injection
+
+Your previous exam topic was:
+
+> **What is Dependency Injection?**
+
+Interfaces and DI work together very well.
+
+The ideal dependency direction is often:
+
+```text
+High-level code
+       |
+       v
+   Interface
+       ^
+       |
+Concrete implementation
+```
+
+Instead of:
+
+```text
+OrderService
+       |
+       v
+StripePaymentService
+```
+
+we prefer:
+
+```text
+OrderService
+       |
+       v
+PaymentService
+       ^
+       |
+StripePaymentService
+```
+
+This is related to the **Dependency Inversion Principle**:
+
+> High-level modules should depend on abstractions rather than concrete implementations.
+
+---
+
+# 15. Real-world analogy
+
+Think about a power socket.
+
+The socket is the **interface**:
+
+```text
+       Power Socket
+       <<interface>>
+             |
+     ----------------
+     |              |
+     v              v
+   Lamp        Phone Charger
+```
+
+The wall socket defines a standard.
+
+Different devices can implement that standard.
+
+You don't care about the internal design of the lamp or charger. You only care that it works with the socket.
+
+Similarly:
+
+```text
+Java Interface
+      |
+      | defines rules
+      v
+Implementation classes
+```
+
+---
+
+# 16. Exam-ready answer
+
+If the exam asks:
+
+> **What is an interface and what are the advantages of making use of them in Java?**
+
+A good answer is:
+
+> **An interface in Java is a reference type that defines a contract of methods that implementing classes agree to provide. It allows different classes to share a common type and behavior contract while providing their own implementations.**
+>
+> **The main advantages of interfaces are loose coupling, abstraction, polymorphism, easier replacement of implementations, easier testing, support for dependency injection, and the ability for a class to implement multiple interfaces.**
+
+---
+
+# 17. The key concepts to memorize
+
+```text
+Interface
+    |
+    +-- Defines a contract
+    |
+    +-- Supports abstraction
+    |
+    +-- Enables polymorphism
+    |
+    +-- Reduces coupling
+    |
+    +-- Makes DI easier
+    |
+    +-- Makes testing easier
+    |
+    +-- Allows multiple interfaces
+```
+
+## One sentence to memorize for the exam
+
+> **An interface defines a contract that implementing classes must follow, allowing Java programs to achieve abstraction, loose coupling, polymorphism, flexible implementations, easier testing, and support for dependency injection.**
+
+The most important connection between your recent topics is:
+
+```text
+Interface
+    ↓
+Abstraction
+    ↓
+Loose Coupling
+    ↓
+Dependency Injection
+    ↓
+IoC Container
+    ↓
+Spring Framework
+```
+
+That chain is essentially one of the **core conceptual foundations of Spring**.
