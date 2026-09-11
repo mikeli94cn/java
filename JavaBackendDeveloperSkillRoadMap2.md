@@ -5,7 +5,7 @@ To become a successful Java Back-End Developer, you need a blend of strong core 
 
 ## 1. Core Job Requirements & Technical Skills
 Employers typically categorize required skills into Core Java, Frameworks, Databases, and Software Engineering tools. 
-## ☕ Core Java (The Foundation)
+### ☕ Core Java (The Foundation)
 
 - **Object-Oriented Programming (OOP)**: Deep understanding of Polymorphism, Inheritance, Encapsulation, and Abstraction.
 - **Java Fundamentals**: Exception handling, Generics, File I/O, and Memory Management (Stack vs. Heap, Garbage Collection).
@@ -14,14 +14,14 @@ Employers typically categorize required skills into Core Java, Frameworks, Datab
 - **Concurrency**: Multithreading, Thread Pools, and synchronization.
 
 
-## 🚀 Frameworks & APIs
+### 🚀 Frameworks & APIs
 
 - **Spring Framework & Spring Boot**: This is the industry standard. You must master Dependency Injection (IoC), Spring MVC, and Spring Security.
 - **RESTful APIs**: Designing, building, and securing JSON-based web services.
 - **ORM / Data Access**: Hibernate and Spring Data JPA for mapping Java objects to database tables. 
 
 
-## 💾 Databases & Infrastructure
+### 💾 Databases & Infrastructure
 
 - **Relational Databases (SQL)**: Writing complex queries, indexing, and optimization in PostgreSQL, MySQL, or Oracle.
 - **NoSQL (Optional but highly valued)**: Basic knowledge of MongoDB or Redis (for caching).
