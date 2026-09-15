@@ -238,7 +238,7 @@ JSP              █
 Spring           █████
 Spring MVC       █████
 Spring Boot      █████
-REST              █████
+REST             █████
 ```
 
 ### The key idea
