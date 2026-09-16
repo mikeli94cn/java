@@ -7,7 +7,9 @@ If your Scanner is reading directly from the standard input console (System.in),
 Here is exactly why, when to use it, and when to avoid it.
 
 ## 🟢 Scenario 1: Reading Files or Streams (Always Use Try-With-Resources)
-When a Scanner opens a external system resource (like a File, FileInputStream, or a web socket), it opens a file descriptor or network handle. If you do not close it, you cause a resource leak.
+When a Scanner opens a external system resource (like a File, FileInputStream, or a web socket), it opens a file descriptor or network handle. 
+
+If you do not close it, you cause a resource leak.
 
 Using try-with-resources ensures the file is closed cleanly, even if your Java code encounters a sudden crash or exception while parsing the data.
 ```java
