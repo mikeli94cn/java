@@ -1,13 +1,13 @@
-In Java, exception handling is a mechanism used to manage runtime errors, ensuring the program doesn't crash unexpectedly. [1, 2] 
+In Java, exception handling is a mechanism used to manage runtime errors, ensuring the program doesn't crash unexpectedly.
 ## 1. The try/catch/finally Block
-This is the fundamental way to handle exceptions. [3] 
+This is the fundamental way to handle exceptions.
 
 * try: Wraps the code that might throw an exception.
 * catch: Handles the specific exception if it occurs.
-* finally: Contains code that always executes (like closing a database connection), regardless of whether an exception was thrown or caught. [4, 5, 6, 7, 8] 
+* finally: Contains code that always executes (like closing a database connection), regardless of whether an exception was thrown or caught.
 
 ## 2. Multi-Catch Blocks
-Introduced to reduce code duplication, a single catch block can handle multiple, unrelated exceptions using the pipe (|) symbol. [9, 10, 11] 
+Introduced to reduce code duplication, a single catch block can handle multiple, unrelated exceptions using the pipe (|) symbol.
 ```java
 try {
     // Code that might throw IOException or SQLException
@@ -15,9 +15,13 @@ try {
     System.out.println("Error occurred: " + e.getMessage());
 }
 ```
-Note: The exceptions in a multi-catch cannot have an inheritance relationship (e.g., you cannot catch both Exception and IOException in the same block). [12, 13] 
+Note: The exceptions in a multi-catch cannot have an inheritance relationship (e.g., you cannot catch both Exception and IOException in the same block).
 ## 3. Try-with-Resources
-This is the modern way to handle "closable" resources (like Files or Network Sockets). Any class that implements AutoCloseable can be declared inside the try parentheses. Java will automatically close them for you, even if an exception occurs. [14, 15, 16, 17, 18] 
+This is the modern way to handle "closable" resources (like Files or Network Sockets). 
+
+Any class that implements AutoCloseable can be declared inside the try parentheses. 
+
+Java will automatically close them for you, even if an exception occurs.
 ```java
 try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
     System.out.println(br.readLine());
@@ -26,7 +30,7 @@ try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
 } // 'br' is closed automatically here
 ```
 ## 4. Custom Exceptions
-If Java's built-in exceptions don't describe your error specifically enough, you can create your own by extending the Exception class (for checked exceptions) or RuntimeException (for unchecked exceptions). [19, 20, 21, 22, 23] 
+If Java's built-in exceptions don't describe your error specifically enough, you can create your own by extending the Exception class (for checked exceptions) or RuntimeException (for unchecked exceptions). 
 ```java
 // 1. Define the custom exceptionclass InvalidAgeException extends Exception {
     public InvalidAgeException(String message) {
