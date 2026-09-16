@@ -13,7 +13,8 @@ If you do not close it, you cause a resource leak.
 
 Using try-with-resources ensures the file is closed cleanly, even if your Java code encounters a sudden crash or exception while parsing the data.
 ```java
-// ✅ GOOD: Automatic resource management for file I/Otry (Scanner scanner = new Scanner(new File("data.txt"))) {
+// ✅ GOOD: Automatic resource management for file I/O
+try (Scanner scanner = new Scanner(new File("data.txt"))) {
     while (scanner.hasNextLine()) {
         System.out.println(scanner.nextLine());
     }
@@ -31,7 +32,8 @@ Closing System.in shuts down your application's connection to the console input 
 
 Because System.in cannot be reopened during a single program lifecycle, any subsequent attempts to read user input anywhere else in your app will crash with a NoSuchElementException.
 ```java
-// ❌ BAD: This will permanently break your console input streamtry (Scanner scanner = new Scanner(System.in)) {
+// ❌ BAD: This will permanently break your console input stream
+try (Scanner scanner = new Scanner(System.in)) {
     System.out.print("Enter name: ");
     String name = scanner.nextLine();
 } // System.in is now permanently DESTROYED and closed here.
