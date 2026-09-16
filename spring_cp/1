@@ -1,0 +1,598 @@
+# Can you use `@Component` together with `@Profile`?
+
+Yes. **`@Component` and `@Profile` can be used together**, and this is very common in Spring applications.
+
+The key idea is:
+
+> **`@Component` tells Spring that a class can be discovered as a Bean through component scanning, while `@Profile` tells Spring under which active profile that Bean should be registered.**
+
+In short:
+
+```text
+@Component
+    ↓
+"Discover this class as a Bean"
+
+@Profile("dev")
+    ↓
+"Only register it when dev is active"
+```
+
+---
+
+## 1. Basic example
+
+Suppose we have an interface:
+
+```java
+public interface PaymentService {
+    void pay();
+}
+```
+
+For development, we want a fake implementation:
+
+```java
+@Component
+@Profile("dev")
+public class MockPaymentService
+        implements PaymentService {
+
+    @Override
+    public void pay() {
+        System.out.println("Mock payment");
+    }
+}
+```
+
+For production, we want the real implementation:
+
+```java
+@Component
+@Profile("prod")
+public class RealPaymentService
+        implements PaymentService {
+
+    @Override
+    public void pay() {
+        System.out.println("Real payment");
+    }
+}
+```
+
+Now Spring behaves differently depending on the active profile.
+
+### `dev`
+
+```properties
+spring.profiles.active=dev
+```
+
+Spring finds both classes during component scanning, but only registers:
+
+```text
+MockPaymentService
+```
+
+### `prod`
+
+```properties
+spring.profiles.active=prod
+```
+
+Spring registers:
+
+```text
+RealPaymentService
+```
+
+---
+
+# 2. What happens during component scanning?
+
+This is an important detail.
+
+Suppose:
+
+```java
+@Component
+@Profile("dev")
+public class MockPaymentService {
+}
+```
+
+Spring performs roughly:
+
+```text
+ApplicationContext starts
+        ↓
+Component scanning
+        ↓
+Find MockPaymentService
+        ↓
+Check @Profile("dev")
+        ↓
+Is "dev" active?
+       / \
+     yes  no
+      |    |
+      ↓    ↓
+Register  Don't register
+Bean      Bean
+```
+
+So `@Profile` acts as a **condition on component registration**.
+
+---
+
+# 3. `@Component` + `@Profile` vs `@Bean` + `@Profile`
+
+You just learned that `@Bean` can also be combined with `@Profile`.
+
+These two approaches solve similar problems.
+
+### `@Component`
+
+```java
+@Component
+@Profile("dev")
+public class MockPaymentService
+        implements PaymentService {
+
+}
+```
+
+Spring discovers the class automatically through component scanning.
+
+### `@Bean`
+
+```java
+@Configuration
+public class PaymentConfig {
+
+    @Bean
+    @Profile("dev")
+    public PaymentService paymentService() {
+        return new MockPaymentService();
+    }
+}
+```
+
+Here you explicitly tell Spring how to create the Bean.
+
+The conceptual difference:
+
+```text
+@Component + @Profile
+
+Class
+  ↓
+Component scanning
+  ↓
+Profile check
+  ↓
+Bean
+
+
+@Bean + @Profile
+
+@Bean method
+  ↓
+Profile check
+  ↓
+Bean
+```
+
+---
+
+# 4. When should you use `@Component` + `@Profile`?
+
+A good rule is:
+
+### Use `@Component` + `@Profile`
+
+when the class itself is an application component and you want Spring to automatically discover it.
+
+For example:
+
+```java
+@Component
+@Profile("dev")
+public class DevEmailService
+        implements EmailService {
+
+}
+```
+
+This is very natural for your own application classes.
+
+---
+
+### Use `@Bean` + `@Profile`
+
+when you need explicit construction/configuration.
+
+For example:
+
+```java
+@Bean
+@Profile("prod")
+public ObjectMapper objectMapper() {
+
+    ObjectMapper mapper = new ObjectMapper();
+
+    // custom configuration
+
+    return mapper;
+}
+```
+
+This is especially useful for third-party classes or objects requiring custom setup.
+
+---
+
+# 5. `@Service`, `@Repository`, and `@Controller` work too
+
+Because these are Spring stereotype annotations, you can combine them with `@Profile`.
+
+For example:
+
+```java
+@Service
+@Profile("dev")
+public class DevUserService {
+}
+```
+
+```java
+@Repository
+@Profile("test")
+public class TestUserRepository {
+}
+```
+
+```java
+@Controller
+@Profile("admin")
+public class AdminController {
+}
+```
+
+The same basic principle applies:
+
+```text
+@Component
+@Service
+@Repository
+@Controller
+        ↓
+component scanning
+        ↓
+@Profile check
+        ↓
+Bean registered or not
+```
+
+---
+
+# 6. A very useful real-world example
+
+Imagine an email system.
+
+Interface:
+
+```java
+public interface EmailService {
+    void send(String message);
+}
+```
+
+Development implementation:
+
+```java
+@Service
+@Profile("dev")
+public class FakeEmailService
+        implements EmailService {
+
+    @Override
+    public void send(String message) {
+        System.out.println(
+            "Fake email: " + message
+        );
+    }
+}
+```
+
+Production implementation:
+
+```java
+@Service
+@Profile("prod")
+public class RealEmailService
+        implements EmailService {
+
+    @Override
+    public void send(String message) {
+        // Send actual email
+    }
+}
+```
+
+Your business code doesn't care which implementation is active:
+
+```java
+@Service
+public class OrderService {
+
+    private final EmailService emailService;
+
+    public OrderService(EmailService emailService) {
+        this.emailService = emailService;
+    }
+
+    public void createOrder() {
+        emailService.send("Order created");
+    }
+}
+```
+
+The architecture becomes:
+
+```text
+                    EmailService
+                         ▲
+                         |
+              ┌──────────┴──────────┐
+              |                     |
+           dev                    prod
+              |                     |
+              ↓                     ↓
+      FakeEmailService       RealEmailService
+              |                     |
+              └──────────┬──────────┘
+                         |
+                         ↓
+                   OrderService
+```
+
+The business code remains unchanged.
+
+---
+
+# 7. What if no profile is active?
+
+This is an important point.
+
+If you write:
+
+```java
+@Component
+@Profile("dev")
+public class DevService {
+}
+```
+
+and `dev` is not active, Spring does **not** register `DevService`.
+
+```text
+No dev profile
+      ↓
+DevService Bean does not exist
+```
+
+If you need a fallback implementation, you can create one without a profile:
+
+```java
+@Component
+public class DefaultService {
+}
+```
+
+or use profile expressions.
+
+---
+
+# 8. You can use profile expressions
+
+For example:
+
+```java
+@Component
+@Profile("!prod")
+public class DebugService {
+}
+```
+
+This means:
+
+> Register this component when the `prod` profile is **not** active.
+
+You can also specify multiple profiles:
+
+```java
+@Component
+@Profile({"dev", "test"})
+public class MockService {
+}
+```
+
+This means the component is active when the relevant profile condition matches.
+
+---
+
+# 9. Relationship with `@Autowired`
+
+This connects directly to your previous topics.
+
+Suppose:
+
+```java
+@Component
+@Profile("dev")
+class MockPaymentService
+        implements PaymentService {
+}
+```
+
+and:
+
+```java
+@Component
+@Profile("prod")
+class RealPaymentService
+        implements PaymentService {
+}
+```
+
+Then:
+
+```java
+@Service
+public class OrderService {
+
+    private final PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+}
+```
+
+If `dev` is active:
+
+```text
+@Component
+@Profile("dev")
+        ↓
+MockPaymentService Bean
+        ↓
+@Autowired / constructor injection
+        ↓
+OrderService
+```
+
+If `prod` is active:
+
+```text
+@Component
+@Profile("prod")
+        ↓
+RealPaymentService Bean
+        ↓
+Dependency Injection
+        ↓
+OrderService
+```
+
+This is a powerful combination:
+
+```text
+@Component
+     ↓
+Component scanning
+
+@Profile
+     ↓
+Select environment
+
+DI
+     ↓
+Inject selected implementation
+```
+
+---
+
+# 10. `@Profile` vs `@Qualifier`
+
+Don't confuse these two.
+
+### `@Profile`
+
+Controls **whether a Bean exists**.
+
+```text
+@Profile("dev")
+      ↓
+Should this Bean be registered?
+```
+
+### `@Qualifier`
+
+Controls **which Bean to inject when multiple candidates exist**.
+
+```text
+@Qualifier("paypal")
+      ↓
+Which existing Bean should I inject?
+```
+
+So:
+
+```text
+Profile
+  ↓
+Bean selection at application configuration time
+
+
+Qualifier
+  ↓
+Dependency selection at injection time
+```
+
+---
+
+# 11. Exam-ready answer
+
+> **Yes. `@Component` can be used together with `@Profile`. `@Component` makes a class eligible for component scanning and registration as a Spring Bean, while `@Profile` conditionally registers that Bean only when the specified profile is active. This is useful for providing different implementations for environments such as development, testing, and production.**
+
+Example:
+
+```java
+@Component
+@Profile("dev")
+public class MockPaymentService
+        implements PaymentService {
+}
+```
+
+When `dev` is active, Spring registers the component; otherwise, it does not.
+
+---
+
+# 12. The important mental model
+
+You can now connect the last few Spring topics:
+
+```text
+@Component
+    ↓
+Component Scanning
+    ↓
+@Profile
+    ↓
+Should this Bean be registered?
+    ↓
+ApplicationContext
+    ↓
+@Autowired / Constructor Injection
+    ↓
+Dependency Injection
+```
+
+And compare the two common patterns:
+
+```text
+@Component + @Profile
+    ↓
+"Discover this class only in this environment"
+
+
+@Bean + @Profile
+    ↓
+"Create this object only in this environment"
+```
+
+So the exam answer is simply:
+
+> **Yes — `@Component` and `@Profile` work together. `@Component` makes the class a candidate for component scanning, and `@Profile` conditionally enables or disables that component based on the active Spring profile.**
