@@ -1,0 +1,1086 @@
+# IntelliJ IDEA IDE Cheatsheet
+
+A practical IntelliJ IDEA cheatsheet for Java development, covering navigation, coding, debugging, refactoring, and Maven/Spring Boot workflows.
+
+Shortcuts below use the default Windows/Linux keymap (including Ubuntu). macOS equivalents are included where useful.
+
+## 1. Essential shortcuts
+
+These are the shortcuts worth memorizing first.
+
+Search Everywhere
+
+Find classes, files, actions, settings, and symbols.
+
+Shift × 2
+
+Find Action
+
+Search for any IDE command.
+
+Ctrl + Shift + A
+
+Quick Definition
+
+Preview a method or class without navigating away.
+
+Ctrl + Shift + I
+
+Go to Declaration
+
+Jump to a method, variable, or class definition.
+
+Ctrl + B
+
+Generate Code
+
+Generate constructors, getters, setters, and more.
+
+Alt + Insert
+
+Reformat Code
+
+Format the current file or selected code.
+
+Ctrl + Alt + L
+
+Rename
+
+Rename a symbol and update its usages.
+
+Shift + F6
+
+## 2. Navigation
+
+|
+Action
+
+|
+
+Windows/Linux
+
+|
+
+macOS
+
+|
+| --- | --- | --- |
+|
+
+Search Everywhere
+
+|
+
+Shift × 2
+
+|
+
+Shift × 2
+
+|
+|
+
+Find class
+
+|
+
+Ctrl + N
+
+|
+
+⌘ + O
+
+|
+|
+
+Find file
+
+|
+
+Ctrl + Shift + N
+
+|
+
+⌘ + Shift + O
+
+|
+|
+
+Find symbol
+
+|
+
+Ctrl + Alt + Shift + N
+
+|
+
+⌘ + Alt + O
+
+|
+|
+
+Go to declaration
+
+|
+
+Ctrl + B
+
+|
+
+⌘ + B
+
+|
+|
+
+Go to implementation
+
+|
+
+Ctrl + Alt + B
+
+|
+
+⌘ + Alt + B
+
+|
+|
+
+Go to type declaration
+
+|
+
+Ctrl + Shift + B
+
+|
+
+⌘ + Shift + B
+
+|
+|
+
+Find usages
+
+|
+
+Alt + F7
+
+|
+
+⌥ + F7
+
+|
+|
+
+Recent files
+
+|
+
+Ctrl + E
+
+|
+
+⌘ + E
+
+|
+|
+
+Navigate back
+
+|
+
+Ctrl + Alt + Left
+
+|
+
+⌘ + [
+
+|
+|
+
+Navigate forward
+
+|
+
+Ctrl + Alt + Right
+
+|
+
+⌘ + ]
+
+|
+|
+
+File structure
+
+|
+
+Ctrl + F12
+
+|
+
+⌘ + F12
+
+|
+
+Java tip: When reading Spring code, use Go to Implementation to find concrete implementations of interfaces, and Find Usages to discover where a service is called.
+
+## 3. Editing and code generation
+
+|
+Action
+
+|
+
+Windows/Linux
+
+|
+
+macOS
+
+|
+| --- | --- | --- |
+|
+
+Basic code completion
+
+|
+
+Ctrl + Space
+
+|
+
+Ctrl + Space
+
+|
+|
+
+Smart completion
+
+|
+
+Ctrl + Shift + Space
+
+|
+
+Ctrl + Shift + Space
+
+|
+|
+
+Show intention actions / quick fixes
+
+|
+
+Alt + Enter
+
+|
+
+⌥ + Enter
+
+|
+|
+
+Generate code
+
+|
+
+Alt + Insert
+
+|
+
+⌘ + N
+
+|
+|
+
+Reformat code
+
+|
+
+Ctrl + Alt + L
+
+|
+
+⌘ + ⌥ + L
+
+|
+|
+
+Optimize imports
+
+|
+
+Ctrl + Alt + O
+
+|
+
+Ctrl + ⌥ + O
+
+|
+|
+
+Duplicate line
+
+|
+
+Ctrl + D
+
+|
+
+⌘ + D
+
+|
+|
+
+Delete line
+
+|
+
+Ctrl + Y
+
+|
+
+⌘ + Backspace
+
+|
+|
+
+Move line up/down
+
+|
+
+Alt + Shift + Up/Down
+
+|
+
+⌥ + Shift + Up/Down
+
+|
+|
+
+Comment line
+
+|
+
+Ctrl + /
+
+|
+
+⌘ + /
+
+|
+|
+
+Block comment
+
+|
+
+Ctrl + Shift + /
+
+|
+
+⌘ + ⌥ + /
+
+|
+|
+
+Surround with
+
+|
+
+Ctrl + Alt + T
+
+|
+
+⌘ + ⌥ + T
+
+|
+|
+
+Expand selection
+
+|
+
+Ctrl + W
+
+|
+
+⌥ + Up
+
+|
+|
+
+Shrink selection
+
+|
+
+Ctrl + Shift + W
+
+|
+
+⌥ + Down
+
+|
+
+### Live templates
+
+Type a template abbreviation and press Tab (or the IDE's configured expansion key).
+
+|
+Template
+
+|
+
+Result
+
+|
+| --- | --- |
+|
+
+`sout`
+
+|
+
+`System.out.println()`
+
+|
+|
+
+`soutv`
+
+|
+
+Print the last variable
+
+|
+|
+
+`psvm`
+
+|
+
+`public static void main`
+
+|
+|
+
+`fori`
+
+|
+
+Indexed `for` loop
+
+|
+|
+
+`iter`
+
+|
+
+Enhanced `for` loop
+
+|
+|
+
+`ifn`
+
+|
+
+`if (value == null)`
+
+|
+|
+
+`inn`
+
+|
+
+`if (value != null)`
+
+|
+
+Example:
+
+Java
+
+```
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+}
+```
+
+## 4. Refactoring
+
+Refactoring changes code structure while preserving its intended behavior.
+
+|
+Action
+
+|
+
+Windows/Linux
+
+|
+
+macOS
+
+|
+| --- | --- | --- |
+|
+
+Rename
+
+|
+
+Shift + F6
+
+|
+
+Shift + F6
+
+|
+|
+
+Extract method
+
+|
+
+Ctrl + Alt + M
+
+|
+
+⌘ + ⌥ + M
+
+|
+|
+
+Extract variable
+
+|
+
+Ctrl + Alt + V
+
+|
+
+⌘ + ⌥ + V
+
+|
+|
+
+Extract field
+
+|
+
+Ctrl + Alt + F
+
+|
+
+⌘ + ⌥ + F
+
+|
+|
+
+Extract constant
+
+|
+
+Ctrl + Alt + C
+
+|
+
+⌘ + ⌥ + C
+
+|
+|
+
+Change signature
+
+|
+
+Ctrl + F6
+
+|
+
+⌘ + F6
+
+|
+|
+
+Refactor this
+
+|
+
+Ctrl + Alt + Shift + T
+
+|
+
+⌘ + ⌥ + Shift + T
+
+|
+
+Example: Extract a method from repeated or complex logic.
+
+Before:
+
+Java
+
+```
+int total = price * quantity;
+double tax = total * 0.1;
+double finalPrice = total + tax;
+```
+
+Select the tax calculation, use Extract Method, and IntelliJ can generate a method such as:
+
+Java
+
+```
+private double calculateTax(int total) {
+    return total * 0.1;
+}
+```
+
+## 5. Debugging
+
+Toggle breakpoint
+
+Set or remove a breakpoint on the current line.
+
+Ctrl + F8
+
+Debug
+
+Start debugging the current run configuration.
+
+Shift + F9
+
+Step Over
+
+Execute the current line without entering a method.
+
+F8
+
+Step Into
+
+Enter the method being called.
+
+F7
+
+Step Out
+
+Finish the current method and return to its caller.
+
+Shift + F8
+
+Resume Program
+
+Continue execution until the next breakpoint.
+
+F9
+
+### Useful debugging features
+
+* Watches: Evaluate expressions repeatedly while debugging.
+
+* Evaluate Expression: `Alt + F8` — execute an expression in the current debugging context.
+
+* Conditional breakpoints: Stop only when a condition is true.
+
+* Field and object inspection: Expand objects in the Variables panel to inspect their fields.
+
+* Exception breakpoints: Stop when specified exceptions are thrown.
+
+## 6. Search and replace
+
+|
+Action
+
+|
+
+Windows/Linux
+
+|
+
+macOS
+
+|
+| --- | --- | --- |
+|
+
+Find in current file
+
+|
+
+Ctrl + F
+
+|
+
+⌘ + F
+
+|
+|
+
+Replace in current file
+
+|
+
+Ctrl + R
+
+|
+
+⌘ + R
+
+|
+|
+
+Find in project
+
+|
+
+Ctrl + Shift + F
+
+|
+
+⌘ + Shift + F
+
+|
+|
+
+Replace in project
+
+|
+
+Ctrl + Shift + R
+
+|
+
+⌘ + Shift + R
+
+|
+|
+
+Find next occurrence
+
+|
+
+F3
+
+|
+
+⌘ + G
+
+|
+|
+
+Find previous occurrence
+
+|
+
+Shift + F3
+
+|
+
+⌘ + Shift + G
+
+|
+
+Use project-wide search when tracing a Spring service, configuration property, or REST endpoint across multiple packages.
+
+## 7. Run, test, and build
+
+|
+Action
+
+|
+
+Windows/Linux
+
+|
+
+macOS
+
+|
+| --- | --- | --- |
+|
+
+Run
+
+|
+
+Shift + F10
+
+|
+
+Ctrl + R
+
+|
+|
+
+Debug
+
+|
+
+Shift + F9
+
+|
+
+Ctrl + D
+
+|
+|
+
+Run context configuration
+
+|
+
+Ctrl + Shift + F10
+
+|
+
+⌃ + Shift + R
+
+|
+|
+
+Run tests
+
+|
+
+Ctrl + Shift + F10
+
+|
+
+⌃ + Shift + R
+
+|
+|
+
+Stop
+
+|
+
+Ctrl + F2
+
+|
+
+⌘ + F2
+
+|
+
+Useful IDE windows:
+
+|
+Window
+
+|
+
+Shortcut
+
+|
+| --- | --- |
+|
+
+Project
+
+|
+
+Alt + 1
+
+|
+|
+
+Run
+
+|
+
+Alt + 4
+
+|
+|
+
+Debug
+
+|
+
+Alt + 5
+
+|
+|
+
+Terminal
+
+|
+
+Alt + F12
+
+|
+|
+
+Version Control
+
+|
+
+Alt + 9
+
+|
+|
+
+Problems
+
+|
+
+Alt + 6
+
+|
+
+## 8. Maven and Spring Boot workflow
+
+![Add Maven support to an existing Java project | IntelliJ IDEA Documentation](https://images.openai.com/static-rsc-4/VCQsh-ZTWjUzm7EPSAVx5J9QFv0bInqi9TZ8ipt8jDSMi4nbGfGMr6hZs_RA_-sg55dbcv3m6K1rgAlp087ApGvaDqK_iriNCOflVh-kkq4TQ34O1qIwmLXbGT98Fd8h9rS90E4tx1yc2q9lmnORsepbriSL81k5uDMaV9dEESg?purpose=inline)
+
+Maven
+
+Use the Maven tool window to manage dependencies, lifecycle goals, and plugins.
+
+1. Open `pom.xml` and edit dependencies.
+
+2. Reload the Maven project to download dependencies and refresh the project model.
+
+3. Use the Maven tool window to run lifecycle goals such as `clean`, `test`, and `package`.
+
+4. Run or debug your Spring Boot application from its main class, or create a Spring Boot run configuration.
+
+5. Use breakpoints in controllers, services, and repositories to follow an HTTP request through the application.
+
+### Handy Maven terminal commands
+
+Bash
+
+```
+# Compile
+./mvnw compile
+
+# Run tests
+./mvnw test
+
+# Package
+./mvnw package
+
+# Run Spring Boot
+./mvnw spring-boot:run
+
+# Clean and package
+./mvnw clean package
+```
+
+On Windows, use `mvnw.cmd` instead of `./mvnw`.
+
+## 9. Customize IntelliJ IDEA
+
+|
+Setting
+
+|
+
+Where to find it
+
+|
+| --- | --- |
+|
+
+Keymap
+
+|
+
+Settings → Keymap
+
+|
+|
+
+Editor font
+
+|
+
+Settings → Editor → Font
+
+|
+|
+
+Code style
+
+|
+
+Settings → Editor → Code Style → Java
+
+|
+|
+
+Live templates
+
+|
+
+Settings → Editor → Live Templates
+
+|
+|
+
+Plugins
+
+|
+
+Settings → Plugins
+
+|
+|
+
+JDK configuration
+
+|
+
+Project Structure → Project
+
+|
+|
+
+Maven configuration
+
+|
+
+Settings → Build Tools → Maven
+
+|
+
+You can use Find Action (`Ctrl + Shift + A`) to locate settings or commands without remembering the menu path.
+
+## 10. Practice: learn shortcuts interactively
+
+Question 1 of 5
+
+0 answered
+
+What shortcut searches for classes, files, actions, and settings?
+
+Ctrl + B
+
+Shift × 2
+
+Alt + Insert
+
+Previous
+
+Next
+
+## My recommended learning order for Java development
+
+1. Navigation: Shift × 2, Ctrl + B, Alt + F7.
+
+2. Editing: Alt + Enter, Alt + Insert, Ctrl + Alt + L.
+
+3. Refactoring: Shift + F6, Extract Method.
+
+4. Debugging: breakpoints, F8, F7, F9.
+
+5. Project workflow: Maven, Git, Spring Boot run configurations.
+
+Important: IntelliJ IDEA's shortcuts can vary by version, keymap, operating system, and customized settings. If a shortcut doesn't work, use Find Action to locate the command and inspect its current key binding.
