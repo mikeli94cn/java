@@ -1,0 +1,797 @@
+# VS Code Cheatsheet for HTML / CSS / JavaScript / TypeScript
+
+A practical, frontend-focused reference for writing, navigating, formatting, debugging, and refactoring code in Visual Studio Code.
+
+Shortcuts use the default Windows/Linux keymap (including Ubuntu). macOS equivalents are included where useful. Some features depend on extensions.
+
+## 1. Essential shortcuts
+
+These are the shortcuts you'll use most frequently while developing websites.
+
+Command Palette
+
+Find and run any VS Code command.
+
+Ctrl + Shift + P
+
+Quick Open
+
+Open HTML, CSS, JS, or TS files by name.
+
+Ctrl + P
+
+Quick Fix
+
+Apply code actions, fixes, and refactorings.
+
+Ctrl + .
+
+Format Document
+
+Format the current file.
+
+Shift + Alt + F
+
+Go to Definition
+
+Jump to a function, variable, or type definition.
+
+F12
+
+Integrated Terminal
+
+Open a terminal for npm, Node.js, Git, and build tools.
+
+Ctrl + `
+
+## 2. Navigation
+
+|
+Action
+
+|
+
+Windows/Linux
+
+|
+
+macOS
+
+|
+| --- | --- | --- |
+|
+
+Command Palette
+
+|
+
+Ctrl + Shift + P
+
+|
+
+⌘ + Shift + P
+
+|
+|
+
+Quick Open
+
+|
+
+Ctrl + P
+
+|
+
+⌘ + P
+
+|
+|
+
+Find in file
+
+|
+
+Ctrl + F
+
+|
+
+⌘ + F
+
+|
+|
+
+Find in project
+
+|
+
+Ctrl + Shift + F
+
+|
+
+⌘ + Shift + F
+
+|
+|
+
+Go to line
+
+|
+
+Ctrl + G
+
+|
+
+Ctrl + G
+
+|
+|
+
+Go to symbol in file
+
+|
+
+Ctrl + Shift + O
+
+|
+
+⌘ + Shift + O
+
+|
+|
+
+Go to symbol in workspace
+
+|
+
+Ctrl + T
+
+|
+
+⌘ + T
+
+|
+|
+
+Go to definition
+
+|
+
+F12
+
+|
+
+F12
+
+|
+|
+
+Peek definition
+
+|
+
+Alt + F12
+
+|
+
+⌥ + F12
+
+|
+|
+
+Find references
+
+|
+
+Shift + F12
+
+|
+
+Shift + F12
+
+|
+|
+
+Go to matching bracket
+
+|
+
+Ctrl + Shift + \
+
+|
+
+⌘ + Shift + \
+
+|
+|
+
+Navigate back
+
+|
+
+Alt + Left
+
+|
+
+Ctrl + -
+
+|
+|
+
+Navigate forward
+
+|
+
+Alt + Right
+
+|
+
+Ctrl + Shift + -
+
+|
+
+Frontend tip: `Ctrl + P` is especially useful when jumping between `index.html`, `style.css`, and `app.ts`.
+
+## 3. Editing shortcuts
+
+|
+Action
+
+|
+
+Windows/Linux
+
+|
+
+macOS
+
+|
+| --- | --- | --- |
+|
+
+Basic completion
+
+|
+
+Ctrl + Space
+
+|
+
+Ctrl + Space
+
+|
+|
+
+Trigger parameter hints
+
+|
+
+Ctrl + Shift + Space
+
+|
+
+⌘ + Shift + Space
+
+|
+|
+
+Quick Fix
+
+|
+
+Ctrl + .
+
+|
+
+⌘ + .
+
+|
+|
+
+Rename symbol
+
+|
+
+F2
+
+|
+
+F2
+
+|
+|
+
+Format document
+
+|
+
+Shift + Alt + F
+
+|
+
+Shift + ⌥ + F
+
+|
+|
+
+Format selection
+
+|
+
+Ctrl + K, Ctrl + F
+
+|
+
+⌘ + K, ⌘ + F
+
+|
+|
+
+Toggle line comment
+
+|
+
+Ctrl + /
+
+|
+
+⌘ + /
+
+|
+|
+
+Toggle block comment
+
+|
+
+Shift + Alt + A
+
+|
+
+Shift + ⌥ + A
+
+|
+|
+
+Duplicate line
+
+|
+
+Shift + Alt + Down
+
+|
+
+Shift + ⌥ + Down
+
+|
+|
+
+Move line
+
+|
+
+Alt + Up/Down
+
+|
+
+⌥ + Up/Down
+
+|
+|
+
+Delete line
+
+|
+
+Ctrl + Shift + K
+
+|
+
+⌘ + Shift + K
+
+|
+|
+
+Expand selection
+
+|
+
+Ctrl + Shift + Right
+
+|
+
+⌘ + Shift + Right
+
+|
+|
+
+Undo
+
+|
+
+Ctrl + Z
+
+|
+
+⌘ + Z
+
+|
+|
+
+Redo
+
+|
+
+Ctrl + Y
+
+|
+
+⌘ + Shift + Z
+
+|
+
+## 4. HTML cheatsheet
+
+### Emmet: write HTML faster
+
+Emmet is built into VS Code for HTML and many CSS contexts. Type an abbreviation and press `Tab` to expand it.
+
+<box border radius="lg" padding={3} gap={3}> <text color="secondary" weight="medium" size="sm">HTML ABBREVIATIONS</text> <table> <table-row> <table-cell width="40%"> <text weight="medium">Type</text> </table-cell> <table-cell> <text weight="medium">Expansion</text> </table-cell> </table-row> {#each \({a:"!",b:"HTML5 boilerplate"},{a:"div.container",b:'<div class="container"></div>'},{a:"ul>li\*3",b:"A list with 3 list items"},{a:"nav>ul>li\*4>a",b:"Navigation with 4 links"},{a:"div#app",b:'<div id="app"></div>'},{a:"input:text",b:'<input type="text" />'},{a:"form>label+input:email+button",b:"Form with label, email field, button"}\) as item} <table-row> <table-cell><text weight="medium">{item.a}</text></table-cell> <table-cell><text size="sm">{item.b}</text></table-cell> </table-row> {/each} </table> </box>
+
+### Example: build a page structure
+
+Type:
+
+```
+! 
+```
+
+Press Tab, then edit the generated HTML:
+
+HTML
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="app">
+        <h1>Hello, World!</h1>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
+```
+
+### HTML-specific tips
+
+* Type `
+
+  Ctrl + Space — trigger CSS property/value completion.
+
+  Ctrl + . — inspect available CSS code actions.
+
+  Shift + Alt + F — format CSS.
+
+  Ctrl + Shift + F — find a CSS class across the project.
+
+### Example
+
+CSS
+
+```
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 20px;
+}
+```
+
+When you type `display: f`, IntelliSense can suggest `flex`; when editing colors, VS Code can provide color previews and a color picker.
+
+## 6. JavaScript cheatsheet
+
+### IntelliSense and navigation
+
+|
+Action
+
+|
+
+Shortcut
+
+|
+| --- | --- |
+|
+
+Trigger suggestions
+
+|
+
+Ctrl + Space
+
+|
+|
+
+Show parameter hints
+
+|
+
+Ctrl + Shift + Space
+
+|
+|
+
+Go to definition
+
+|
+
+F12
+
+|
+|
+
+Find references
+
+|
+
+Shift + F12
+
+|
+|
+
+Rename variable/function
+
+|
+
+F2
+
+|
+|
+
+Quick Fix
+
+|
+
+Ctrl + .
+
+|
+|
+
+Format document
+
+|
+
+Shift + Alt + F
+
+|
+
+### Useful JavaScript refactoring
+
+Select an expression and use `Ctrl + .` to inspect available actions, such as extracting a variable or function when supported by the JavaScript language service.
+
+Example:
+
+JavaScript
+
+```
+const price = 100;
+const tax = price * 0.1;
+const total = price + tax;
+
+console.log(total);
+```
+
+Use Rename Symbol (`F2`) to rename `price` and update references.
+
+### JavaScript debugging
+
+|
+Action
+
+|
+
+Shortcut
+
+|
+| --- | --- |
+|
+
+Start / Continue
+
+|
+
+F5
+
+|
+|
+
+Toggle breakpoint
+
+|
+
+F9
+
+|
+|
+
+Step Over
+
+|
+
+F10
+
+|
+|
+
+Step Into
+
+|
+
+F11
+
+|
+|
+
+Step Out
+
+|
+
+Shift + F11
+
+|
+|
+
+Stop
+
+|
+
+Shift + F5
+
+|
+
+You can debug Node.js programs and browser JavaScript using supported debug configurations and browser tools.
+
+## 7. TypeScript cheatsheet
+
+TypeScript benefits especially from VS Code's language service.
+
+### Key features
+
+<box border radius="lg" gap={0}> {#each \({name:"Go to Definition",key:"F12",desc:"Navigate to interfaces, types, classes, and functions."},{name:"Find References",key:"Shift + F12",desc:"Find usages of a type or symbol."},{name:"Rename Symbol",key:"F2",desc:"Rename symbols throughout supported project references."},{name:"Quick Fix",key:"Ctrl + .",desc:"Inspect available TypeScript code actions."},{name:"Hover",key:"Ctrl + K, Ctrl + I",desc:"Show type information and documentation."},{name:"Organize Imports",key:"Ctrl + Shift + P",desc:"Search for TypeScript: Organize Imports."}\) as item,i} <row align="center" padding={3}> <box flex="1" gap={1}> **{item.name}** <text color="secondary" size="sm">{item.desc}</text> </box> <badge>{item.key}</badge> </row> {#if i<5}<divider color="subtle"/>{/if} {/each} </box>
+
+### Example: TypeScript navigation
+
+TypeScript
+
+```
+interface User {
+    id: number;
+    name: string;
+}
+
+function greet(user: User): string {
+    return `Hello, $DIL5`;
+}
+
+const user: User = {
+    id: 1,
+    name: "Mike"
+};
+
+console.log(greet(user));
+```
+
+Try these:
+
+* Hover over `User` to inspect its type.
+
+* Press F12 on `User` to navigate to the interface.
+
+* Press Shift + F12 to find references.
+
+* Press F2 on `greet` to rename the function.
+
+## 8. Terminal and npm
+
+Open the integrated terminal with `Ctrl + `` and run commands without leaving VS Code.
+
+Bash
+
+```
+# Check Node.js and npm
+node -v
+npm -v
+
+# Create a package.json
+npm init -y
+
+# Install dependencies
+npm install
+
+# Run a package script
+npm run dev
+npm run build
+npm test
+```
+
+The commands available depend on the scripts in your `package.json`.
+
+## 9. Recommended extensions
+
+<box gap={3}> <row align="start" gap={3}> <AsyncImage query="Prettier code formatter VS Code extension logo" aspectRatio="1:1" maxWidth="56px"/> <box flex="1" gap={1}> **<Entity value="Prettier" category="software" disambig="Prettier VS Code extension"/>**
+
+<text color="secondary" size="sm">Consistent formatting for HTML, CSS, JavaScript, TypeScript, JSON, and more.</text> </box> </row> <divider color="subtle"/> <row align="start" gap={3}> <AsyncImage query="ESLint Visual Studio Code extension logo" aspectRatio="1:1" maxWidth="56px"/> <box flex="1" gap={1}> <Entity value="ESLint" category="software" disambig="VS Code extension"/>
+
+<text color="secondary" size="sm">Find JavaScript and TypeScript code-quality issues using your ESLint configuration.</text> </box> </row> <divider color="subtle"/> <row align="start" gap={3}> <AsyncImage query="Live Server Ritwick Dey VS Code extension logo" aspectRatio="1:1" maxWidth="56px"/> <box flex="1" gap={1}> <Entity value="Live Server" category="software" disambig="VS Code extension by Ritwick Dey"/>
+
+<text color="secondary" size="sm">Launch a local development server for static HTML pages with automatic browser refresh.</text> </box> </row> <divider color="subtle"/> <row align="start" gap={3}> <AsyncImage query="Error Lens VS Code extension logo" aspectRatio="1:1" maxWidth="56px"/> <box flex="1" gap={1}> <Entity value="Error Lens" category="software" disambig="VS Code extension"/>
+
+<text color="secondary" size="sm">Display diagnostics more visibly in the editor.</text> </box> </row> </box>
+
+## 10. Recommended settings for frontend development
+
+Open Settings (`Ctrl + ,`) or edit `settings.json`.
+
+JSON
+
+```
+{
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "files.autoSave": "afterDelay",
+    "emmet.triggerExpansionOnTab": true,
+    "editor.bracketPairColorization.enabled": true
+}
+```
+
+For a project using Prettier, you can set it as the default formatter for each language:
+
+JSON
+
+```
+{
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
+```
+
+## 11. Quick practice quiz
+
+{@body const qs=\({q:"Which shortcut opens a file by name?",opts:\["Ctrl + Shift + P","Ctrl + P","F12"\),a:1,why:"Ctrl + P opens Quick Open."},{q:"Which feature expands `ul>li*3` into HTML?",opts:\("Emmet","ESLint","GitLens"\),a:0,why:"Emmet expands abbreviations into HTML structures."},{q:"Which shortcut renames a TypeScript symbol?",opts:\("F2","F9","Ctrl + F"\),a:0,why:"F2 invokes Rename Symbol."},{q:"Which shortcut formats the current document?",opts:\("Ctrl + .","Shift + Alt + F","Ctrl + Shift + X"\),a:1,why:"Shift + Alt + F formats the document using the configured formatter."},{q:"Which shortcut starts debugging?",opts:\("F5","F10","F2"\),a:0,why:"F5 starts or continues a debugging session."}]} {@body const \(qi,sqi\)=DIL.useState(0)} {@body const \(qa,sqa\)=DIL.useState({})} <box border radius="xl" padding={4} gap={3}> <row align="center" justify="between"> <badge color="info">Question {qi+1} / {qs.length}</badge> <text color="secondary" size="sm">{Object.keys(qa).length} answered</text> </row> <box background="surface-tertiary" height="6px" radius="full" clip> <box background="surface-inverted" height="6px" width={`$DIL6%`} radius="full"/> </box> {qs\(qi\).q} <radio-group direction="col" value={qa\(qi\)===undefined?"":String(qa\(qi\))} onChange={v=>sqa(p=>({...p,\(qi\):Number(v)}))}> {#each qs\(qi\).opts as opt,i} <radio value={String(i)}>{opt}</radio> {/each} </radio-group> {#if qa\(qi\)!==undefined} <box background="surface-secondary" padding={3} radius="lg" gap={1}> <text color={qa\(qi\)===qs\(qi\).a?"success":"danger"} weight="medium">{qa\(qi\)===qs\(qi\).a?"Correct!":"Not quite."}</text> {qs\(qi\).why} </box> {/if} <row align="center"> <button color="secondary" variant="outline" disabled={qi===0} onClick={()=>sqi(i=>i-1)}>Previous</button> <spacer/> {#if qi<qs.length-1} <button onClick={()=>sqi(i=>i+1)}>Next <icon name="arrow-right" inline size="sm"/></button> {:else} <button color="secondary" variant="outline" onClick={()=>{sqi(0);sqa({})}}>Restart</button> {/if} </row> {#if Object.keys(qa).length===qs.length} <title textAlign="center" size="lg">Score: {qs.filter((q,i)=>qa\(i\)===q.a).length} / {qs.length}</title> {/if} </box>
+
+## My recommended learning order
+
+1. HTML: Emmet, Quick Open, formatting, and tag navigation.
+
+2. CSS: IntelliSense, formatting, project-wide search, and class navigation.
+
+3. JavaScript: IntelliSense, Rename Symbol, debugging, and code actions.
+
+4. TypeScript: Go to Definition, references, type information, and refactoring.
+
+5. Workflow: Terminal, npm scripts, Git, Prettier, and ESLint.
+
+One shortcut to remember above all: `Ctrl + Shift + P`. If you don't know how to do something in VS Code, search for the command by name.
