@@ -29,10 +29,10 @@ File operations are handled by classes that connect directly to a file system.
 ### Byte Streams vs. Character Streams
 
 * Byte Streams: End in InputStream or OutputStream. They read raw 8-bit bytes and are essential for binary files where bit-level fidelity is required.
-* Character Streams: End in Reader or Writer. They handle 16-bit Unicode and automatically manage character encoding (like UTF-8), making them the correct choice for human-readable text. [4, 15, 16, 17, 18] 
+* Character Streams: End in Reader or Writer. They handle 16-bit Unicode and automatically manage character encoding (like UTF-8), making them the correct choice for human-readable text.
 
 ### Buffering for Performance
-Unbuffered streams perform a system call for every byte/character, which is slow. Wrapping them in a Buffered Stream creates a memory buffer to handle data in larger chunks. [8, 14, 15] 
+Unbuffered streams perform a system call for every byte/character, which is slow. Wrapping them in a Buffered Stream creates a memory buffer to handle data in larger chunks. 
 
 ## 3. Practical Example: Reading and Writing a File
 This example uses a character stream with buffering for efficiency.
@@ -66,4 +66,4 @@ public class FileStreamDemo {
 ## 4. Important Best Practices
 
 * Close Your Streams: Always close streams after use to free system resources. Using the try-with-resources statement (as shown above) ensures streams close automatically.
-* Handle Exceptions: Most I/O methods throw IOException, which must be caught or declared. [14, 15, 18, 19] 
+* Handle Exceptions: Most I/O methods throw IOException, which must be caught or declared.
