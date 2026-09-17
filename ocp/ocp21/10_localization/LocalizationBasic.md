@@ -49,8 +49,10 @@ System.out.println(now.format(formatter)); // 10 avril 2026 à 20:38:00 HKT
 ```
 ## 5. Message Formatting (Placeholders)
 The MessageFormat class allows you to inject dynamic data into localized strings, handling pluralization and variable positioning.
+```
 Properties file:
 alert = On {0, date}, there were {1, number} files found.
+```
 Java code:
 ```java
 String pattern = bundle.getString("alert");
