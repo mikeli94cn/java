@@ -1,4 +1,6 @@
-Since Java 9, the Java Platform Module System (JPMS) changed how we pack and deploy code. It moves away from the "global classpath" to a structured system of modules defined by a module-info.java file.
+Since Java 9, the Java Platform Module System (JPMS) changed how we pack and deploy code. 
+
+It moves away from the "global classpath" to a structured system of modules defined by a module-info.java file.
 ## 1. Defining a Module
 A module is a collection of packages and resources. To turn a project into a module, you place a module-info.java file in the root source directory.
 ```java
