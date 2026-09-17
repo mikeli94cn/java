@@ -12,16 +12,16 @@ javac -d out --module-path lib src/module-info.java src/com/me/App.java
 # Non-Modular: Uses the classic classpath
 javac -d out -cp lib src/com/me/App.java
 ```
-------------------------------
+
 ## 2. Migration: Unnamed and Automatic Modules
 If you are moving a legacy project to Java 9+, you don't have to modularize everything at once. Java provides two "compatibility" modes:
-## The Unnamed Module (Bottom-Up)
+### The Unnamed Module (Bottom-Up)
 When you place a JAR on the Classpath, it becomes part of the Unnamed Module.
 
 * Visibility: It can read every other module on the module path.
 * Access: No other named module can "require" it. This is basically "legacy mode."
 
-## Automatic Modules (Top-Down)
+### Automatic Modules (Top-Down)
 When you place a non-modular JAR on the Module Path, Java automatically turns it into an Automatic Module.
 
 * Name: Derived from the JAR filename (e.g., mysql-connector-java-8.0.jar becomes mysql.connector.java).
@@ -29,7 +29,7 @@ When you place a non-modular JAR on the Module Path, Java automatically turns it
 * Reads: It can read all other modules, including the Unnamed Module.
 * Usage: You can now requires mysql.connector.java; in your own module-info.java.
 
-------------------------------
+
 ## 3. Creating Runtime Images with jlink
 As discussed previously, jlink creates a custom, stripped-down JRE.
 Crucial Requirement: jlink cannot package Unnamed Modules or Automatic Modules. To use jlink, every single dependency in your project must be a fully modularized JAR.
@@ -38,7 +38,7 @@ jlink --module-path $JAVA_HOME/jmods:mlib \
       --add-modules my.module.name \
       --output my-app-runtime
 ```
-------------------------------
+
 ## 4. Comparison Table: Deployment Modes
 
 | Mode | Location | Module Type | Dependency Handling |
