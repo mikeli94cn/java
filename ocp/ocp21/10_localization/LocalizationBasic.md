@@ -1,6 +1,10 @@
-Localization (L10n) in Java allows your application to adapt to different languages and regions without code changes. This is managed primarily through Locales, Resource Bundles, and Formatters.
+Localization (L10n) in Java allows your application to adapt to different languages and regions without code changes. 
+
+This is managed primarily through Locales, Resource Bundles, and Formatters.
 ## 1. The Locale Class
-A Locale object represents a specific geographical, political, or cultural region. It is typically defined by a language code (e.g., en for English) and a country code (e.g., US for United States).
+A Locale object represents a specific geographical, political, or cultural region. 
+
+It is typically defined by a language code (e.g., en for English) and a country code (e.g., US for United States).
 ```java
 Locale usLocale = Locale.US;
 Locale frLocale = new Locale("fr", "FR"); // French/France
