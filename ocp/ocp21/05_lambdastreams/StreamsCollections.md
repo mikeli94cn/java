@@ -1,4 +1,6 @@
-The Streams API (introduced in Java 8) revolutionized how we handle collections. Instead of writing long for loops to filter or transform data, you describe what you want to do with the data using a functional approach.
+The Streams API (introduced in Java 8) revolutionized how we handle collections. 
+
+Instead of writing long for loops to filter or transform data, you describe what you want to do with the data using a functional approach.
 ## 1. The Stream Pipeline
 A stream operation consists of three parts:
 
@@ -20,9 +22,11 @@ A stream operation consists of three parts:
 ------------------------------
 ## 3. Code Demo: From Loops to Streams
 Imagine you have a list of names and you want to find names starting with "A", convert them to uppercase, sort them, and save them to a new list.
-The Modern Stream Way:
 
-import java.util.*;import java.util.stream.*;
+The Modern Stream Way:
+```java
+import java.util.*;
+import java.util.stream.*;
 public class StreamDemo {
     public static void main(String[] args) {
         List<String> names = List.of("Alice", "Bob", "Charlie", "Anna", "Alex");
@@ -36,7 +40,7 @@ public class StreamDemo {
         System.out.println(result); // [ALEX, ALICE, ANNA]
     }
 }
-
+```
 ## 4. Why use Streams?
 
 * Declarative: The code reads like a sentence ("Filter this, then map that...").
