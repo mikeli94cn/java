@@ -32,7 +32,10 @@ When you place a non-modular JAR on the Module Path, Java automatically turns it
 
 ## 3. Creating Runtime Images with jlink
 As discussed previously, jlink creates a custom, stripped-down JRE.
-Crucial Requirement: jlink cannot package Unnamed Modules or Automatic Modules. To use jlink, every single dependency in your project must be a fully modularized JAR.
+
+Crucial Requirement: jlink cannot package Unnamed Modules or Automatic Modules. 
+
+To use jlink, every single dependency in your project must be a fully modularized JAR.
 ```bash
 jlink --module-path $JAVA_HOME/jmods:mlib \
       --add-modules my.module.name \
