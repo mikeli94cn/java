@@ -1,6 +1,6 @@
-In Java, data is organized using Arrays for fixed-size storage and the Collections Framework (java.util) for dynamic, flexible structures. [1, 2, 3] 
+In Java, data is organized using Arrays for fixed-size storage and the Collections Framework (java.util) for dynamic, flexible structures.
 ## 1. Arrays (Fixed Size)
-Arrays are basic containers with a set length. They store elements of the same type and use zero-based indexing. [4, 5, 6, 7, 8] 
+Arrays are basic containers with a set length. They store elements of the same type and use zero-based indexing.
 
 * Create: int[] nums = {3, 1, 2}; or int[] nums = new int[3];.
 * Retrieve/Update: Use brackets: int val = nums[0]; or nums[0] = 5;.
@@ -8,13 +8,13 @@ Arrays are basic containers with a set length. They store elements of the same t
 
 Arrays.sort(nums); // Result: [1, 2, 3]
 
-[4, 9, 10, 11, 12] 
 
-------------------------------
+
+
 ## 2. The Collections Framework (Dynamic)
-Unlike arrays, collections grow and shrink automatically at runtime. [2, 13, 14, 15, 16] 
+Unlike arrays, collections grow and shrink automatically at runtime.
 
-| Collection [1, 5, 17, 18, 19, 20, 21, 22] | Core Feature | Primary Implementation |
+| Collection| Core Feature | Primary Implementation |
 |---|---|---|
 | List | Ordered, allows duplicates. | ArrayList |
 | Set | Unordered, unique elements only. | HashSet |
@@ -23,7 +23,7 @@ Unlike arrays, collections grow and shrink automatically at runtime. [2, 13, 14,
 
 ## Common Operations
 
-| Action [18, 21, 23, 24, 25] | List / Set / Deque | Map |
+| Action  | List / Set / Deque | Map |
 |---|---|---|
 | Add | .add(element) | .put(key, value) |
 | Remove | .remove(element) | .remove(key) |
@@ -31,12 +31,12 @@ Unlike arrays, collections grow and shrink automatically at runtime. [2, 13, 14,
 | Update | .set(index, element) (List only) | .put(existingKey, newValue) |
 
 ## Sorting Collections
-To sort a List, use [Collections.sort()](https://www.geeksforgeeks.org/java/collections-sort-java-examples/) or the modern list.sort(null). [9, 26, 27] 
+To sort a List, use [Collections.sort()](https://www.geeksforgeeks.org/java/collections-sort-java-examples/) or the modern list.sort(null).
 
-* Note: Set and Map are generally not sortable in-place. Use TreeSet or TreeMap if you need elements to stay sorted automatically. [1, 17, 28] 
+* Note: Set and Map are generally not sortable in-place. Use TreeSet or TreeMap if you need elements to stay sorted automatically.
 
-------------------------------
-## Code Demo: Working with Collections
+
+### Code Demo: Working with Collections
 ```java
 import java.util.*;
 public class CollectionExample {
