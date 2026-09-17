@@ -1,4 +1,6 @@
-To create a standalone executable using jlink, you must have your code compiled into a module. This process creates a "custom JRE" that contains only the parts of Java your app actually uses.
+To create a standalone executable using jlink, you must have your code compiled into a module. 
+
+This process creates a "custom JRE" that contains only the parts of Java your app actually uses.
 ## Step 1: Compile the Module
 Assume your source code is in src and your module name is com.example.app.
 ```bash
