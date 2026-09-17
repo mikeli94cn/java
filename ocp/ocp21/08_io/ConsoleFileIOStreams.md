@@ -9,7 +9,9 @@ The System class provides three predefined stream variables for interacting with
 * System.err: The standard error stream, used for error messages.
 
 ### Reading from Console
-The most common and modern way to read console data is using the [Scanner](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html) class, which can parse primitive types and strings. Alternatively, for high-performance reading, use [BufferedReader](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/BufferedReader.html).
+The most common and modern way to read console data is using the [Scanner](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html) class, which can parse primitive types and strings. 
+
+Alternatively, for high-performance reading, use [BufferedReader](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/BufferedReader.html).
 ```java
 import java.util.Scanner;
 
@@ -32,7 +34,9 @@ File operations are handled by classes that connect directly to a file system.
 * Character Streams: End in Reader or Writer. They handle 16-bit Unicode and automatically manage character encoding (like UTF-8), making them the correct choice for human-readable text.
 
 ### Buffering for Performance
-Unbuffered streams perform a system call for every byte/character, which is slow. Wrapping them in a Buffered Stream creates a memory buffer to handle data in larger chunks. 
+Unbuffered streams perform a system call for every byte/character, which is slow. 
+
+Wrapping them in a Buffered Stream creates a memory buffer to handle data in larger chunks. 
 
 ## 3. Practical Example: Reading and Writing a File
 This example uses a character stream with buffering for efficiency.
