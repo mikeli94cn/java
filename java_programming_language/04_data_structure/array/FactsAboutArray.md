@@ -1,0 +1,4 @@
+- int : 4 bytes
+- 1,000 int[] array : almost 4 KB
+- 1,000,000 int[] array : almost 4 MB
+- 1,000,000,000 int[] array : almost 4GB
