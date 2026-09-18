@@ -1,8 +1,8 @@
 # binary search
-1. int array
+- int array
   - exist duplicates
   - non-exist duplicates
-2. float array
-3. string array
-- find : return array index
-- non-found : return -1
+- float array
+- string array
+1. find : return array index
+2. non-found : return -1
