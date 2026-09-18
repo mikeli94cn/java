@@ -14,7 +14,10 @@ Before writing framework code, understand that every Java web framework sits on 
 
 ## Phase 2: Spring Core Concept (IoC & DI)
 Before Spring, you had to manually instantiate objects: UserService service = new UserService();.
-Spring introduces Inversion of Control (IoC) and Dependency Injection (DI). You declare your classes, and Spring automatically manages and "injects" them where needed. [1, 7] 
+
+Spring introduces Inversion of Control (IoC) and Dependency Injection (DI). 
+
+You declare your classes, and Spring automatically manages and "injects" them where needed. [1, 7] 
 
 * Objects managed by Spring are called Beans. [1, 7] 
 
@@ -44,8 +47,11 @@ Create your packages inside src/main/java/com/example/demo/ using this standard 
 ```
 ### 3. Code the Pattern
 Implement these three simple classes to see how Spring automatically links everything together using annotations: [8] 
+
 Step A: The Model (model/User.java)
+
 A simple Java object (POJO) to hold data.
+
 ```java
 package com.example.demo.model;
 public class User {
@@ -62,7 +68,9 @@ public class User {
 }
 ```
 Step B: The Service Component (service/UserService.java)
+
 Marked with @Service so Spring Core creates it as a managed "Bean". [1, 7] 
+
 ```java
 package com.example.demo.service;
 import com.example.demo.model.User;
@@ -76,7 +84,10 @@ import org.springframework.stereotype.Service;
 }
 ```
 Step C: The Controller Routing (controller/UserController.java)
-Marked with @RestController to expose HTTP endpoints. Notice how UserService is automatically injected via the constructor (Dependency Injection). [1, 5, 7] 
+
+Marked with @RestController to expose HTTP endpoints. 
+
+Notice how UserService is automatically injected via the constructor (Dependency Injection). [1, 5, 7] 
 ```java
 package com.example.demo.controller;
 import com.example.demo.model.User;
