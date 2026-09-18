@@ -10,6 +10,6 @@ If you aren't an experienced object-oriented designer, then start with the simpl
 - Strategy (315)
 - Template Method (325)
 
-## J2EE core pattern
+## java web core pattern
 
 ## pattern of business architecture
