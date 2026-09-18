@@ -23,7 +23,7 @@ There are several ways to implement a singleton, each with different trade-offs 
 
 ## 3. Recommended Code (Enum Singleton)
 Using an enum is widely considered the best practice because the JVM handles all the complex safety checks for you.
-
+```java
 public enum AppConfig {
     INSTANCE; // The one and only instance
 
@@ -33,7 +33,7 @@ public enum AppConfig {
     public void setSetting(String val) { this.setting = val; }
 }
 // Usage:// AppConfig config = AppConfig.INSTANCE;
-
+```
 
 ## 4. Overcoming Implementation Pitfalls
 Standard singletons can be "broken" if you don't account for advanced Java features:
