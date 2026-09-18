@@ -1,0 +1,894 @@
+# Java Foundation Practice Project: Student Management System
+
+Let's build a console-based Student Management System to check your Phase 1 Java foundation before moving on to Servlet and Spring Boot.
+
+This project is deliberately built with core Java only — no Spring, no database, no external libraries. You'll practice the same Java concepts that you'll later use in backend development.
+
+You'll start with a working project, then extend it with challenges to test whether you understand the code rather than simply copying it.
+
+## 1. What you'll build
+
+![学生管理系统含用户登录系统(Java) - RANZIER](https://images.openai.com/static-rsc-4/6HViqsedWTYkU9N1DHbaQ_BKTJIZtyt1LJMV-qLCxsGY1LVAsMn1EwWTjDjXo00gaYdnPciyMDcDkRbh3I8d7-KG_823vnYKK9Np_m1XJumr8brI9NEeDcTrSZIEjScyj4SwvgE5LemWCpQHAzRtM0YsKt68uVwjuVVZQkMHHjw?purpose=inline)
+
+## Student Management System
+
+A command-line application for managing student records.
+
+Add student
+
+Create a record
+
+Search student
+
+Find by ID
+
+Update student
+
+Edit student data
+
+Delete student
+
+Remove a record
+
+Core Java skills tested
+
+OOP
+
+Encapsulation
+
+Collections
+
+Loops & conditionals
+
+Methods
+
+Exceptions
+
+Streams
+
+Comparators
+
+File I/O
+
+## 2. Project requirements
+
+Each student has:
+
+|
+Field
+
+|
+
+Type
+
+|
+
+Example
+
+|
+| --- | --- | --- |
+|
+
+ID
+
+|
+
+`int`
+
+|
+
+1001
+
+|
+|
+
+Name
+
+|
+
+`String`
+
+|
+
+Alice
+
+|
+|
+
+Age
+
+|
+
+`int`
+
+|
+
+20
+
+|
+|
+
+Email
+
+|
+
+`String`
+
+|
+
+[alice@example.com](mailto:alice@example.com)
+
+|
+|
+
+Score
+
+|
+
+`double`
+
+|
+
+92.5
+
+|
+
+The program should support:
+
+1. Add a student with a unique ID.
+
+2. List all students.
+
+3. Search for a student by ID.
+
+4. Update a student's information.
+
+5. Delete a student.
+
+6. Sort students by score, highest first.
+
+7. Calculate the average score.
+
+8. Save student records to a file and load them on startup (advanced challenge).
+
+
+# 3. Create your IDE project
+
+Create a plain Java project in IntelliJ IDEA or VS Code.
+
+Use this structure:
+
+```
+StudentManagement/
+└── src/
+    ├── Student.java
+    ├── StudentService.java
+    └── Main.java
+```
+
+Use Java 21 or newer. No Maven dependencies are required.
+
+The design separates three responsibilities:
+
+Main.java
+
+Console menu, Scanner input, and user interaction.
+
+StudentService.java
+
+Business operations, validation, searching, sorting, and collections.
+
+Student.java
+
+Student data and object behavior.
+
+This is a simple version of separation of concerns — a principle you'll later see in Spring's Controller, Service, and Repository layers.
+
+# 4. Complete starter code
+
+## File 1 — `Student.java`
+
+This class represents one student.
+
+Java
+
+```
+public class Student {
+
+    private int id;
+    private String name;
+    private int age;
+    private String email;
+    private double score;
+
+    public Student(int id, String name, int age,
+                   String email, double score) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.email = email;
+        this.score = score;
+    }
+
+    // Getters
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "ID: %d | Name: %s | Age: %d | Email: %s | Score: %.2f",
+            id, name, age, email, score
+        );
+    }
+}
+```
+
+### Concepts to understand
+
+* Why are the fields `private`?
+
+* Why do we use a constructor?
+
+* Why does the ID have no setter?
+
+* What does `@Override` mean?
+
+* Why is `String.format()` useful?
+
+The ID is intentionally immutable through the public API: once a student is created, you cannot change its ID using a setter.
+
+## File 2 — `StudentService.java`
+
+This class manages the student collection and implements the business logic.
+
+Java
+
+```
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+public class StudentService {
+
+    private final List<Student> students = new ArrayList<>();
+
+    // Add a student
+    public boolean addStudent(Student student) {
+        if (findStudentById(student.getId()) != null) {
+            return false;
+        }
+
+        students.add(student);
+        return true;
+    }
+
+    // List all students
+    public List<Student> getAllStudents() {
+        return new ArrayList<>(students);
+    }
+
+    // Search by ID
+    public Student findStudentById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+
+        return null;
+    }
+
+    // Update student
+    public boolean updateStudent(
+            int id,
+            String name,
+            int age,
+            String email,
+            double score) {
+
+        Student student = findStudentById(id);
+
+        if (student == null) {
+            return false;
+        }
+
+        student.setName(name);
+        student.setAge(age);
+        student.setEmail(email);
+        student.setScore(score);
+
+        return true;
+    }
+
+    // Delete student
+    public boolean deleteStudent(int id) {
+        Student student = findStudentById(id);
+
+        if (student == null) {
+            return false;
+        }
+
+        return students.remove(student);
+    }
+
+    // Sort by score, highest first
+    public List<Student> getStudentsSortedByScore() {
+        List<Student> result = getAllStudents();
+
+        result.sort(
+            Comparator.comparingDouble(Student::getScore)
+                      .reversed()
+        );
+
+        return result;
+    }
+
+    // Calculate average score
+    public double getAverageScore() {
+        if (students.isEmpty()) {
+            return 0.0;
+        }
+
+        double total = 0;
+
+        for (Student student : students) {
+            total += student.getScore();
+        }
+
+        return total / students.size();
+    }
+}
+```
+
+### Concepts to understand
+
+|
+Code
+
+|
+
+Java concept
+
+|
+| --- | --- |
+|
+
+`List<Student>`
+
+|
+
+Generics and interfaces
+
+|
+|
+
+`new ArrayList<>()`
+
+|
+
+Object creation and polymorphism
+
+|
+|
+
+`private final`
+
+|
+
+Encapsulation and reference reassignment rules
+
+|
+|
+
+`for (Student student : students)`
+
+|
+
+Enhanced for loop
+
+|
+|
+
+`Comparator.comparingDouble()`
+
+|
+
+Comparator and method references
+
+|
+|
+
+`return null`
+
+|
+
+Object references and missing values
+
+|
+|
+
+`new ArrayList<>(students)`
+
+|
+
+Defensive copy of the collection
+
+|
+
+Important: `getAllStudents()` returns a new list, but the `Student` objects inside it are still shared references. This is a shallow copy.
+
+## File 3 — `Main.java`
+
+This is the console interface.
+
+Java
+
+```
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+    private static final Scanner scanner =
+            new Scanner(System.in);
+
+    private static final StudentService service =
+            new StudentService();
+
+    public static void main(String[] args) {
+
+        boolean running = true;
+
+        while (running) {
+            printMenu();
+
+            int choice = readInt("Choose an option: ");
+
+            switch (choice) {
+                case 1 -> addStudent();
+                case 2 -> listStudents();
+                case 3 -> searchStudent();
+                case 4 -> updateStudent();
+                case 5 -> deleteStudent();
+                case 6 -> sortStudents();
+                case 7 -> showAverageScore();
+                case 0 -> {
+                    running = false;
+                    System.out.println("Goodbye!");
+                }
+                default ->
+                    System.out.println("Invalid option.");
+            }
+
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+
+    private static void printMenu() {
+        System.out.println("===== Student Management =====");
+        System.out.println("1. Add student");
+        System.out.println("2. List students");
+        System.out.println("3. Search student");
+        System.out.println("4. Update student");
+        System.out.println("5. Delete student");
+        System.out.println("6. Sort by score");
+        System.out.println("7. Average score");
+        System.out.println("0. Exit");
+    }
+
+    private static void addStudent() {
+        int id = readInt("ID: ");
+
+        String name = readLine("Name: ");
+        int age = readInt("Age: ");
+        String email = readLine("Email: ");
+        double score = readDouble("Score: ");
+
+        Student student =
+                new Student(id, name, age, email, score);
+
+        if (service.addStudent(student)) {
+            System.out.println("Student added.");
+        } else {
+            System.out.println("ID already exists.");
+        }
+    }
+
+    private static void listStudents() {
+        List<Student> students = service.getAllStudents();
+
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+            return;
+        }
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+
+    private static void searchStudent() {
+        int id = readInt("Enter student ID: ");
+
+        Student student = service.findStudentById(id);
+
+        if (student == null) {
+            System.out.println("Student not found.");
+        } else {
+            System.out.println(student);
+        }
+    }
+
+    private static void updateStudent() {
+        int id = readInt("Enter student ID: ");
+
+        String name = readLine("New name: ");
+        int age = readInt("New age: ");
+        String email = readLine("New email: ");
+        double score = readDouble("New score: ");
+
+        boolean updated = service.updateStudent(
+                id, name, age, email, score
+        );
+
+        System.out.println(
+                updated ? "Student updated."
+                        : "Student not found."
+        );
+    }
+
+    private static void deleteStudent() {
+        int id = readInt("Enter student ID: ");
+
+        boolean deleted = service.deleteStudent(id);
+
+        System.out.println(
+                deleted ? "Student deleted."
+                        : "Student not found."
+        );
+    }
+
+    private static void sortStudents() {
+        List<Student> students =
+                service.getStudentsSortedByScore();
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+
+    private static void showAverageScore() {
+        double average = service.getAverageScore();
+
+        System.out.printf("Average score: %.2f%n", average);
+    }
+
+    private static int readInt(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+
+            try {
+                return Integer.parseInt(
+                        scanner.nextLine().trim()
+                );
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter an integer.");
+            }
+        }
+    }
+
+    private static double readDouble(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+
+            try {
+                return Double.parseDouble(
+                        scanner.nextLine().trim()
+                );
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a number.");
+            }
+        }
+    }
+
+    private static String readLine(String prompt) {
+        System.out.print(prompt);
+        return scanner.nextLine().trim();
+    }
+}
+```
+
+
+# 5. Run and test the project
+
+Run `Main.java` in your IDE.
+
+Try this sample session:
+
+```
+===== Student Management =====
+1. Add student
+2. List students
+3. Search student
+4. Update student
+5. Delete student
+6. Sort by score
+7. Average score
+0. Exit
+
+Choose an option: 1
+ID: 1001
+Name: Alice
+Age: 20
+Email: alice@example.com
+Score: 92.5
+Student added.
+
+Choose an option: 1
+ID: 1002
+Name: Bob
+Age: 21
+Email: bob@example.com
+Score: 85
+Student added.
+
+Choose an option: 6
+
+ID: 1001 | Name: Alice | Age: 20 | Email: alice@example.com | Score: 92.50
+ID: 1002 | Name: Bob | Age: 21 | Email: bob@example.com | Score: 85.00
+
+Choose an option: 7
+Average score: 88.75
+
+Choose an option: 0
+Goodbye!
+```
+
+## Test these cases yourself
+
+Manual testing checklist
+
+0/6
+
+Add two students with the same ID.
+
+Expected: The second student should not be added.
+
+Search for an ID that doesn't exist.
+
+Expected: The program should report that the student wasn't found.
+
+Delete a student, then list all students.
+
+Expected: The deleted student should no longer appear.
+
+Sort three students with different scores.
+
+Expected: Scores should appear from highest to lowest.
+
+Calculate the average with no students.
+
+Expected: The method returns 0.0 without dividing by zero.
+
+Enter a letter instead of a menu number.
+
+Expected: The program should ask for an integer again.
+
+One limitation in the starter version: it checks duplicate IDs, but it does not yet validate negative ages, invalid email addresses, or scores outside 0–100. Those are part of your practice challenges.
+
+# 6. Phase 1 practice challenges
+
+Don't try to implement everything at once. Work through these in order.
+
+Level 1 — Core Java
+
+## Basic programming
+
+1. Validate student data
+
+Reject negative ages, blank names, and scores outside 0–100.
+
+2. Search by name
+
+Find students whose names contain a keyword, ignoring case.
+
+3. Count students
+
+Add a method that returns the total number of students.
+
+4. Find the highest score
+
+Return the student with the highest score, or null if the list is empty.
+
+Level 2 — Collections & OOP
+
+## Object-oriented design
+
+5. Sort alphabetically
+
+Sort by student name using Comparator.
+
+6. Use a Map
+
+Replace the List with Map<Integer, Student> so ID lookup is direct.
+
+7. Add a Course class
+
+Create a Course class and associate students with courses.
+
+8. Override equals() and hashCode()
+
+Define student identity based on ID and test collection behavior.
+
+Level 3 — Modern Java
+
+## Streams & persistence
+
+9. Calculate average with Streams
+
+Use mapToDouble() and average().
+
+10. Filter passing students
+
+Return students whose score is at least 60.
+
+11. Save to a file
+
+Write student records to a CSV file using java.nio.file.
+
+12. Load records on startup
+
+Read the saved records and rebuild the collection.
+
+# 7. Knowledge check — can you explain your own code?
+
+Try answering these without looking at the implementation.
+
+1. Why do we declare `List<Student> students = new ArrayList<>();` instead of `ArrayList<Student> students = new ArrayList<>();`?
+
+2. What happens when `findStudentById()` returns null?
+
+3. Why does `getStudentsSortedByScore()` create a copy before sorting?
+
+4. Why is the Scanner helper using `nextLine()` instead of mixing `nextInt()` and `nextLine()`?
+
+5. What is the difference between `==` and `equals()` when comparing objects?
+
+6. What is the difference between a static method and an instance method?
+
+7. Why is `StudentService` separate from `Main`?
+
+8. What changes would be needed to replace the in-memory list with a database?
+
+# 8. Phase 1 self-assessment
+
+Use this to decide whether you're ready to start building Spring Boot applications.
+
+|
+Skill
+
+|
+
+What you should be able to do
+
+|
+| --- | --- |
+|
+
+Java syntax
+
+|
+
+Write loops, conditions, methods, and classes independently
+
+|
+|
+
+OOP
+
+|
+
+Explain encapsulation, constructors, interfaces, and references
+
+|
+|
+
+Collections
+
+|
+
+Choose between List, Set, and Map for a particular problem
+
+|
+|
+
+Exceptions
+
+|
+
+Handle invalid input without crashing the application
+
+|
+|
+
+Generics
+
+|
+
+Explain why `List<Student>` provides type safety
+
+|
+|
+
+Lambdas & Streams
+
+|
+
+Filter, sort, and aggregate collections
+
+|
+|
+
+Debugging
+
+|
+
+Use breakpoints and inspect variables in your IDE
+
+|
+|
+
+Design
+
+|
+
+Separate user interaction from business logic
+
+|
+
+My suggested readiness target: You can implement the Level 1 challenges independently, explain the code in the knowledge check, and complete at least a few Level 2 challenges.
+
+You don't need to master every advanced Java feature before starting Spring Boot. But if you can build and explain this project, you'll have a practical foundation to build on.
+
+## Your next step
+
+Start by creating the three files and running the program. Then try the challenges without looking up a complete solution.
+
+When you finish, paste your implementation here — especially your `StudentService` and any challenges you attempted. I can review it like a Java backend interview, identify gaps in your Java foundation, and recommend what to study next.
