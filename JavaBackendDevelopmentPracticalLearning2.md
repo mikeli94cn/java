@@ -7,19 +7,17 @@ Here is a step-by-step hands-on coding guide tailored for your IDE (like Intelli
 ## Phase 1: The Mental Model (Servlets & HTTP)
 Before writing framework code, understand that every Java web framework sits on top of Jakarta (Java) Servlets. [1] 
 
-* 
 * The Concept: A Servlet is just a Java class that listens for an HTTP Request, processes it, and returns an HTTP Response.
 * The Spring Connection: Spring Boot handles this via a single, massive master servlet called the DispatcherServlet. It acts as a front controller, intercepting all requests and routing them to your code. [1, 6] 
-* 
+
 
 
 ## Phase 2: Spring Core Concept (IoC & DI)
 Before Spring, you had to manually instantiate objects: UserService service = new UserService();.
 Spring introduces Inversion of Control (IoC) and Dependency Injection (DI). You declare your classes, and Spring automatically manages and "injects" them where needed. [1, 7] 
 
-* 
 * Objects managed by Spring are called Beans. [1, 7] 
-* 
+
 
 
 ## Phase 3: IDE Coding Pattern (Your First Spring Boot Project)
@@ -27,13 +25,13 @@ Follow this exact structural pattern to create a standard REST API. [5]
 ### 1. Bootstrap the Project
 Go to [Spring Initializr](https://start.spring.io/) to generate your project boilerplate. Select:
 
-* 
+
 * Project: Maven
 * Language: Java
 * Spring Boot: (Choose the latest stable version)
 * Dependencies: Add Spring Web.
 * Click Generate, download the zip, extract it, and open it in your IDE. [5] 
-* 
+
 
 ### 2. Project Directory Structure
 Create your packages inside src/main/java/com/example/demo/ using this standard layered architecture:
@@ -107,9 +105,9 @@ import org.springframework.web.bind.annotation.RestController;
    2. Open your web browser or terminal and go to: http://localhost:8080/user
    3. You will see a raw JSON response automatically serialized from your Java object:
    ```
-   {"id":"101","name":"Alice Smith"}
+   {"id":"101","name":"Alice Smith"}   [9] 
    ```
-   [9] 
+
 
 
 ## What to Learn Next (Gradual Roadmap)
