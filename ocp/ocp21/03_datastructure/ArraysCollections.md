@@ -5,9 +5,9 @@ Arrays are basic containers with a set length. They store elements of the same t
 * Create: int[] nums = {3, 1, 2}; or int[] nums = new int[3];.
 * Retrieve/Update: Use brackets: int val = nums[0]; or nums[0] = 5;.
 * Sort: Use the static [Arrays.sort()](https://www.w3schools.com/java/ref_arrays_sort.asp) method.
-
+```java
 Arrays.sort(nums); // Result: [1, 2, 3]
-
+```
 
 
 
@@ -21,7 +21,7 @@ Unlike arrays, collections grow and shrink automatically at runtime.
 | Map | Key-Value pairs; unique keys. | HashMap |
 | Deque | Double-ended queue (add/remove from both ends). | ArrayDeque |
 
-## Common Operations
+### Common Operations
 
 | Action  | List / Set / Deque | Map |
 |---|---|---|
@@ -30,7 +30,7 @@ Unlike arrays, collections grow and shrink automatically at runtime.
 | Retrieve | .get(index) (List only) | .get(key) |
 | Update | .set(index, element) (List only) | .put(existingKey, newValue) |
 
-## Sorting Collections
+### Sorting Collections
 To sort a List, use [Collections.sort()](https://www.geeksforgeeks.org/java/collections-sort-java-examples/) or the modern list.sort(null).
 
 * Note: Set and Map are generally not sortable in-place. Use TreeSet or TreeMap if you need elements to stay sorted automatically.
