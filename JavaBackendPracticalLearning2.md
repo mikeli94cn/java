@@ -1,3 +1,11 @@
+Q: i am learning java backend development.
+but the topics and concepts are so many, such as servlet, spring, spring boot.
+
+where should i start from? servlet programming or spring framework or spring boot?
+
+could you give a learning guide that i can pattern and  code in my ide project?
+
+
 You should start by understanding the foundational concepts of Servlets conceptually, immediately transition into the Spring Framework (Core) to understand how dependency injection works, and spend 90% of your practical coding time building projects in Spring Boot. [1, 2] 
 
 Do not spend weeks writing raw Servlet code or configuration-heavy legacy Spring apps. Modern Java backend development is dominated by Spring Boot, but without knowing what a Servlet or a Bean actually is, you will struggle to debug your applications. [1, 3, 4] 
