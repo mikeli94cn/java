@@ -1,3 +1,10 @@
+Q: i am learning java backend development.
+but the topics and concepts are so many, such as servlet, spring, spring boot.
+
+where should i start from? servlet programming or spring framework or spring boot?
+
+could you give a learning guide that i can pattern and  code in my ide project?
+
 # Java Backend Development: A Practical Learning Roadmap
 
 Since you're learning Java backend development, my recommendation is:
