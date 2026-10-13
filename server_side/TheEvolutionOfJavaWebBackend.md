@@ -14,7 +14,7 @@ These technologies overlap rather than cleanly replacing one another. Some are s
 
 ![PPT - Comp2513 Web/Application Servers PowerPoint Presentation, free download - ID:3032872](https://images.openai.com/static-rsc-4/9fS9x4W8cjnUpONW0XZZZHFQYyF6CNdRpwbZVurQA9qLnYe6nHK2R9YICRvQf2vHjOw38A70sphQgbIXTvOeQasD7b8Z_0pHl3Rf87AH3mDPByken2aODB1QLo_gwUlmUvl5-34dQWWxeBwhS9dQn-7hyqxm5-O9zCv56hdtaxY?purpose=inline)
 
-Add to Favorites
+
 
 ## 1995–2000: The early Java web
 
@@ -24,7 +24,7 @@ Java entered web development through server-side technologies. Servlets allowed 
 
 ![PPT - EJB Overview PowerPoint Presentation, free download - ID:5161576](https://images.openai.com/static-rsc-4/V96vxejZSWaVPp3dSe3_QOdfIDQACX6uFmu5aOsmd8-qKye03iX4glcMmwSU2MtyKvM9a0Bqc8yVqQjVu6LnKcOzLtfCG2vMZnJu9OP46P__l6WaTKcIsjxl2-hPc8NvI4wbe_PIVscjP3k9OyXUqP5v2yWwOdD5irfAHkoF4PQ?purpose=inline)
 
-Add to Favorites
+
 
 ## 1999–2006: J2EE enterprise era
 
@@ -34,7 +34,7 @@ Sun Microsystems introduced J2EE for large enterprise applications. Application 
 
 ![Разработка архитектуры для чайников. Часть 1 / Habr](https://images.openai.com/static-rsc-4/0l_OgH1VLEMmzJs1BVE_kCk0yFxemVDP7u03-pEgwYHaWk6ik4uSuXxk01Hdr0-oWYyRLM7cLXeLtbvPWPocd3EPkXTk_NIuTut801yfZjhLdbirn43Uq2xjZH2m8k4MS7SGE9hZOKdNH8N0KR2IaqRuV8EihqCh8wJJeFpMJ8A?purpose=inline)
 
-Add to Favorites
+
 
 ## 2003–2013: Lightweight Java and frameworks
 
@@ -44,7 +44,7 @@ Developers increasingly favored dependency injection, simpler Java objects, and 
 
 ![How Java and Spring Boot enable microservices architecture. | Sagar M H posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/EccYkvnvZFVDXdy-8_ZIyiw0CBKSjngzGFL_9x8K70fB66aU3671TLcK-J--ht_C-sJW5sIyZMZ3yywtW3hf_tMAFHpfNypgm2czhYeVAdtpTIO3_538AO7O_jaAsJXNVeRwBb-akem59EfM6VSnAozHVv-Tjg5s3hxUJH-513o?purpose=inline)
 
-Add to Favorites
+
 
 ## 2014–2019: Spring Boot and REST APIs
 
@@ -54,7 +54,7 @@ Spring Boot simplified configuration and application startup. Backend services i
 
 ![Microservices Architecture with Spring Boot & Kubernetes | by AKCoding.com | Medium](https://images.openai.com/static-rsc-4/7DnHB_LObJJmmN46SaKO0tRbBSZeDLB799J68baMcIEJxf_0AFjDDlrhZOda6H323gmecgYJfTut_VF3G6k37qRpf17hFCpGr-mlvNUEQk09Ez08QI_YWHdKLInpTIqkEUqqJIoFakzHTGuVFzCFry5JXG5sGGMSvjBHb7Ic9rM?purpose=inline)
 
-Add to Favorites
+
 
 ## 2020s–present: Cloud-native Java
 
@@ -96,9 +96,9 @@ The main technologies were:
 
 A simplified Servlet example:
 
-Java
 
-```
+
+```Java
 @WebServlet("/hello")
 public class HelloServlet extends HttpServlet {
     @Override
@@ -151,7 +151,7 @@ That is one of the historical reasons Spring became popular.
 
 Home
 
-+1
+
 
 ## 4. Generation 3: Spring, Hibernate, Struts, and MyBatis (2000s)
 
@@ -159,7 +159,7 @@ This period is particularly important because many ideas used in modern Java bac
 
 ![Dependency Injection in Spring (Explained with Coding Examples) | by Ramesh Fadatare | Javarevisited | Medium](https://images.openai.com/static-rsc-4/tgOVyPDcwemh9bCE7mxnM9yjmL8IAcNw2rwBO_UyKC3QV0DR_zYZu3-oVevy3LDfIPncvbbtiOTR-Z1T1XKearmp5aBb5BOSc9xS9ZDu4DhHigKzKbID1Tw0oBKpQr4PlNba7DOZfX99g7W9Gy-UHCVCBb_OZKk4YTjmc1Au-GQ?purpose=inline)
 
-Add to Favorites
+
 
 Spring Framework — 2003
 
@@ -167,7 +167,7 @@ Introduced a flexible programming model centered on dependency injection and mod
 
 ![PPT - Hibernate PowerPoint Presentation, free download - ID:4627678](https://images.openai.com/static-rsc-4/5_ZRB59NchWZA0kIXiAye3vhebHLGfgwRixLfEuILHNUXu_LohNP4A50LBlFnRhlSEv24GNLOWQX_WwJMurFyvFY9Ue1imez72p2i3dI3IYw1sfwFolBy2dq46hfmUjXIv8TheHxSz0zqBT_xtoOgDEse-jkcaMOetK4nHIpFbo?purpose=inline)
 
-Add to Favorites
+
 
 Hibernate — early 2000s
 
@@ -175,7 +175,7 @@ Popularized object-relational mapping (ORM), letting developers work with Java o
 
 ![PPT - UNIT-V The MVC architecture and Struts Framework PowerPoint Presentation - ID:1660483](https://images.openai.com/static-rsc-4/zdZglOlIy1aFU-biR8LssLDKQGR8sTvtYst-hEobWpUvkCnqYp4d1MMp8DNk-R1I76-DGlva1L1Wg3vN_BdLp5YRkN9xAThRWX4__xDhSoENyF0vVLZzr44_DEGfwO9DJew92YWAvb7DS7LtBUcOkGg5NFoMjVTndaYMDEc96G0?purpose=inline)
 
-Add to Favorites
+
 
 Struts — early MVC framework
 
@@ -183,7 +183,7 @@ Helped organize web applications around the Model–View–Controller pattern, s
 
 ![1. MyBatis Overview - Technical Documents(English) -](https://images.openai.com/static-rsc-4/ECUUisp9b6sI8mT71ZCo8dP7pf-ijXTf78-oO1YdhH9-ckgfHYCZb4PYHWxE5M_mARY4I6steEyz84u3tQc9D72GTZeWfSlQz0SdhtFDXdVc14wT8BVfltNRb8WqfB9kpUkjvynVJT6wdKhS7vVXvyqOkXRHGtXxqTbbrmsB1yc?purpose=inline)
 
-Add to Favorites
+
 
 MyBatis — SQL mapping
 
@@ -199,7 +199,7 @@ Spring Boot 1.0 reached general availability on April 1, 2014. Its goal was to m
 
 Home
 
-+1
+
 
 The shift was significant: instead of manually assembling a large application-server deployment, developers could create a standalone application and run it with `java -jar`.
 
@@ -227,9 +227,9 @@ MySQL / PostgreSQL / Oracle
 
 For example, a simple Spring Boot REST controller:
 
-Java
 
-```
+
+```Java
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
@@ -269,15 +269,15 @@ Java EE did not simply disappear. Its stewardship changed.
 
    The Eclipse Foundation
 
-   +1
+   
 
 One detail is especially important for Java developers: not every package beginning with `javax` became `jakarta`. The change applies to the relevant Jakarta EE APIs, not all Java platform packages.
 
 For example:
 
-Java
 
-```
+
+```Java
 // Older Java EE / Jakarta EE 8-era Servlet API
 import javax.servlet.http.HttpServlet;
 
@@ -307,7 +307,7 @@ Spring and Jakarta EE are not strictly mutually exclusive. Spring applications c
 
 Home
 
-+1
+
 
 ## 8. What should you learn from this history?
 
