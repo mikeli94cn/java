@@ -1,6 +1,7 @@
 # how to check a file whether exists?
 
 To check if a file exists using java.nio.file, use the Files.exists(Path) method.
+
 Here is the exact code snippet to check for a file and handle the result safely:
 ```java
 import java.nio.file.Files;
@@ -29,6 +30,7 @@ Would you like to see how to automatically create the file if it is missing, or 
 
 # copying, moving, and deleting files using java.nio.file package
 Here are the code demos for copying, moving, and deleting files using the recommended java.nio.file package.
+
 All of these operations rely on the static utilities found in the Files class.
 
 ## 1. Copying a File
@@ -113,4 +115,39 @@ public class DeleteFileDemo {
 }
 ```
 Would you like to explore how to delete or copy an entire folder structure (directories with contents), which requires walking the file tree, or are you ready to test these snippets in your project?
+
+# how to count how many lines in a file
+The most efficient way to count the lines in a file using java.nio.file is to combine Files.lines() with the stream's built-in .count() method.
+
+Because Files.lines() reads the file lazily line-by-line, this approach works perfectly for both small and massive files without consuming too much memory.
+
+Here is the exact code snippet:
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+public class LineCountExample {
+    public static void main(String[] args) {
+        Path path = Paths.get("large_file.txt");
+
+        // Use try-with-resources to ensure the file stream closes properly
+        try (Stream<String> lines = Files.lines(path)) {
+            
+            // Count the lines in the stream
+            long lineCount = lines.count();
+            
+            System.out.println("The file has " + lineCount + " lines.");
+            
+        } catch (IOException e) {
+            System.err.println("Error processing the file: " + e.getMessage());
+        }
+    }
+}
+```
+## 💡 Performance Note
+The .count() operation is optimized in Java. It avoids loading the actual text content of the lines into memory string-by-string; instead, it rapidly scans for newline characters (\n or \r\n), making it incredibly fast.
+
+Do you need to filter out empty lines or comment lines while counting, or would you like to know how to count specific words or characters instead?
 
