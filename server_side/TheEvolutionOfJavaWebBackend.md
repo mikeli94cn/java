@@ -67,7 +67,7 @@ Java backends increasingly run in containers and cloud environments. Spring Boot
 Before Java web technologies became widespread, web servers often used CGI (Common Gateway Interface) to execute server-side programs.
 
 Java introduced a more integrated approach.
-
+```
 Browser
 
 HTTP request
@@ -83,7 +83,7 @@ Java request-handling code
 Database
 
 JDBC
-
+```
 The main technologies were:
 
 * Servlet: receives HTTP requests and generates HTTP responses.
@@ -149,7 +149,7 @@ That is one of the historical reasons Spring became popular.
 
 ![](https://www.google.com/s2/favicons?domain=https://www.springframework.org\&sz=32)
 
-Home
+
 
 
 
@@ -197,14 +197,14 @@ Spring Boot 1.0 reached general availability on April 1, 2014. Its goal was to m
 
 ![](https://www.google.com/s2/favicons?domain=https://spring.io\&sz=32)
 
-Home
+
 
 
 
 The shift was significant: instead of manually assembling a large application-server deployment, developers could create a standalone application and run it with `java -jar`.
 
 A modern backend request might look like this:
-
+```
 Frontend
 
 Browser / mobile application
@@ -224,7 +224,7 @@ JPA, Hibernate, MyBatis, or JDBC
 Database
 
 MySQL / PostgreSQL / Oracle
-
+```
 For example, a simple Spring Boot REST controller:
 
 
@@ -305,7 +305,7 @@ Spring and Jakarta EE are not strictly mutually exclusive. Spring applications c
 
 ![](https://www.google.com/s2/favicons?domain=https://www.springframework.org\&sz=32)
 
-Home
+
 
 
 
@@ -313,27 +313,19 @@ Home
 
 Since your goal is Java backend development, I would follow this practical path:
 
-## 01
-
-Learn HTTP and Servlets conceptually
+## 01 Learn HTTP and Servlets conceptually
 
 Understand requests, responses, routing, the Servlet container, filters, and the request lifecycle. Write a small Servlet if you want to see how the lower-level pieces work.
 
-## 02
-
-Learn Spring Core
+## 02 Learn Spring Core
 
 Focus on IoC, dependency injection, beans, configuration, and application contexts. These explain much of what Spring Boot does behind the scenes.
 
-## 03
-
-Build a Spring Boot REST API
+## 03 Build a Spring Boot REST API
 
 Use Maven, Spring MVC, validation, exception handling, and JSON. You don't need to master JSP or EJB first.
 
-## 04
-
-Add persistence and production features
+## 04 Add persistence and production features
 
 Learn SQL, JDBC, JPA/Hibernate, Spring Data, transactions, security, testing, logging, and deployment.
 
