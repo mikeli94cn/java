@@ -8,7 +8,7 @@ The key to understanding Java's history is this: Java did not replace its origin
 
 ![Java Tutorial | Nikhil Learn Hub](https://images.openai.com/static-rsc-4/CO2i12hVqB2yxMPXCIl7AThyvRQemr3HtxW9Dj-a9iHeiixdKJX3x7PMXyibOimZEyYu8xiI6BAuMDyKNPEIgde7AgjO7uHzihOSIZFIRV1XqVI3HM7GTJqJhDXrE2UaUgTLwb5NCN6RVO3lgxMdoYWkwEhQoa6Dls_jaGtFCAU?purpose=inline)
 
-Add to Favorites
+
 
 ## 1991–1995: The birth of Java
 
@@ -20,7 +20,7 @@ The team originally targeted consumer electronic devices. As the World Wide Web 
 
 ![混乱したJavaバージョンの真実](https://images.openai.com/static-rsc-4/hniH_P9kJ3aIyAzcmHaXchQJpEjI6p0KS_4bOJkMVsnIp_Bv39EfxbmXEI14tCKvAwwjqbWnl2N2lB1ugNsKmkt1HiXhS4UPqmM1umaLEFA7ulbCJ3zmRZSlTIZqBGKdtiKCjatGQSy3CQhYD-GI5vzQAP08RoRT20TXrb3RPbo?purpose=inline)
 
-Add to Favorites
+
 
 ## 1995–2000: The Internet era
 
@@ -32,7 +32,7 @@ Java applets attracted attention because they could run inside web browsers. Jav
 
 ![PPT - Java 2 Platform, Enterprise Edition (J2EE) An Overview PowerPoint Presentation - ID:5691819](https://images.openai.com/static-rsc-4/7TCrf9_p5hEe3Oowkx109FH36lKtW-FLgUXRry9nLbzUtx8B0GMws5VbpwV_qA7za0XblrBiU_JsNo6AAQWFy9EUfYVIlst1ZKI1KJzOp30zCGL-p2A4TmEujSc1rm7t_ygBK2Ulo8PtOBhace9VUD-d7A9_LMUhAapL2CQxSEE?purpose=inline)
 
-Add to Favorites
+
 
 ## 1998–2006: Java becomes a platform
 
@@ -50,7 +50,7 @@ Collections, Swing, enterprise APIs, and mature development tools helped Java sp
 
 ![Java 5: Generics, Annotations, Enums, and More | Rubel Sekh posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/PBYETUd-41YPB1doFHkfB6lbLy7pL-L8ve137CX6qKymE4lqc3VKmSr5ty2oiqO8pLObm5Z73X4ayqUukfI2yPhX7wck-0Y2e0cTWlssU7JPhzgbZ0Wk8BU8q0xJUXzwd7gPBahWU2-Rs-H9y70poj1iKtoWIPPhqlexNOBPezo?purpose=inline)
 
-Add to Favorites
+
 
 ## 2004–2013: Language modernization
 
@@ -68,7 +68,7 @@ Java 8 was a major turning point, making Java more expressive without abandoning
 
 ![Java 8 vs Java 17 vs Java 21 — The Only Practical Comparison You Need in 2025 | by AlgoWing | Medium](https://images.openai.com/static-rsc-4/4cZb4N9t6khgbmzr1eMZd34ZBDZkD-6ny_0G2zWRAPkZiG_-tCiwXzsqqIcGAvJiUwgVSBFqrpXsRxUpcCAzzfRXZM5T340cLGFpJe_I1FqwRiIET0S_EU5M3eV7g5oUSxKjlraUynmNMjzLQ_9p8H4lPiM530ioEYThwNgBoRU?purpose=inline)
 
-Add to Favorites
+
 
 ## 2014–2021: The modern release cycle
 
@@ -82,7 +82,7 @@ Java 9 introduced the module system; Java 11 was another major LTS release; Java
 
 ![Virtual Threads in Java 21: Blocking That Scales | by Hash Block | Medium](https://images.openai.com/static-rsc-4/E3YzAVD0xBLdh0F3r3aiZ94erWgVbHoXtJ4VleMoYLFgbIJncMHE3Etx_2MMwHFmrSjdOL9MWPtRYd_22r0lSp-9an0PYfdxpaGjINOS8VgDBM-JNpTc-NypLpqFWaKL7laz4WX_S1tRkzXZ3mR4dcJnbn1hdl4FAtvCQIbf0ZE?purpose=inline)
 
-Add to Favorites
+
 
 ## 2021–present: Modern Java
 
@@ -108,7 +108,7 @@ You don't need to memorize every release. These milestones explain how the langu
 
 Oracle Docs
 
-+1
+
 
 | Version  | Year | What changed                                           |
 | -------- | ---- | ------------------------------------------------------ |
@@ -132,7 +132,7 @@ Java 8, 11, 17, 21, and 25 are LTS releases in Oracle's release roadmap. LTS mea
 
 Oracle
 
-+1
+
 
 ## 3. How Java programming itself has evolved
 
@@ -140,7 +140,7 @@ The version timeline tells us when changes happened. This second timeline explai
 
 ![\[Chapter 1\] 1.2 A Simple Example](https://images.openai.com/static-rsc-4/PR36QArWGsCye0nLHfB1iJ8yAXPhgT6ESfLvKQ_ZB0gZd_AwmpQJ7f7VIrenvKMBxTiwfFXt7wi0aVRXLlixMu5Hf-JVpciFO-BYaXbc7_dIIN5lkJAOnV1RIBIz14pUXk0ipbhSljxB295QdG-peih93QfbnWP9ciZDU2zaf6E?purpose=inline)
 
-Add to Favorites
+
 
 Stage 1 — Classic object-oriented Java
 
@@ -150,7 +150,7 @@ Classes, objects, inheritance, interfaces, exceptions, threads, and basic collec
 
 ![PPT - Java 5 New Features PowerPoint Presentation, free download - ID:5079454](https://images.openai.com/static-rsc-4/kAXltjxzKKfXbdLoHMj-oVr4deXAvJR_QG2jjPls7XhWrclCLQSoghEAiLFmxOBlB4sW4lLHCJS48V6yNmcMa01qGirU1QCHVcQvQTw5Bi5XXPHw8PB1jZgaN2AuKEPNwLTPbm9WKWIwfAu2Dl1p5Yu8BY5BOlLYAnQxXmRM--E?purpose=inline)
 
-Add to Favorites
+
 
 Stage 2 — Safer, more expressive Java
 
@@ -160,7 +160,7 @@ Generics improved type safety. Annotations made metadata more convenient. Better
 
 ![Streams, Map, Reduce and Filter on Java 8](https://images.openai.com/static-rsc-4/vLAi8jDFZW5HDs6v-YKr3v0sw1qZP-thJT4mqijWUz98Z8cEn8gKuF1n8PTTWKUi68UyT8hgqALU5B3g2uWxBACwFhZPSL0f0AzG2ufrBw7n4dzVhZjU8dy6nKxzPnAkVDcRp_ic-540BBAn1UZG3F3-j04AqK9mvocFwIUV-bI?purpose=inline)
 
-Add to Favorites
+
 
 Stage 3 — Functional programming enters mainstream Java
 
@@ -170,7 +170,7 @@ Lambdas, functional interfaces, Streams, and method references made collection p
 
 !["Java 21: A Game Changer for Backend Engineers" | Shubhang Agrawal posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/9q21E6gOnHpH1Tb8UZoxmIzh8dFCTnrHIVUmJumLZqk9DTc5NnB9cL8zCt__04Re93MHoMGjayImLExMq2tUSn8r9i-6R2zj4pAH6Ld4A-fgqiSp4IFDwxE5rW6JhZg-UgkCNw-ti8slygyWQtCYHs4gREOU4K3d6nQ26lhPoRM?purpose=inline)
 
-Add to Favorites
+
 
 Stage 4 — Modern, concise, scalable Java
 
@@ -182,9 +182,9 @@ Here is a simple example of that evolution.
 
 Classic Java:
 
-Java
 
-```
+
+```Java
 List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
 
 for (String name : names) {
@@ -196,9 +196,9 @@ for (String name : names) {
 
 Java 8 style:
 
-Java
 
-```
+
+```Java
 List<String> names = List.of("Alice", "Bob", "Charlie");
 
 names.stream()
@@ -214,7 +214,7 @@ Java is not just a programming language. It is a platform consisting of the lang
 
 ![GUI Programming in Java: A Beginner's Guide - Newtum](https://images.openai.com/static-rsc-4/L1HqJ4Hu_6bhI_2j5HOe0E2BbYC4MsP76-kA4wBe7riwGSOSiGCqioK69TyCw_TdE6JEnTgQJoRIH-xcIq593KYtK_xo_OLDiS3XheqipmFRluvpCSNhzSeuuYYj74jC_GCDic5KHSHRDO26InW0MeCzV8iv_oSaifQqX5ShO68?purpose=inline)
 
-Add to Favorites
+
 
 Desktop development
 
@@ -222,7 +222,7 @@ AWT and Swing supported graphical applications. JavaFX later provided another UI
 
 ![Building Web Apps with Servlets http flic krph](https://images.openai.com/static-rsc-4/MWKiTo9QLTTDbzPp7vVxrKEVTqkuzX0hpCgO3a681a517vVUSPgiRqC3deD3teUO5qFCJM-SU_WC_JShxl1ZvrCptraTNA94gy_eIJ_LjF1LdCj0GZxtcAUr_1eO2o-rYShbmp9YYsvllX1A75iOdS6x01x239R84bG5CyEK-Xg?purpose=inline)
 
-Add to Favorites
+
 
 Web and enterprise development
 
@@ -230,7 +230,7 @@ Servlets and JSP helped establish Java web applications. Enterprise Java APIs an
 
 ![REST API with Spring Boot. Let’s get to it. 🚀 | by AWDESH | Nerd For Tech | Medium](https://images.openai.com/static-rsc-4/UfoeApqLn9aDOwU7gA4RqY1oYG8gxDXQLJJTV95VLPjM91LVVUnBlifyWFpFTTi-ivkrIuFVK1WvGWuxPax2i184D5EKiVbFNwSRiBQh4aZR4jEo78MucIsMNcEXPfOvWDG3OXhFFHVLOViHrZ7eogsHKR5bSKByuxCm0fa0KGA?purpose=inline)
 
-Add to Favorites
+
 
 Modern backend development
 
@@ -238,7 +238,7 @@ Spring Framework, Spring Boot, Hibernate, and related tools made it easier to de
 
 ![How to Engineer Scalable Java Backend Systems | RAHUL MACHA posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/YJPbwowp2Y9_biZbozZagNiND6WEbLu0-TSks7hD10BJdkO4m95cwNV9DLZyUyGDXCyucDNp0EbHd_nKU_dPyeCxmEA-OPd_g6Mf8hnAxg3uGKbn1134Vt1c0TPFXKFydCbg_Nt0ZokT_j6_7zpUVEG3AhaZ2vn1NA4qNpk9T5A?purpose=inline)
 
-Add to Favorites
+
 
 Cloud and distributed systems
 
