@@ -157,6 +157,7 @@ This period is particularly important because many ideas used in modern Java bac
 
 
 Spring Framework — 2003
+
 ![Dependency Injection in Spring (Explained with Coding Examples) | by Ramesh Fadatare | Javarevisited | Medium](https://images.openai.com/static-rsc-4/tgOVyPDcwemh9bCE7mxnM9yjmL8IAcNw2rwBO_UyKC3QV0DR_zYZu3-oVevy3LDfIPncvbbtiOTR-Z1T1XKearmp5aBb5BOSc9xS9ZDu4DhHigKzKbID1Tw0oBKpQr4PlNba7DOZfX99g7W9Gy-UHCVCBb_OZKk4YTjmc1Au-GQ?purpose=inline)
 
 Introduced a flexible programming model centered on dependency injection and modular infrastructure. Spring MVC offered an alternative way to build web applications, and Spring integrated with Java EE APIs rather than requiring developers to use the entire Java EE platform.
@@ -165,6 +166,7 @@ Introduced a flexible programming model centered on dependency injection and mod
 
 
 Hibernate — early 2000s
+
 ![PPT - Hibernate PowerPoint Presentation, free download - ID:4627678](https://images.openai.com/static-rsc-4/5_ZRB59NchWZA0kIXiAye3vhebHLGfgwRixLfEuILHNUXu_LohNP4A50LBlFnRhlSEv24GNLOWQX_WwJMurFyvFY9Ue1imez72p2i3dI3IYw1sfwFolBy2dq46hfmUjXIv8TheHxSz0zqBT_xtoOgDEse-jkcaMOetK4nHIpFbo?purpose=inline)
 
 Popularized object-relational mapping (ORM), letting developers work with Java objects while the framework handled much of the SQL mapping. JPA later standardized a persistence API, and Hibernate became a major JPA implementation.
@@ -172,6 +174,7 @@ Popularized object-relational mapping (ORM), letting developers work with Java o
 
 
 Struts — early MVC framework
+
 ![PPT - UNIT-V The MVC architecture and Struts Framework PowerPoint Presentation - ID:1660483](https://images.openai.com/static-rsc-4/zdZglOlIy1aFU-biR8LssLDKQGR8sTvtYst-hEobWpUvkCnqYp4d1MMp8DNk-R1I76-DGlva1L1Wg3vN_BdLp5YRkN9xAThRWX4__xDhSoENyF0vVLZzr44_DEGfwO9DJew92YWAvb7DS7LtBUcOkGg5NFoMjVTndaYMDEc96G0?purpose=inline)
 
 Helped organize web applications around the Model–View–Controller pattern, separating request handling, business data, and presentation.
@@ -183,6 +186,7 @@ Helped organize web applications around the Model–View–Controller pattern, s
 
 
 MyBatis — SQL mapping
+
 ![1. MyBatis Overview - Technical Documents(English) -](https://images.openai.com/static-rsc-4/ECUUisp9b6sI8mT71ZCo8dP7pf-ijXTf78-oO1YdhH9-ckgfHYCZb4PYHWxE5M_mARY4I6steEyz84u3tQc9D72GTZeWfSlQz0SdhtFDXdVc14wT8BVfltNRb8WqfB9kpUkjvynVJT6wdKhS7vVXvyqOkXRHGtXxqTbbrmsB1yc?purpose=inline)
 
 Offers a more SQL-centered alternative to full ORM. Developers explicitly control SQL statements while mapping results to Java objects.
