@@ -69,19 +69,15 @@ Before Java web technologies became widespread, web servers often used CGI (Comm
 Java introduced a more integrated approach.
 ```
 Browser
-
 HTTP request
 
 Web server / Servlet container
-
 Tomcat
 
 Servlet
-
 Java request-handling code
 
 Database
-
 JDBC
 ```
 The main technologies were:
@@ -206,23 +202,18 @@ The shift was significant: instead of manually assembling a large application-se
 A modern backend request might look like this:
 ```
 Frontend
-
 Browser / mobile application
 
 Spring MVC
-
 Routes HTTP requests to controllers
 
 Service layer
-
 Business logic and transactions
 
 Repository / persistence layer
-
 JPA, Hibernate, MyBatis, or JDBC
 
 Database
-
 MySQL / PostgreSQL / Oracle
 ```
 For example, a simple Spring Boot REST controller:
