@@ -318,6 +318,8 @@ Learn SQL, JDBC, JPA/Hibernate, Spring Data, transactions, security, testing, lo
 ```
 My main advice: 
 
-learn the historical foundations, but build projects with modern tools. Understanding Servlets helps you understand Spring MVC; understanding dependency injection helps you understand Spring Boot; and understanding JDBC and SQL helps you understand persistence frameworks.
+learn the historical foundations, but build projects with modern tools. 
+
+Understanding Servlets helps you understand Spring MVC; understanding dependency injection helps you understand Spring Boot; and understanding JDBC and SQL helps you understand persistence frameworks.
 
 That way, you learn not just which annotations to use, but also why Java backend development evolved into its current form.
