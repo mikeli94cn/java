@@ -12,51 +12,51 @@ These technologies overlap rather than cleanly replacing one another. Some are s
 
 ## 1. The big picture: Java web backend timeline
 
-![PPT - Comp2513 Web/Application Servers PowerPoint Presentation, free download - ID:3032872](https://images.openai.com/static-rsc-4/9fS9x4W8cjnUpONW0XZZZHFQYyF6CNdRpwbZVurQA9qLnYe6nHK2R9YICRvQf2vHjOw38A70sphQgbIXTvOeQasD7b8Z_0pHl3Rf87AH3mDPByken2aODB1QLo_gwUlmUvl5-34dQWWxeBwhS9dQn-7hyqxm5-O9zCv56hdtaxY?purpose=inline)
 
 
 
 ## 1995–2000: The early Java web
+![PPT - Comp2513 Web/Application Servers PowerPoint Presentation, free download - ID:3032872](https://images.openai.com/static-rsc-4/9fS9x4W8cjnUpONW0XZZZHFQYyF6CNdRpwbZVurQA9qLnYe6nHK2R9YICRvQf2vHjOw38A70sphQgbIXTvOeQasD7b8Z_0pHl3Rf87AH3mDPByken2aODB1QLo_gwUlmUvl5-34dQWWxeBwhS9dQn-7hyqxm5-O9zCv56hdtaxY?purpose=inline)
 
 CGI → Servlets → JSP
 
 Java entered web development through server-side technologies. Servlets allowed Java code to process HTTP requests, while JSP made it easier to generate HTML pages.
 
-![PPT - EJB Overview PowerPoint Presentation, free download - ID:5161576](https://images.openai.com/static-rsc-4/V96vxejZSWaVPp3dSe3_QOdfIDQACX6uFmu5aOsmd8-qKye03iX4glcMmwSU2MtyKvM9a0Bqc8yVqQjVu6LnKcOzLtfCG2vMZnJu9OP46P__l6WaTKcIsjxl2-hPc8NvI4wbe_PIVscjP3k9OyXUqP5v2yWwOdD5irfAHkoF4PQ?purpose=inline)
 
 
 
 ## 1999–2006: J2EE enterprise era
+![PPT - EJB Overview PowerPoint Presentation, free download - ID:5161576](https://images.openai.com/static-rsc-4/V96vxejZSWaVPp3dSe3_QOdfIDQACX6uFmu5aOsmd8-qKye03iX4glcMmwSU2MtyKvM9a0Bqc8yVqQjVu6LnKcOzLtfCG2vMZnJu9OP46P__l6WaTKcIsjxl2-hPc8NvI4wbe_PIVscjP3k9OyXUqP5v2yWwOdD5irfAHkoF4PQ?purpose=inline)
 
 Servlets · JSP · EJB · JDBC
 
 Sun Microsystems introduced J2EE for large enterprise applications. Application servers provided standardized services for transactions, security, messaging, and component management.
 
-![Разработка архитектуры для чайников. Часть 1 / Habr](https://images.openai.com/static-rsc-4/0l_OgH1VLEMmzJs1BVE_kCk0yFxemVDP7u03-pEgwYHaWk6ik4uSuXxk01Hdr0-oWYyRLM7cLXeLtbvPWPocd3EPkXTk_NIuTut801yfZjhLdbirn43Uq2xjZH2m8k4MS7SGE9hZOKdNH8N0KR2IaqRuV8EihqCh8wJJeFpMJ8A?purpose=inline)
 
 
 
 ## 2003–2013: Lightweight Java and frameworks
+![Разработка архитектуры для чайников. Часть 1 / Habr](https://images.openai.com/static-rsc-4/0l_OgH1VLEMmzJs1BVE_kCk0yFxemVDP7u03-pEgwYHaWk6ik4uSuXxk01Hdr0-oWYyRLM7cLXeLtbvPWPocd3EPkXTk_NIuTut801yfZjhLdbirn43Uq2xjZH2m8k4MS7SGE9hZOKdNH8N0KR2IaqRuV8EihqCh8wJJeFpMJ8A?purpose=inline)
 
 Spring · Hibernate · Struts · MyBatis
 
 Developers increasingly favored dependency injection, simpler Java objects, and flexible persistence tools. Spring and Hibernate became central to many Java enterprise stacks.
 
-![How Java and Spring Boot enable microservices architecture. | Sagar M H posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/EccYkvnvZFVDXdy-8_ZIyiw0CBKSjngzGFL_9x8K70fB66aU3671TLcK-J--ht_C-sJW5sIyZMZ3yywtW3hf_tMAFHpfNypgm2czhYeVAdtpTIO3_538AO7O_jaAsJXNVeRwBb-akem59EfM6VSnAozHVv-Tjg5s3hxUJH-513o?purpose=inline)
 
 
 
 ## 2014–2019: Spring Boot and REST APIs
+![How Java and Spring Boot enable microservices architecture. | Sagar M H posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/EccYkvnvZFVDXdy-8_ZIyiw0CBKSjngzGFL_9x8K70fB66aU3671TLcK-J--ht_C-sJW5sIyZMZ3yywtW3hf_tMAFHpfNypgm2czhYeVAdtpTIO3_538AO7O_jaAsJXNVeRwBb-akem59EfM6VSnAozHVv-Tjg5s3hxUJH-513o?purpose=inline)
 
 Spring Boot · JSON · REST · embedded servers
 
 Spring Boot simplified configuration and application startup. Backend services increasingly exposed JSON APIs for browsers, mobile apps, and other services instead of generating every page on the server.
 
-![Microservices Architecture with Spring Boot & Kubernetes | by AKCoding.com | Medium](https://images.openai.com/static-rsc-4/7DnHB_LObJJmmN46SaKO0tRbBSZeDLB799J68baMcIEJxf_0AFjDDlrhZOda6H323gmecgYJfTut_VF3G6k37qRpf17hFCpGr-mlvNUEQk09Ez08QI_YWHdKLInpTIqkEUqqJIoFakzHTGuVFzCFry5JXG5sGGMSvjBHb7Ic9rM?purpose=inline)
 
 
 
 ## 2020s–present: Cloud-native Java
+![Microservices Architecture with Spring Boot & Kubernetes | by AKCoding.com | Medium](https://images.openai.com/static-rsc-4/7DnHB_LObJJmmN46SaKO0tRbBSZeDLB799J68baMcIEJxf_0AFjDDlrhZOda6H323gmecgYJfTut_VF3G6k37qRpf17hFCpGr-mlvNUEQk09Ez08QI_YWHdKLInpTIqkEUqqJIoFakzHTGuVFzCFry5JXG5sGGMSvjBHb7Ic9rM?purpose=inline)
 
 Microservices · containers · observability · virtual threads
 
