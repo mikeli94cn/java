@@ -25,7 +25,7 @@ Java entered web development through server-side technologies. Servlets allowed 
 
 
 
-## 1999–2006: J2EE enterprise era
+### 1999–2006: J2EE enterprise era
 ![PPT - EJB Overview PowerPoint Presentation, free download - ID:5161576](https://images.openai.com/static-rsc-4/V96vxejZSWaVPp3dSe3_QOdfIDQACX6uFmu5aOsmd8-qKye03iX4glcMmwSU2MtyKvM9a0Bqc8yVqQjVu6LnKcOzLtfCG2vMZnJu9OP46P__l6WaTKcIsjxl2-hPc8NvI4wbe_PIVscjP3k9OyXUqP5v2yWwOdD5irfAHkoF4PQ?purpose=inline)
 
 Servlets · JSP · EJB · JDBC
@@ -35,7 +35,7 @@ Sun Microsystems introduced J2EE for large enterprise applications. Application 
 
 
 
-## 2003–2013: Lightweight Java and frameworks
+### 2003–2013: Lightweight Java and frameworks
 ![Разработка архитектуры для чайников. Часть 1 / Habr](https://images.openai.com/static-rsc-4/0l_OgH1VLEMmzJs1BVE_kCk0yFxemVDP7u03-pEgwYHaWk6ik4uSuXxk01Hdr0-oWYyRLM7cLXeLtbvPWPocd3EPkXTk_NIuTut801yfZjhLdbirn43Uq2xjZH2m8k4MS7SGE9hZOKdNH8N0KR2IaqRuV8EihqCh8wJJeFpMJ8A?purpose=inline)
 
 Spring · Hibernate · Struts · MyBatis
@@ -45,7 +45,7 @@ Developers increasingly favored dependency injection, simpler Java objects, and 
 
 
 
-## 2014–2019: Spring Boot and REST APIs
+### 2014–2019: Spring Boot and REST APIs
 ![How Java and Spring Boot enable microservices architecture. | Sagar M H posted on the topic | LinkedIn](https://images.openai.com/static-rsc-4/EccYkvnvZFVDXdy-8_ZIyiw0CBKSjngzGFL_9x8K70fB66aU3671TLcK-J--ht_C-sJW5sIyZMZ3yywtW3hf_tMAFHpfNypgm2czhYeVAdtpTIO3_538AO7O_jaAsJXNVeRwBb-akem59EfM6VSnAozHVv-Tjg5s3hxUJH-513o?purpose=inline)
 
 Spring Boot · JSON · REST · embedded servers
@@ -55,7 +55,7 @@ Spring Boot simplified configuration and application startup. Backend services i
 
 
 
-## 2020s–present: Cloud-native Java
+### 2020s–present: Cloud-native Java
 ![Microservices Architecture with Spring Boot & Kubernetes | by AKCoding.com | Medium](https://images.openai.com/static-rsc-4/7DnHB_LObJJmmN46SaKO0tRbBSZeDLB799J68baMcIEJxf_0AFjDDlrhZOda6H323gmecgYJfTut_VF3G6k37qRpf17hFCpGr-mlvNUEQk09Ez08QI_YWHdKLInpTIqkEUqqJIoFakzHTGuVFzCFry5JXG5sGGMSvjBHb7Ic9rM?purpose=inline)
 
 Microservices · containers · observability · virtual threads
