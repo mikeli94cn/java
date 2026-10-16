@@ -303,23 +303,21 @@ Spring and Jakarta EE are not strictly mutually exclusive. Spring applications c
 ## 8. What should you learn from this history?
 
 Since your goal is Java backend development, I would follow this practical path:
-
+```
 ## 01 Learn HTTP and Servlets conceptually
-
 Understand requests, responses, routing, the Servlet container, filters, and the request lifecycle. Write a small Servlet if you want to see how the lower-level pieces work.
 
 ## 02 Learn Spring Core
-
 Focus on IoC, dependency injection, beans, configuration, and application contexts. These explain much of what Spring Boot does behind the scenes.
 
 ## 03 Build a Spring Boot REST API
-
 Use Maven, Spring MVC, validation, exception handling, and JSON. You don't need to master JSP or EJB first.
 
 ## 04 Add persistence and production features
-
 Learn SQL, JDBC, JPA/Hibernate, Spring Data, transactions, security, testing, logging, and deployment.
+```
+My main advice: 
 
-My main advice: learn the historical foundations, but build projects with modern tools. Understanding Servlets helps you understand Spring MVC; understanding dependency injection helps you understand Spring Boot; and understanding JDBC and SQL helps you understand persistence frameworks.
+learn the historical foundations, but build projects with modern tools. Understanding Servlets helps you understand Spring MVC; understanding dependency injection helps you understand Spring Boot; and understanding JDBC and SQL helps you understand persistence frameworks.
 
 That way, you learn not just which annotations to use, but also why Java backend development evolved into its current form.
