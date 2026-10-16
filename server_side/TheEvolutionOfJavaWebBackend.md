@@ -179,6 +179,9 @@ Helped organize web applications around the Model–View–Controller pattern, s
 
 
 
+
+
+
 MyBatis — SQL mapping
 ![1. MyBatis Overview - Technical Documents(English) -](https://images.openai.com/static-rsc-4/ECUUisp9b6sI8mT71ZCo8dP7pf-ijXTf78-oO1YdhH9-ckgfHYCZb4PYHWxE5M_mARY4I6steEyz84u3tQc9D72GTZeWfSlQz0SdhtFDXdVc14wT8BVfltNRb8WqfB9kpUkjvynVJT6wdKhS7vVXvyqOkXRHGtXxqTbbrmsB1yc?purpose=inline)
 
