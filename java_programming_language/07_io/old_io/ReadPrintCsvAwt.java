@@ -1,4 +1,3 @@
-package org.example;
 
 import java.awt.Frame;
 import java.awt.TextArea;

@@ -1,4 +1,3 @@
-package org.example;
 
 import java.io.*;
 
@@ -18,9 +17,9 @@ here is an architectural introduction to the 10 core classes of java.io package.
 public class JavaIoPackage {
     public static void main(String[] args) {
         /*
-        1. working with the File system: File
-
-        */
+         * 1. working with the File system: File
+         * 
+         */
         File file = new File("data.txt");
         if (file.exists()) {
             System.out.println("data exists");
@@ -28,11 +27,11 @@ public class JavaIoPackage {
         }
 
         /*
-        2. Byte Streams: raw binary data
+         * 2. Byte Streams: raw binary data
          */
-        //low-level binary copy operation
+        // low-level binary copy operation
         try (FileInputStream fis = new FileInputStream("input.jpg");
-             FileOutputStream fos = new FileOutputStream("output.jpg")) {
+                FileOutputStream fos = new FileOutputStream("output.jpg")) {
             int bytes;
             while ((bytes = fis.read()) != -1) {
                 fos.write(bytes);
@@ -41,11 +40,11 @@ public class JavaIoPackage {
             throw new RuntimeException(e);
         }
         /*
-        3. Character Streams: text data, FileWriter
+         * 3. Character Streams: text data, FileWriter
          */
         String filePath = "charOutPut.txt";
         String content = "Hello\nWorld";
-        //True in FileWriter(filePath, true) enables append mode instead of overwriting
+        // True in FileWriter(filePath, true) enables append mode instead of overwriting
         try (FileWriter writer = new FileWriter(filePath)) {
             writer.write(content);
             System.out.println("Successfully wrote to " + filePath);
@@ -58,7 +57,7 @@ public class JavaIoPackage {
         }
 
         /*
-        reuse File class
+         * reuse File class
          */
         File fileChar = new File("CharOutPut.txt");
         if (fileChar.exists()) {
@@ -67,7 +66,7 @@ public class JavaIoPackage {
         }
 
         /*
-        3. character streams: text data, FileReader
+         * 3. character streams: text data, FileReader
          */
         try (FileReader reader = new FileReader(filePath)) {
             int ch;
@@ -81,8 +80,9 @@ public class JavaIoPackage {
         }
 
         /*
-        3. character streams: reading into a character array with FileReader
-        this demo reads chunks of characters into a pre-allocated char[] cbuf for better performance.
+         * 3. character streams: reading into a character array with FileReader
+         * this demo reads chunks of characters into a pre-allocated char[] cbuf for
+         * better performance.
          */
         char[] cbuf = new char[1024];
         try (FileReader reader = new FileReader(filePath)) {
@@ -95,7 +95,7 @@ public class JavaIoPackage {
         }
 
         /*
-        3. character streams: copying a file (combining FileReader and FileWriter)
+         * 3. character streams: copying a file (combining FileReader and FileWriter)
          */
         String sourcePath = "file.txt";
         String sourceContent = "china india";
@@ -104,7 +104,6 @@ public class JavaIoPackage {
         } catch (IOException e) {
             System.err.println("error writing to " + sourcePath + ": " + e.getMessage());
         }
-
 
         // reuse File to read meta data of file
         File fileNew = new File(sourcePath);
@@ -115,7 +114,7 @@ public class JavaIoPackage {
 
         String destPath = "copyFile.txt";
         try (FileReader reader = new FileReader(sourcePath);
-             FileWriter writer = new FileWriter(destPath)) {
+                FileWriter writer = new FileWriter(destPath)) {
             int temp;
             while ((temp = reader.read()) != -1) {
                 writer.write((char) temp);
