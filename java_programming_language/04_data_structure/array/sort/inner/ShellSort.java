@@ -1,3 +1,5 @@
+package array.sort.inner;
+
 import java.util.Arrays;
 
 public class ShellSort {

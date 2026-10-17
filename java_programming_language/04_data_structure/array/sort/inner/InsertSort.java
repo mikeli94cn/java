@@ -1,3 +1,7 @@
+package array.sort.inner;
+
+class InsertSort {
+
     public void insertSort(int[] arr) {
         for (int i = 2; i <= arr.length; i++) {
             int value = arr[i - 1];
@@ -9,3 +13,4 @@
             arr[j + 1 - 1] = value;
         }
     }
+}

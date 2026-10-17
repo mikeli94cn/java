@@ -1,4 +1,4 @@
-package javalife.javapl.chapter1;
+
 
 public class Point {
     public double x;

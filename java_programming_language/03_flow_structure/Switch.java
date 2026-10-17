@@ -27,7 +27,7 @@ class Switch
         boolean e=true; //swicth cannot convert type of boolean
 
         switch(c){
-            case 1.0f:
+            case 1:
                 System.out.println("switch int a to char b");
                 break;
             default:

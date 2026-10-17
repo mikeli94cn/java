@@ -1,8 +1,6 @@
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +17,7 @@ public class SwingCountAppV2 extends JFrame implements ActionListener {
     private JButton btn = new JButton("click");
     private int cnt = 0;
 
-    public SwingCountApp() {
+    public SwingCountAppV2() {
         setLayout(new FlowLayout());
         add(lbl);
         add(tf);
@@ -56,7 +54,7 @@ public class SwingCountAppV2 extends JFrame implements ActionListener {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SwingCountApp();
+                new SwingCountAppV2();
             }
         });
     }

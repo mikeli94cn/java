@@ -6,7 +6,6 @@ public class ArrayTest {
                                    double->0.0;
                                    boolean->false;
                                    String->null */
-    int[] numbersInitialized = {10, 20, 30, 40};
     /*access element*/
     System.out.println("numbers[0]:"+numbers[0]);
     /*modify elements*/

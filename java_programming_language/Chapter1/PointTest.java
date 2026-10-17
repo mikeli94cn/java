@@ -1,4 +1,4 @@
-package javalife.javapl.chapter1;
+
 
 public class PointTest {
     public static void main(String[] args) {    
