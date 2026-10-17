@@ -1,0 +1,14 @@
+{
+    "java.project.sourcePaths": [
+        "java_programming_language/gui",
+        "java_programming_language/fp",
+        "java_programming_language/Chapter3",
+        "java_programming_language/Chapter22",
+        "java_programming_language/Chapter1",
+        "java_programming_language/04_data_structure",
+        "java_programming_language/03_flow_structure",
+        "java_programming_language/02_type",
+        "java_programming_language/01_basic_syntax",
+        "java_programming_language/07_io/old_io"
+    ]
+}

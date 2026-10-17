@@ -11,7 +11,7 @@ class MyImprovedFibonacci{
 		int a=1;
 		int b=1;
 		for(int i=1;i<=MAX_INDEX;i++){
-			String mark;
+			//String mark;
 			if(i==1)
 			{
 				System.out.println(i+": "+a+getMark(a));
