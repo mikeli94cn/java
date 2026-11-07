@@ -15,3 +15,4 @@
 ### symbol character
 - 1 byte represents ASCII, 2 bytes represent Unicode
 - 8 bits represent ASCII, 16 bits represent Unicode
+test from new ubuntu git
